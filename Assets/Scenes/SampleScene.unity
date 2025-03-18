@@ -30652,6 +30652,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2478488709403227983, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 6517024134074742060, guid: c792745c0f3e99542a66164d94d07379, type: 2}
     - target: {fileID: 3336125493532837918, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: m_LocalPosition.y
       value: 5.2
@@ -30672,6 +30676,10 @@ PrefabInstance:
       propertyPath: cam.cameraHead
       value: 
       objectReference: {fileID: 1849720571}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: sounds.stepTime
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: cam.targetCamera
       value: 
@@ -30695,6 +30703,10 @@ PrefabInstance:
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: movement.acceleration
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: sounds.basedOnHeadBob
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: sounds.footstepsSource
@@ -30721,6 +30733,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: sounds.walkFootsteps.volume
+      value: 0.621
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: headBob.bobClass.bobFrequency
       value: 2.5
       objectReference: {fileID: 0}
@@ -30733,21 +30749,45 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: sounds.walkFootsteps.audioClips.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 1e5761292ed025241bdb02ff49c552dd, type: 3}
+      objectReference: {fileID: 8300000, guid: 4558e8109e1ac544fbc520469dd41f07, type: 3}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[1]'
       value: 
-      objectReference: {fileID: 8300000, guid: bbe4ed33245f5804db42ff8c43d75412, type: 3}
+      objectReference: {fileID: 8300000, guid: f44646dfc91734240b4dad30ef9f1946, type: 3}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[2]'
       value: 
-      objectReference: {fileID: 8300000, guid: 44e59b73420f0e64fb30e755c49b3823, type: 3}
+      objectReference: {fileID: 8300000, guid: 9a3d73c74775a474ea97c54fe185145a, type: 3}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[3]'
       value: 
-      objectReference: {fileID: 8300000, guid: 62e6bf700540ea9478b91b33afa85e7e, type: 3}
+      objectReference: {fileID: 8300000, guid: a5195c3b8179fe64f82330ee272f71ff, type: 3}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 3440c07a8e93c3a4caf71644d7edb990, type: 3}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 93ad527cfe67b3a4db22a45b4279ea55, type: 3}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7a6111fb74dd1eb44814f2c4462a0b49, type: 3}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d1e0335f0ff90b4092c1df59d2ff2e2, type: 3}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[8]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d1e0335f0ff90b4092c1df59d2ff2e2, type: 3}
     - target: {fileID: 7843371786445684082, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: m_Name
       value: GoldPlayerController
