@@ -17,8 +17,7 @@ namespace Game.Scripts
         {
             if(Input.GetKeyDown(KeyCode.F10))
             {
-                // CreatePopUp(transform.position, Random.Range(0, 1000).ToString(), Color.yellow);
-                CreatePopUp(transform.position, "HELP", Color.yellow);
+                CreatePopUp(transform.position, Random.Range(300, 600).ToString(), Color.yellow);
             }
         }
 
@@ -31,6 +30,11 @@ namespace Game.Scripts
 
             //Destroy Timer
             Destroy(popup, 1f);
+        }
+
+        public void CreatePopUpDefault(Vector3 position)
+        {
+            CreatePopUp(position, Random.Range(300, 600).ToString(), Color.yellow);
         }
     }
 }
