@@ -14220,6 +14220,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5029310567560238959, guid: 0cd66edf18a96da40bc42825892af61c, type: 3}
   m_PrefabInstance: {fileID: 936595232}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &948948276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 948948277}
+  m_Layer: 0
+  m_Name: Shoot_SpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &948948277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948948276}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.3622084, y: -0.9842658, z: 2.5615718}
+  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1849720571}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &949857652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30664,6 +30695,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: speed
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: spawnPosition
+      value: 
+      objectReference: {fileID: 948948277}
+    - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: projectiles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: 'projectiles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 7148810250495089234, guid: 82687b0e6946e6a459e9a4f6cfa67a5d, type: 3}
+    - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: 'projectiles.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7148810250495089234, guid: b90a5bc6670b39c43ada24f1ca27d15c, type: 3}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: cam.maximumX
       value: 90
@@ -30795,6 +30846,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3336125493532837918, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 948948277}
     - targetCorrespondingSourceObject: {fileID: 7070499496218830641, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       insertIndex: 0
       addedObject: {fileID: 1203296464}
