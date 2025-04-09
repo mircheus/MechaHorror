@@ -8,9 +8,12 @@ namespace Game.Scripts
         [SerializeField] private InputActionReference inputAction;
         [SerializeField] private GameObject[] projectiles;
         [SerializeField] private Transform spawnPosition;
+        [SerializeField] private Animator handAnimator;
         [SerializeField] private float spawnOffset;
         [SerializeField] private float speed;
         [SerializeField] private float scaleMultiplier = 1f;
+        
+        private int shoot = Animator.StringToHash("Shoot");
 
         private Vector3 Direction => spawnPosition.forward;
         private int currentProjectile = 0;
@@ -29,8 +32,8 @@ namespace Game.Scripts
         
         public void OnShoot(InputAction.CallbackContext context)
         {
-            Debug.Log("Shooting action triggered!");
             ShootProjectile();
+            handAnimator.SetTrigger(shoot);
         }
         
         private void ShootProjectile()
