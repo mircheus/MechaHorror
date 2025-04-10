@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using CameraShake;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Game.Scripts
@@ -12,6 +13,13 @@ namespace Game.Scripts
         [SerializeField] private float spawnOffset;
         [SerializeField] private float speed;
         [SerializeField] private float scaleMultiplier = 1f;
+        
+        [Header("Screen Shake Settings")]
+        [Range(0.1f, 1f)]
+        [SerializeField] private float screenShakeStrength = 1f;
+        [SerializeField] private float frequency = 25f;
+        [SerializeField] private int bouncesCount = 5;
+        
         
         private int shoot = Animator.StringToHash("Shoot");
 
@@ -34,6 +42,7 @@ namespace Game.Scripts
         {
             ShootProjectile();
             handAnimator.SetTrigger(shoot);
+            CameraShaker.Presets.ShortShake3D(screenShakeStrength, frequency, bouncesCount); // Adjust the shake parameters as needed
         }
         
         private void ShootProjectile()
