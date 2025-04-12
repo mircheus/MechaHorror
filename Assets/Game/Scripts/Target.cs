@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class Target : MonoBehaviour
 {
@@ -8,6 +9,20 @@ public class Target : MonoBehaviour
     [Header("References")]
     public Renderer targetRenderer;
     public GameObject burnedTarget;
+    public Ease upEase = Ease.OutCubic;
+    public Ease downEase = Ease.InCubic;
+    public float height = 2f;
+    public float upJumpDuration = 0.5f;
+    public bool isRotateExploding;
+
+    [Header("Shake Rotation settings")] 
+    public float shakeDuration = 1f;
+    public float shakeStrength = 1f;
+    public int shakeVibrato = 5;
+    public float shakeRandomness = 180f;
+    public bool shakeFadeOut = false;
+    public ShakeRandomnessMode shakeRandomnessMode;
+    
     
     [Header("General Settings")]
     public int hitsToDestroy = 5;
@@ -18,6 +33,8 @@ public class Target : MonoBehaviour
     public float duration = 0.07f; // Duration of both squash and stretch
     public Vector3 squashScale = new Vector3(0.8f, 1.2f, 1f);
     public Vector3 stretchScale = new Vector3(1.2f, 0.8f, 1f);
+    public float rotationStrength = 0.1f;
+    public float positionStrength = 0.1f;
 
 
     private Collider targetCollider;
@@ -80,7 +97,9 @@ public class Target : MonoBehaviour
 
             if (enableSquashAndStretch)
             {
-                StartCoroutine(SquashAndStretch());
+                targetRenderer.transform.DOShakePosition(duration, positionStrength, 10, 90, false, true);
+                targetRenderer.transform.DOShakeRotation(duration, rotationStrength, 10, 90, true, ShakeRandomnessMode.Full);
+                // StartCoroutine(SquashAndStretch());
             }
         }
     }
@@ -126,24 +145,36 @@ public class Target : MonoBehaviour
     {
         if (effects.deathParticles.Count > 0)
         {
-            GameObject deathEffect;
-
-            if (effects.deathParticles.Count == 1)
-            {
-                deathEffect = Instantiate(effects.deathParticles[0], transform.position, transform.rotation) as GameObject; // Spawns the only death particle
-            }
-            else
-            {
-                int randomIndex = Random.Range(0, effects.deathParticles.Count);
-                deathEffect = Instantiate(effects.deathParticles[randomIndex], transform.position, transform.rotation) as GameObject; // Spawns a random death particle
-            }
+            // if (effects.deathParticles.Count == 1)
+            // {
+            //     deathEffect = Instantiate(effects.deathParticles[0], transform.position, transform.rotation) as GameObject; // Spawns the only death particle
+            // }
+            // else
+            // {
+            //     // int randomIndex = Random.Range(0, effects.deathParticles.Count);
+            //     // deathEffect = Instantiate(effects.deathParticles[randomIndex], transform.position, transform.rotation) as GameObject; // Spawns a random death particle
+            // }
+            var deathEffect = Instantiate(effects.deathParticles[0], transform.position, transform.rotation); // Spawns the only death particle
+            var deathEffectDirect = Instantiate(effects.deathParticles[1], transform.position, transform.rotation); // Spawns the only death particle
 
             Destroy(deathEffect, 2f); // Removes death particle after 2 seconds
+            Destroy(deathEffectDirect, 2f); // Removes death particle after 2 seconds
         }
 
         targetRenderer.enabled = false; // Hides the target
         targetCollider.enabled = false; // Disables target collider
         burnedTarget.SetActive(true); // Activates the burned target
+
+        if (isRotateExploding)
+        {
+            burnedTarget.transform.DOShakeRotation(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, shakeFadeOut, shakeRandomnessMode);
+        }
+        
+        burnedTarget.transform.DOMove(transform.position + Vector3.up * height, upJumpDuration).SetEase(upEase).OnComplete(
+            () =>
+            {
+                burnedTarget.transform.DOMove(transform.position, 0.5f).SetEase(downEase);
+            });
 
         // Play destroy sound if available
         if (effects.destroySound && audioSource)
