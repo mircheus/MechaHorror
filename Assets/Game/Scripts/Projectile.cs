@@ -67,7 +67,7 @@ namespace RetroArsenal
 
                 if (hit.transform.tag == "Target") // Projectile will affect objects tagged as Target
                 {
-                    RetroTarget retroTarget = hit.transform.GetComponent<RetroTarget>();
+                    Target retroTarget = hit.transform.GetComponent<Target>();
                     if (retroTarget != null)
                     {
                         retroTarget.OnHit();
