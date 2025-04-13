@@ -15,7 +15,13 @@ namespace Game.Scripts
         [SerializeField] private float spawnOffset;
         [SerializeField] private float speed;
         [SerializeField] private float scaleMultiplier = 1f;
+
+        [Header("Weapon Heat Settings")] 
+        [SerializeField] private GameObject[] overheatFXs;
         [SerializeField] private float fireRate = 0.13f;
+        [SerializeField] private int maxHeat = 4;
+        [SerializeField] private float timeToCoolDown = 5f;
+        [SerializeField] private float timeToReset = 2f;
         
         [Header("Screen Shake Settings")]
         [Range(0.1f, 1f)]
@@ -23,13 +29,15 @@ namespace Game.Scripts
         [SerializeField] private float frequency = 25f;
         [SerializeField] private int bouncesCount = 5;
         
+        private int _shoot = Animator.StringToHash("Shoot");
         
-        private int shoot = Animator.StringToHash("Shoot");
-
         private Vector3 Direction => spawnPosition.forward;
         private int currentProjectile = 0;
         private bool _isAbleToShoot;
         private Coroutine _fireRateCoroutine;
+        private Coroutine _overheatCoroutine;
+        private int _shotCounter = 0;
+        private bool _isOverheated;
 
         private void OnEnable()
         {
@@ -46,21 +54,49 @@ namespace Game.Scripts
         private void Start()
         {
             _isAbleToShoot = true;
+            _shotCounter = 0;
         }
 
         public void OnShoot(InputAction.CallbackContext context)
         {
             // ShootProjectile();
-            if (_isAbleToShoot)
+            if (_isAbleToShoot && _isOverheated == false)
             {
+                if(_overheatCoroutine != null)
+                {
+                    StopCoroutine(_overheatCoroutine);
+                }
+                
+                _overheatCoroutine = StartCoroutine(IncreaseWeaponHeat());
+                
                 if (_fireRateCoroutine != null)
                 {
                     StopCoroutine(_fireRateCoroutine);
                 }
                 
                 _fireRateCoroutine = StartCoroutine(Shoot());
-                handAnimator.SetTrigger(shoot);
+                handAnimator.SetTrigger(_shoot);
                 CameraShaker.Presets.ShortShake3D(screenShakeStrength, frequency, bouncesCount); // Adjust the shake parameters as needed
+            }
+        }
+
+        private IEnumerator IncreaseWeaponHeat()
+        {
+            _shotCounter++;
+            
+            if (_shotCounter >= maxHeat)
+            {
+                _isOverheated = true;
+                SetOverheatFX(true);
+                yield return new WaitForSeconds(timeToCoolDown);
+                SetOverheatFX(false);
+                _isOverheated = false;
+                _shotCounter = 0;
+            }
+            else
+            {
+                yield return new WaitForSeconds(timeToReset);
+                _shotCounter = 0;
             }
         }
 
@@ -79,6 +115,14 @@ namespace Game.Scripts
             projectile.transform.localScale *= scaleMultiplier; // Scale the projectile
             projectile.transform.LookAt(spawnPositionWithOffset + Direction * 10f);
             projectile.GetComponent<Rigidbody>().AddForce(Direction * speed);
+        }
+
+        private void SetOverheatFX(bool isActive)
+        {
+            foreach (var fx in overheatFXs)
+            {
+                fx.gameObject.SetActive(isActive);
+            }
         }
     }
 }
