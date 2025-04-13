@@ -32301,8 +32301,16 @@ PrefabInstance:
       value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: maxHeat
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: fireRate
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: timeToReset
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: handAnimator
@@ -32312,6 +32320,10 @@ PrefabInstance:
       propertyPath: spawnPosition
       value: 
       objectReference: {fileID: 948948277}
+    - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: timeToCoolDown
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6093696480667205131, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: screenShakeStrength
       value: 0.6
