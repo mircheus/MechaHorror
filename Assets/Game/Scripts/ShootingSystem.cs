@@ -15,8 +15,9 @@ namespace Game.Scripts
         [SerializeField] private float spawnOffset;
         [SerializeField] private float speed;
         [SerializeField] private float scaleMultiplier = 1f;
-        
-        [Header("Weapon Heat Settings")]
+
+        [Header("Weapon Heat Settings")] 
+        [SerializeField] private GameObject[] overheatFXs;
         [SerializeField] private float fireRate = 0.13f;
         [SerializeField] private int maxHeat = 4;
         [SerializeField] private float timeToCoolDown = 5f;
@@ -29,6 +30,7 @@ namespace Game.Scripts
         [SerializeField] private int bouncesCount = 5;
         
         private int _shoot = Animator.StringToHash("Shoot");
+        
         private Vector3 Direction => spawnPosition.forward;
         private int currentProjectile = 0;
         private bool _isAbleToShoot;
@@ -85,7 +87,9 @@ namespace Game.Scripts
             if (_shotCounter >= maxHeat)
             {
                 _isOverheated = true;
+                SetOverheatFX(true);
                 yield return new WaitForSeconds(timeToCoolDown);
+                SetOverheatFX(false);
                 _isOverheated = false;
                 _shotCounter = 0;
             }
@@ -111,6 +115,14 @@ namespace Game.Scripts
             projectile.transform.localScale *= scaleMultiplier; // Scale the projectile
             projectile.transform.LookAt(spawnPositionWithOffset + Direction * 10f);
             projectile.GetComponent<Rigidbody>().AddForce(Direction * speed);
+        }
+
+        private void SetOverheatFX(bool isActive)
+        {
+            foreach (var fx in overheatFXs)
+            {
+                fx.gameObject.SetActive(isActive);
+            }
         }
     }
 }
