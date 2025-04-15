@@ -27,6 +27,7 @@ public class Target : MonoBehaviour
     [Header("General Settings")]
     public int hitsToDestroy = 5;
     public float respawnTime = 3.0f;
+    public bool permaDeath = false; // If true, the target will be destroyed instead of respawning
 
     [Header("Squash & Stretch")]
     public bool enableSquashAndStretch = true;
@@ -182,6 +183,12 @@ public class Target : MonoBehaviour
             audioSource.PlayOneShot(effects.destroySound);
         }
 
+        if(permaDeath)
+        {
+            Destroy(gameObject); // Destroys the target
+            return;
+        }
+        
         StartCoroutine(Respawn()); // Sets timer for respawning the target
     }
 }
