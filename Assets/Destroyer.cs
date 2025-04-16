@@ -7,6 +7,6 @@ public class Destroyer : MonoBehaviour
     {
         other.gameObject.Destroy();
         // Check if the object has a Target component
-        Debug.Log("Object destroyed: " + other.gameObject.name + " at position: " + other.transform.position);
+        // Debug.Log("Object destroyed: " + other.gameObject.name + " at position: " + other.transform.position);
     }
 }

@@ -233,8 +233,13 @@ MonoBehaviour:
     hitParticle: {fileID: 0}
     respawnParticle: {fileID: 0}
     deathParticles:
-    - {fileID: 7133298800578810401, guid: 12e75f7d61a8fe04ebf6bd7067bfbfd4, type: 3}
     - {fileID: 3011233550371498735, guid: 18bdc4d709ceb624297224741ebe2fdd, type: 3}
+    - {fileID: 7133298800578810401, guid: 12e75f7d61a8fe04ebf6bd7067bfbfd4, type: 3}
+    - {fileID: 8473603446290131267, guid: 8bb3f623e730d3c498729666a20278f2, type: 3}
+    - {fileID: 45326011306906974, guid: 1fb2bdca8dcc75f489cd4ace82b16d3f, type: 3}
+    - {fileID: 7062634796660905105, guid: 3674ad6cd8b6489408c0a2cf8ae39437, type: 3}
+    - {fileID: 3817019537890429252, guid: 13b71c070822b7846adea8c5de982e55, type: 3}
+    - {fileID: 584826092403329405, guid: d321f3a3bce20a342b10d6318af45755, type: 3}
     destroySound: {fileID: 0}
     respawnSound: {fileID: 0}
   targetRenderer: {fileID: 5517181209705811293}

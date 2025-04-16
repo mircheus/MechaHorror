@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 20d4f77b9022eab48b4d94599ed4bf82, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 369b9ebe3a62b904dbc19bd332b44086, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -6777,7 +6777,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6989035, g: 0.94101006, b: 0.97735846, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -6821,7 +6821,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 13673
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -32877,6 +32877,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.runToggleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: sounds.footstepsSource
       value: 
       objectReference: {fileID: 720290900}
@@ -32893,12 +32897,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 114038801}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: headBob.bobClass.enableBob
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: headBob.bobClass.swayAngle
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.stamina.drainRate
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: headBob.bobClass.strafeTilt
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.stamina.maxStamina
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: sounds.walkFootsteps.volume
@@ -32909,12 +32925,44 @@ PrefabInstance:
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.stamina.enableStamina
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.runSpeeds.forwardSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.stamina.regenRateStill
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.runSpeeds.sidewaysSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.stamina.regenRateMoving
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.runSpeeds.backwardsSpeed
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.stamina.drainStaminaWhen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: movement.walkingSpeeds.forwardSpeed
-      value: 6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: movement.walkingSpeeds.sidewaysSpeed
-      value: 2.5
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: movement.walkingSpeeds.backwardsSpeed
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7163773543539266409, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: sounds.walkFootsteps.audioClips.Array.size
