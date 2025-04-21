@@ -4,6 +4,8 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     public Transform target;
+    public float speed = 8f;
+    
     private NavMeshAgent agent;
 
     void Start()
