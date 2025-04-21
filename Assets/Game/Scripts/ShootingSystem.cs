@@ -29,7 +29,8 @@ namespace Game.Scripts
         [SerializeField] private float frequency = 25f;
         [SerializeField] private int bouncesCount = 5;
         
-        private int _shoot = Animator.StringToHash("Shoot");
+        // private readonly int _shoot = Animator.StringToHash("Shoot");
+        private readonly int _shoot = Animator.StringToHash("Mech_RightHand_Idle_Gun");
         
         private Vector3 Direction => spawnPosition.forward;
         private int currentProjectile = 0;
@@ -75,7 +76,8 @@ namespace Game.Scripts
                 }
                 
                 _fireRateCoroutine = StartCoroutine(Shoot());
-                handAnimator.SetTrigger(_shoot);
+                // handAnimator.SetTrigger(_shoot);
+                handAnimator.Play(_shoot);
                 CameraShaker.Presets.ShortShake3D(screenShakeStrength, frequency, bouncesCount); // Adjust the shake parameters as needed
             }
         }
