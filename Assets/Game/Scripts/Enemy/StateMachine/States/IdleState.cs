@@ -25,7 +25,7 @@ namespace Game.Scripts
         {
             if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.target.position) < _enemyAI.detectionRange)
             {
-                _enemyAI.StateMachine.ChangeState(new ChaseState(_enemyAI));
+                _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
             }
         }
     }

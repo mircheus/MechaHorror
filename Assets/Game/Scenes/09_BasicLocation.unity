@@ -9937,7 +9937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &495876490
 Transform:
   m_ObjectHideFlags: 0
@@ -18243,8 +18243,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 661676853261286364}
   detectionRange: 30
-  attackRange: 29
-  rotationSpeed: 2
+  attackRange: 30
+  rotationSpeed: 3
+  strafeCooldownTime: 2
   agent: {fileID: 0}
 --- !u!114 &1048035264
 MonoBehaviour:

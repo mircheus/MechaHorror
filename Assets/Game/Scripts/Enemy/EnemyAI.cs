@@ -10,6 +10,7 @@ namespace Game.Scripts
         public float detectionRange = 10f;
         public float attackRange = 9f;
         public float rotationSpeed;
+        public float strafeCooldownTime = 2f;
 
         [HideInInspector] public NavMeshAgent agent;
         [HideInInspector] public StateMachine StateMachine;
