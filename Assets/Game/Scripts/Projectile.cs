@@ -73,13 +73,18 @@ namespace RetroArsenal
                         retroTarget.OnHit();
                     }
                 }
-
+                
+                if(hit.collider.TryGetComponent(out Enemy enemy))
+                {
+                    enemy.TakeDamage(1);
+                }
+                
+                // Damage numbers popup
                 if (hit.transform.CompareTag("Enemy"))
                 {
                     DamagePopUpGenerator.current.CreatePopUpDefault(hit.transform.position);
                     Debug.Log("Hit Enemy");
                 }
-
 
                 foreach (GameObject trail in trailParticles)
                 {

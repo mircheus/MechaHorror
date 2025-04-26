@@ -31,6 +31,11 @@ namespace Game.Scripts
             //Destroy Timer
             Destroy(popup, 1f);
         }
+        
+        public void CreatePopUp(string text, bool isRandomized)
+        {
+            CreatePopUp(transform.position + new Vector3(-4, 6, 12), isRandomized ? text : Random.Range(300, 600).ToString(), Color.red);
+        }
 
         public void CreatePopUpDefault(Vector3 position)
         {
