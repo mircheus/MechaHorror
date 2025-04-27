@@ -19,7 +19,7 @@ namespace Game.Scripts
 
         public EnemyAttack EnemyAttack => _enemyAttack;
 
-        private void Start()
+        public void Init()
         {
             agent = GetComponent<NavMeshAgent>();
             _enemyAttack = GetComponent<EnemyAttack>();
