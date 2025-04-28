@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
+using Game.Scripts.Enemies._BaseEnemy;
 using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.Enemies.FourLegEnemy.States
 {
     public class AttackState : IState
     {
@@ -21,18 +21,18 @@ namespace Game.Scripts
         {
             Debug.Log("Entering Attack State");
             // RotateTowardTarget();
-            _strafeCoroutine = _enemyAI.StartCoroutine(Cooldown(Strafe, _enemyAI.strafeCooldownTime));
+            _strafeCoroutine = _enemyAI.StartCoroutine(Cooldown(Strafe, _enemyAI.StrafeCooldownTime));
         }
 
         public void Execute()
         {
             RotateTowardTargetAroundY();
             // StrafeToRight();
-            _enemyAI.EnemyAttack.Attack(_enemyAI.target);
+            _enemyAI.EnemyAttackBase.Attack(_enemyAI.Target);
 
-            if (_enemyAI.agent.isStopped == false)
+            if (_enemyAI.Agent.isStopped == false)
             {
-                _enemyAI.agent.SetDestination(_enemyAI.target.transform.position);
+                _enemyAI.Agent.SetDestination(_enemyAI.Target.transform.position);
             }
             
             // if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.target.position) > _enemyAI.attackRange)
@@ -49,9 +49,9 @@ namespace Game.Scripts
         
         private void RotateTowardTarget()
         {
-            Vector3 direction = (_enemyAI.target.position - _enemyAI.transform.position).normalized;
+            Vector3 direction = (_enemyAI.Target.position - _enemyAI.transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
-            _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation, Time.deltaTime * _enemyAI.rotationSpeed);
+            _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation, Time.deltaTime * _enemyAI.RotationSpeed);
         }
 
         private void Strafe()
@@ -74,17 +74,17 @@ namespace Game.Scripts
         
         private void MoveToDestination(Vector3 destination)
         {
-            _enemyAI.agent.SetDestination(destination);
+            _enemyAI.Agent.SetDestination(destination);
             
         }
         
         private void RotateTowardTargetAroundY()
         {
-            Vector3 direction = (_enemyAI.target.position - _enemyAI.transform.position).normalized;
+            Vector3 direction = (_enemyAI.Target.position - _enemyAI.transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             lookRotation.x = 0; // Keep the x rotation at 0
             lookRotation.z = 0; // Keep the z rotation at 0
-            _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation, Time.deltaTime * _enemyAI.rotationSpeed);
+            _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation, Time.deltaTime * _enemyAI.RotationSpeed);
         }
         
         private IEnumerator Cooldown(Action action, float cooldownTime)

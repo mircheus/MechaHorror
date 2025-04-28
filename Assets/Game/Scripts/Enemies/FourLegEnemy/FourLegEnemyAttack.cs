@@ -1,18 +1,17 @@
-﻿using UnityEngine;
+﻿using Game.Scripts.Enemies._BaseEnemy;
+using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.Enemies.FourLegEnemy
 {
-    public class EnemyAttack : MonoBehaviour
+    public class FourLegEnemyAttack : EnemyAttackBase
     {
         [SerializeField] private GameObject shootPoint;
         [SerializeField] private GameObject projectilePrefab;
-        [SerializeField] private int damage = 10;
-        [SerializeField] private float attackCooldown = 3f;
         [SerializeField] private float speed = 10f;
         
         private float _lastAttackTime;
 
-        public void Attack(Transform target)
+        public override void Attack(Transform target)
         {
             if (Time.time >= _lastAttackTime + attackCooldown)
             {
