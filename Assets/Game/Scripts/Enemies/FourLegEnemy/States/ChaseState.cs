@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Enemies.FourLegEnemy.States;
+using UnityEngine;
 
 namespace Game.Scripts
 {
@@ -6,7 +8,7 @@ namespace Game.Scripts
     {
         private readonly EnemyAI _enemyAI;
 
-        public ChaseState(EnemyAI enemyAI)
+        public ChaseState(EnemyAI enemyAI, StateMachine stateMachine)
         {
             _enemyAI = enemyAI;
         }
@@ -23,7 +25,8 @@ namespace Game.Scripts
             if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.AttackRange)
             {
                 _enemyAI.Agent.ResetPath();
-                _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
+                // _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
+                _enemyAI.StateMachine.Enter<AttackState>();
             }
         }
 

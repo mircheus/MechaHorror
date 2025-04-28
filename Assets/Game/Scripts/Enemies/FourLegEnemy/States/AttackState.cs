@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
+using Game.Scripts.Enemies._BaseEnemy;
 using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.Enemies.FourLegEnemy.States
 {
     public class AttackState : IState
     {
@@ -28,7 +28,7 @@ namespace Game.Scripts
         {
             RotateTowardTargetAroundY();
             // StrafeToRight();
-            _enemyAI.EnemyAttack.Attack(_enemyAI.Target);
+            _enemyAI.EnemyAttackBase.Attack(_enemyAI.Target);
 
             if (_enemyAI.Agent.isStopped == false)
             {

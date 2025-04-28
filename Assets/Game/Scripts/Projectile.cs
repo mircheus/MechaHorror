@@ -74,7 +74,7 @@ namespace RetroArsenal
                     }
                 }
                 
-                if(hit.collider.TryGetComponent(out Enemy enemy))
+                if(hit.collider.TryGetComponent(out EnemyBase enemy))
                 {
                     enemy.TakeDamage(1);
                 }
