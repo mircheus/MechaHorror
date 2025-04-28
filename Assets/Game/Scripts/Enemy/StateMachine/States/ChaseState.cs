@@ -18,11 +18,11 @@ namespace Game.Scripts
 
         public void Execute()
         {
-            _enemyAI.agent.SetDestination(_enemyAI.target.position);
+            _enemyAI.Agent.SetDestination(_enemyAI.Target.position);
 
-            if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.target.position) < _enemyAI.attackRange)
+            if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.AttackRange)
             {
-                _enemyAI.agent.ResetPath();
+                _enemyAI.Agent.ResetPath();
                 _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
             }
         }

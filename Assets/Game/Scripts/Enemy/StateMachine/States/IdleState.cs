@@ -23,7 +23,7 @@ namespace Game.Scripts
 
         public void Execute()
         {
-            if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.target.position) < _enemyAI.detectionRange)
+            if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.DetectionRange)
             {
                 _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
             }
