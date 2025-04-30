@@ -24252,6 +24252,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Wep_Sword_01
       objectReference: {fileID: 0}
+    - target: {fileID: 8401380409768894345, guid: 450b7819b0ca04949979dc80a55f917b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9c3d8522ac719e044b18af6d11f7bb45, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
