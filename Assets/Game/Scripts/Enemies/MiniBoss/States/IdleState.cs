@@ -19,10 +19,16 @@ namespace Game.Scripts.Enemies.MiniBoss.States
         public void Enter()
         {
             _animator.Play(_idleHash);
+            Debug.Log("Enter Idle State MINIBOSS");
         }
 
         public void Execute()
         {
+            if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.DetectionRange)
+            {
+                // _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
+                _enemyAI.StateMachine.Enter<RangeAttackState>();
+            }
         }
 
         public void Exit()
