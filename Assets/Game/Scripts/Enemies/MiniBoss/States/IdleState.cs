@@ -23,6 +23,10 @@ namespace Game.Scripts.Enemies.MiniBoss.States
 
         public void Execute()
         {
+            if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.DetectionRange)
+            {
+                _enemyAI.StateMachine.Enter<RangeAttackState>();
+            }
         }
 
         public void Exit()

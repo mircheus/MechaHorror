@@ -17,7 +17,8 @@ namespace Game.Scripts.Enemies._BaseEnemy
         [SerializeField] private float strafeCooldownTime = 2f;
 
         [Header("Gizmos Settings:")] 
-        [SerializeField] private bool isGizmosEnabled = true;
+        [SerializeField]
+        protected bool isGizmosEnabled = true;
 
         protected NavMeshAgent agent;
         protected StateMachine stateMachine;
@@ -32,13 +33,13 @@ namespace Game.Scripts.Enemies._BaseEnemy
         public float RotationSpeed => rotationSpeed;
         public float StrafeCooldownTime => strafeCooldownTime;
 
-        public void Init(Dictionary<Type, IState> states)
+        public virtual void Init(Dictionary<Type, IState> states)
         {
             agent = GetComponent<NavMeshAgent>();
             baseEnemyAttack = GetComponent<BaseEnemyAttack>();
             stateMachine = new StateMachine(this, states);
             // stateMachine.ChangeState(new IdleState(this));
-            stateMachine.Enter<IdleState>();
+            // stateMachine.Enter<IdleState>();
         }
         
         private void Update()
