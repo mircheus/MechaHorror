@@ -78,7 +78,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &3574875194282738393
@@ -114,6 +114,7 @@ MonoBehaviour:
   rotationSpeed: 12
   strafeCooldownTime: 2
   isGizmosEnabled: 1
+  exitFromRangeAttackRange: 60
 --- !u!114 &2542681273233323871
 MonoBehaviour:
   m_ObjectHideFlags: 0

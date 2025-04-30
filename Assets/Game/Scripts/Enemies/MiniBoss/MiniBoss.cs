@@ -15,7 +15,7 @@ namespace Game.Scripts.Enemies.MiniBoss
             return new Dictionary<Type, IState>
             {
                 { typeof(IdleState), new IdleState(enemyAI, animator) },
-                { typeof(RangeAttackState), new RangeAttackState(enemyAI, animator) }
+                { typeof(RangeAttackState), new RangeAttackState((MiniBossAI)enemyAI, animator) }
             };
         }
     }

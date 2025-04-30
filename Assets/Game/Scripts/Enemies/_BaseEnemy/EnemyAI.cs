@@ -17,7 +17,8 @@ namespace Game.Scripts.Enemies._BaseEnemy
         [SerializeField] private float strafeCooldownTime = 2f;
 
         [Header("Gizmos Settings:")] 
-        [SerializeField] private bool isGizmosEnabled = true;
+        [SerializeField]
+        protected bool isGizmosEnabled = true;
 
         protected NavMeshAgent agent;
         protected StateMachine stateMachine;
