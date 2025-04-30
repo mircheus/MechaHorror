@@ -28,7 +28,7 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
         {
             RotateTowardTargetAroundY();
             // StrafeToRight();
-            _enemyAI.EnemyAttackBase.Attack(_enemyAI.Target);
+            _enemyAI.BaseEnemyAttack.Attack(_enemyAI.Target);
 
             if (_enemyAI.Agent.isStopped == false)
             {

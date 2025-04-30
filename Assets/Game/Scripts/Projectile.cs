@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using Game.Scripts;
+using Game.Scripts.Enemies._BaseEnemy;
 
 namespace RetroArsenal
 {
@@ -74,7 +75,7 @@ namespace RetroArsenal
                     }
                 }
                 
-                if(hit.collider.TryGetComponent(out EnemyBase enemy))
+                if(hit.collider.TryGetComponent(out BaseEnemy enemy))
                 {
                     enemy.TakeDamage(1);
                 }

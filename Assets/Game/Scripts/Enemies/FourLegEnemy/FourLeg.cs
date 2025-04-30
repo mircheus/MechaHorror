@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.Scripts.Enemies._BaseEnemy;
 using Game.Scripts.Enemies.FourLegEnemy.States;
 
 namespace Game.Scripts.Enemies.FourLegEnemy
 {
-    public class FourLegEnemy : EnemyBase
+    public class FourLeg : BaseEnemy
     {
         protected override Dictionary<Type, IState> GetStates()
         {

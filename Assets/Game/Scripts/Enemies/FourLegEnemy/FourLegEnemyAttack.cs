@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Enemies.FourLegEnemy
 {
-    public class FourLegEnemyAttack : EnemyAttackBase
+    public class FourLegBaseAttack : BaseEnemyAttack
     {
         [SerializeField] private GameObject shootPoint;
         [SerializeField] private GameObject projectilePrefab;

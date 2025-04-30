@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Game.Scripts.Enemies.FourLegEnemy.States;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,13 +14,16 @@ namespace Game.Scripts.Enemies._BaseEnemy
         [SerializeField] private float detectionRange = 10f;
         [SerializeField] private float attackRange = 9f;
         [SerializeField] private float rotationSpeed;
-        [SerializeField] private float strafeCooldownTime = 2f;   
+        [SerializeField] private float strafeCooldownTime = 2f;
+
+        [Header("Gizmos Settings:")] 
+        [SerializeField] private bool isGizmosEnabled = true;
 
         protected NavMeshAgent agent;
         protected StateMachine stateMachine;
-        protected EnemyAttackBase enemyAttackBase;
+        protected BaseEnemyAttack baseEnemyAttack;
 
-        public EnemyAttackBase EnemyAttackBase => enemyAttackBase;
+        public BaseEnemyAttack BaseEnemyAttack => baseEnemyAttack;
         public StateMachine StateMachine => stateMachine;
         public NavMeshAgent Agent => agent;
         public Transform Target => target;
@@ -31,7 +35,7 @@ namespace Game.Scripts.Enemies._BaseEnemy
         public void Init(Dictionary<Type, IState> states)
         {
             agent = GetComponent<NavMeshAgent>();
-            enemyAttackBase = GetComponent<EnemyAttackBase>();
+            baseEnemyAttack = GetComponent<BaseEnemyAttack>();
             stateMachine = new StateMachine(this, states);
             // stateMachine.ChangeState(new IdleState(this));
             stateMachine.Enter<IdleState>();
@@ -44,10 +48,14 @@ namespace Game.Scripts.Enemies._BaseEnemy
 
         public void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, detectionRange);
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, attackRange);
+            if (isGizmosEnabled)
+            {
+                var position = transform.position;
+                Handles.color = new Color(0, 0, 1, .5f);
+                Handles.DrawSolidDisc(position, Vector3.up, detectionRange);
+                Handles.color = new Color(1, 0, 0, .5f);
+                Handles.DrawSolidDisc(position, Vector3.up, attackRange);
+            }
         }
     }
 }
