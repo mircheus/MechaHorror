@@ -2,7 +2,7 @@
 
 namespace Game.Scripts.Enemies._BaseEnemy
 {
-    public abstract class EnemyAttackBase : MonoBehaviour
+    public abstract class BaseEnemyAttack : MonoBehaviour
     {
         [SerializeField] protected int damage = 10;
         [SerializeField] protected float attackCooldown = 3f;

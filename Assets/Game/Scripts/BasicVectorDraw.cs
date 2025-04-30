@@ -10,7 +10,7 @@ public class BasicVectorDraw : MonoBehaviour
         
         var transform1 = transform;
         var position = transform1.position;
-        Gizmos.color = Color.red;
+        Handles.color = Color.red;
         Handles.DrawLine(position, position + transform1.right * multiplier, thickness);
         Handles.color = Color.green;
         Handles.DrawLine(position, position + transform1.up * multiplier, thickness);

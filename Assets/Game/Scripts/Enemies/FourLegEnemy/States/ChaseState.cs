@@ -1,14 +1,13 @@
 ﻿using Game.Scripts.Enemies._BaseEnemy;
-using Game.Scripts.Enemies.FourLegEnemy.States;
 using UnityEngine;
 
-namespace Game.Scripts
+namespace Game.Scripts.Enemies.FourLegEnemy.States
 {
     public class ChaseState : IState
     {
         private readonly EnemyAI _enemyAI;
 
-        public ChaseState(EnemyAI enemyAI, StateMachine stateMachine)
+        public ChaseState(EnemyAI enemyAI)
         {
             _enemyAI = enemyAI;
         }
