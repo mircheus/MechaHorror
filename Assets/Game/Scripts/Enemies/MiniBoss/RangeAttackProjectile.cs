@@ -1,10 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class RangeAttackProjectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    [SerializeField] private float speed = 23f;
     [SerializeField] private int damage = 10;
-    // [SerializeField] private float yOffset = 2f;
+    [SerializeField] private float yOffset = 0f;
 
     private Transform _target;
     private Vector3 _direction;
@@ -15,7 +16,8 @@ public class RangeAttackProjectile : MonoBehaviour
         Transform transform1 = transform;
         transform1.LookAt(target);
         _direction = (_target.position - transform1.position).normalized;
-        // _direction.y = yOffset; // Keep the projectile level
+        _direction = new Vector3(_direction.x, 0, _direction.z);
+        Destroy(gameObject, 10f);
     }
 
     private void Update()
@@ -40,4 +42,6 @@ public class RangeAttackProjectile : MonoBehaviour
         // Implement damage logic here
         Destroy(gameObject);
     }
+    
+    
 }

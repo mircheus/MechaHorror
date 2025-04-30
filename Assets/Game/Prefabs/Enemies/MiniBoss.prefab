@@ -9,6 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151210691413492211}
+  - component: {fileID: 7178135845886474286}
+  - component: {fileID: 8012540462720616672}
+  - component: {fileID: 3574875194282738393}
+  - component: {fileID: 775654572899175177}
+  - component: {fileID: 2542681273233323871}
   m_Layer: 0
   m_Name: MiniBoss
   m_TagString: Untagged
@@ -30,8 +35,103 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4356820577462590879}
+  - {fileID: 2641651727103798161}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7178135845886474286
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330099979419168827}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.8359818, y: 6.182412, z: 1.7552258}
+  m_Center: {x: 0.006510496, y: 3.059968, z: -0.013021171}
+--- !u!195 &8012540462720616672
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330099979419168827}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 6
+  m_Acceleration: 11
+  avoidancePriority: 50
+  m_AngularSpeed: 160
+  m_StoppingDistance: 10
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &3574875194282738393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330099979419168827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b05e551290284fb47a8d5b8ba134993d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
+  enemyAI: {fileID: 775654572899175177}
+  animator: {fileID: 4402759850842116032}
+--- !u!114 &775654572899175177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330099979419168827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e2827269c343eaa5acd88acd99c1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  detectionRange: 16.3
+  attackRange: 10
+  rotationSpeed: 12
+  strafeCooldownTime: 2
+  isGizmosEnabled: 1
+--- !u!114 &2542681273233323871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330099979419168827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5daa96053c2d4537b124a2099d9ab77e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  attackCooldown: 3
+  enemyAI: {fileID: 775654572899175177}
+  rangeAttackPrefab: {fileID: 2823583996235464009, guid: 4baa2042762b8b4469e27d4642a8b2ce, type: 3}
+  rangeAttackSpawnPoint: {fileID: 2641651727103798161}
+  animationEventInvoker: {fileID: 7180411265227683134}
 --- !u!1 &6546247577500636020
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +162,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7780410451924751802}
+  m_Father: {fileID: 1151210691413492211}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9071293068490101463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2641651727103798161}
+  m_Layer: 0
+  m_Name: RangeAttackSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2641651727103798161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9071293068490101463}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.02, y: 3.16, z: 3.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 1151210691413492211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &7470772267766640161
@@ -138,7 +269,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 513341579006026017, guid: 2a1126a7058d10c4882769102adbb94d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2184279372977301996}
+    - targetCorrespondingSourceObject: {fileID: 513341579006026017, guid: 2a1126a7058d10c4882769102adbb94d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7180411265227683134}
   m_SourcePrefab: {fileID: 100100000, guid: 2a1126a7058d10c4882769102adbb94d, type: 3}
+--- !u!95 &4402759850842116032 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6535916073971753441, guid: 2a1126a7058d10c4882769102adbb94d, type: 3}
+  m_PrefabInstance: {fileID: 7470772267766640161}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6967704939909238528 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 513341579006026017, guid: 2a1126a7058d10c4882769102adbb94d, type: 3}
@@ -154,6 +293,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3b7f3fdd8f40c94094440dc50d9fb9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7180411265227683134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6967704939909238528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9315f1a724641498cf0419df5cd6c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &7780410451924751802 stripped

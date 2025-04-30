@@ -26,12 +26,21 @@ namespace Game.Scripts.Enemies.MiniBoss.States
 
         public void Execute()
         {
-
+            RotateTowardTargetAroundY();
         }
 
         public void Exit()
         {
           
+        }
+        
+        private void RotateTowardTargetAroundY()
+        {
+            Vector3 direction = (_enemyAI.Target.position - _enemyAI.transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            lookRotation.x = 0; // Keep the x rotation at 0
+            lookRotation.z = 0; // Keep the z rotation at 0
+            _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation, Time.deltaTime * _enemyAI.RotationSpeed);
         }
     }
 }

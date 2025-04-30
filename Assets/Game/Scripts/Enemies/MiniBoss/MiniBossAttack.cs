@@ -8,6 +8,7 @@ namespace Game.Scripts.Enemies.MiniBoss
     {
         [SerializeField] private MiniBossAI enemyAI;
         [SerializeField] private RangeAttackProjectile rangeAttackPrefab;
+        [SerializeField] private Transform rangeAttackSpawnPoint;
         [SerializeField] private AnimationEventInvoker animationEventInvoker;
 
         private void OnEnable()
@@ -37,7 +38,7 @@ namespace Game.Scripts.Enemies.MiniBoss
         {
             if (rangeAttackPrefab != null)
             {
-                RangeAttackProjectile projectile = Instantiate(rangeAttackPrefab, transform.position, Quaternion.identity);
+                RangeAttackProjectile projectile = Instantiate(rangeAttackPrefab, rangeAttackSpawnPoint.position, Quaternion.identity);
                 projectile.Initialize(target);
             }
             else
