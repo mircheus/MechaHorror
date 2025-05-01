@@ -64,10 +64,8 @@ namespace RetroArsenal
             if (Physics.SphereCast(myTransform.position, rad, dir, out hit, dist))
             {
                 myTransform.position = hit.point + (hit.normal * collideOffset);
-
-                _impactProjectile = Instantiate(impactParticle, myTransform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
-
-                if (hit.transform.tag == "Target") // Projectile will affect objects tagged as Target
+                
+                if (hit.transform.tag == "Target") // TODO: Избавить от тэгов
                 {
                     Target retroTarget = hit.transform.GetComponent<Target>();
                     if (retroTarget != null)
@@ -81,7 +79,7 @@ namespace RetroArsenal
                     if(hit.collider.TryGetComponent(out BaseEnemy enemy))
                     {
                         enemy.TakeDamage(1);
-                        HitObject();
+                        HitObject(hit);
                     }
                 }
                 
@@ -90,7 +88,7 @@ namespace RetroArsenal
                 {
                     DamagePopUpGenerator.current.CreatePopUpDefault(hit.transform.position);
                     Debug.Log("Hit Enemy");
-                    HitObject();
+                    HitObject(hit);
                 }
 
                 // foreach (GameObject trail in trailParticles)
@@ -152,8 +150,9 @@ namespace RetroArsenal
             }
         }
 
-        private void HitObject()
+        private void HitObject(RaycastHit hit)
         {
+            _impactProjectile = Instantiate(impactParticle, myTransform.position, Quaternion.FromToRotation(Vector3.up, hit.normal));
             Destroy(projectileParticle, 3f);
             Destroy(_impactProjectile, 5.0f);
             DestroyMissile();

@@ -9,6 +9,20 @@ namespace Game.Scripts.Enemies.MiniBoss
     public class MiniBoss : BaseEnemy
     {
         [SerializeField] private Animator animator;
+        
+        [Header("Weapon Objects:")]
+        [SerializeField] private bool isSwordEnabled;
+        [SerializeField] private GameObject sword;
+        
+        private new void Start()
+        {
+            base.Start();
+            
+            if (isSwordEnabled)
+            {
+                sword.SetActive(true);
+            }
+        }
 
         protected override Dictionary<Type, IState> GetStates()
         {

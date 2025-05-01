@@ -34813,6 +34813,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5029310567560238959, guid: 0cd66edf18a96da40bc42825892af61c, type: 3}
   m_PrefabInstance: {fileID: 2067422706}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2076181146 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1524830280194141380, guid: 450a2253c50bd9a46863140455937b32, type: 3}
+  m_PrefabInstance: {fileID: 4966657897125014742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2077831120
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35832,6 +35837,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1524830280194141380, guid: 450a2253c50bd9a46863140455937b32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2641651727103798161, guid: 450a2253c50bd9a46863140455937b32, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -35848,6 +35857,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniBoss
       objectReference: {fileID: 0}
+    - target: {fileID: 3574875194282738393, guid: 450a2253c50bd9a46863140455937b32, type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 2076181146}
     - target: {fileID: 9071293068490101463, guid: 450a2253c50bd9a46863140455937b32, type: 3}
       propertyPath: m_Icon
       value: 
