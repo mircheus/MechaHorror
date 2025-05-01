@@ -40,7 +40,17 @@ namespace Game.Scripts.Enemies.MiniBoss.States
 
         private void RotateTowardTargetAroundY()
         {
-            Vector3 direction = (_enemyAI.Target.position - _enemyAI.transform.position).normalized;
+            Vector3 direction;
+            
+            if (_enemyAI.IsRangeAttackDirectionForward)
+            {
+                direction = _enemyAI.transform.forward;
+            }
+            else
+            {
+                direction = (_enemyAI.Target.position - _enemyAI.transform.position).normalized;
+            }
+            
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             lookRotation.x = 0; // Keep the x rotation at 0
             lookRotation.z = 0; // Keep the z rotation at 0

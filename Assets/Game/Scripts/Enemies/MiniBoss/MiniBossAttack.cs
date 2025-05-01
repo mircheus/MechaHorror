@@ -39,7 +39,8 @@ namespace Game.Scripts.Enemies.MiniBoss
             if (rangeAttackPrefab != null)
             {
                 RangeAttackProjectile projectile = Instantiate(rangeAttackPrefab, rangeAttackSpawnPoint.position, Quaternion.identity);
-                projectile.Initialize(target);
+                // projectile.ShootTo(target);
+                projectile.ShootTo(transform.forward);
             }
             else
             {

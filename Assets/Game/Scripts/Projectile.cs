@@ -22,6 +22,7 @@ namespace RetroArsenal
 
         private float destroyTimer = 0f;
         private bool destroyed = false;
+        private GameObject _impactProjectile;
 
         void Start()
         {
@@ -64,7 +65,7 @@ namespace RetroArsenal
             {
                 myTransform.position = hit.point + (hit.normal * collideOffset);
 
-                GameObject impactP = Instantiate(impactParticle, myTransform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
+                _impactProjectile = Instantiate(impactParticle, myTransform.position, Quaternion.FromToRotation(Vector3.up, hit.normal)) as GameObject;
 
                 if (hit.transform.tag == "Target") // Projectile will affect objects tagged as Target
                 {
@@ -74,28 +75,30 @@ namespace RetroArsenal
                         retroTarget.OnHit();
                     }
                 }
-                
-                if(hit.collider.TryGetComponent(out BaseEnemy enemy))
+
+                if (hit.collider.isTrigger == false)
                 {
-                    enemy.TakeDamage(1);
+                    if(hit.collider.TryGetComponent(out BaseEnemy enemy))
+                    {
+                        enemy.TakeDamage(1);
+                        HitObject();
+                    }
                 }
                 
                 // Damage numbers popup
-                if (hit.transform.CompareTag("Enemy"))
+                if (hit.transform.CompareTag("Enemy")) // TODO: Избавить от тэгов
                 {
                     DamagePopUpGenerator.current.CreatePopUpDefault(hit.transform.position);
                     Debug.Log("Hit Enemy");
+                    HitObject();
                 }
 
-                foreach (GameObject trail in trailParticles)
-                {
-                    GameObject curTrail = myTransform.Find(projectileParticle.name + "/" + trail.name).gameObject;
-                    curTrail.transform.parent = null;
-                    Destroy(curTrail, 3f);
-                }
-                Destroy(projectileParticle, 3f);
-                Destroy(impactP, 5.0f);
-                DestroyMissile();
+                // foreach (GameObject trail in trailParticles)
+                // {
+                //     GameObject curTrail = myTransform.Find(projectileParticle.name + "/" + trail.name).gameObject;
+                //     curTrail.transform.parent = null;
+                //     Destroy(curTrail, 3f);
+                // }
             }
             else
             {
@@ -147,6 +150,13 @@ namespace RetroArsenal
                 float lerpFactor = angle * Time.deltaTime; // Use the angle as the interpolation factor
                 myTransform.rotation = Quaternion.Slerp(myTransform.rotation, targetRotation, lerpFactor);
             }
+        }
+
+        private void HitObject()
+        {
+            Destroy(projectileParticle, 3f);
+            Destroy(_impactProjectile, 5.0f);
+            DestroyMissile();
         }
     }
 }
