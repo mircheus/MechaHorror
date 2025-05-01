@@ -8,7 +8,9 @@ namespace Game.Scripts.Enemies.MiniBoss
 {
     public class MiniBoss : BaseEnemy
     {
+        [Header("References:")]
         [SerializeField] private Animator animator;
+        [SerializeField] private MiniBossFX miniBossFX;
         
         [Header("Weapon Objects:")]
         [SerializeField] private bool isSwordEnabled;
@@ -30,7 +32,7 @@ namespace Game.Scripts.Enemies.MiniBoss
             {
                 { typeof(IdleState), new IdleState(enemyAI, animator) },
                 { typeof(RangeAttackState), new RangeAttackState((MiniBossAI)enemyAI, animator) },
-                { typeof(DashState), new DashState((MiniBossAI)enemyAI, animator) }
+                { typeof(DashState), new DashState((MiniBossAI)enemyAI, animator, miniBossFX) }
             };
         }
     }

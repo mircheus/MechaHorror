@@ -8,6 +8,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
     {
         private readonly MiniBossAI _enemyAI;
         private readonly Animator _animator;
+        private readonly MiniBossFX _miniBossFX;
         
         private readonly int _dashLeft = Animator.StringToHash("Dash_Left");
         private readonly int _dashRight = Animator.StringToHash("Dash_Right");
@@ -16,10 +17,11 @@ namespace Game.Scripts.Enemies.MiniBoss.States
         private float _dashDuration;
         private int _sideToDash;
 
-        public DashState(MiniBossAI enemyAI, Animator animator)
+        public DashState(MiniBossAI enemyAI, Animator animator, MiniBossFX miniBossFX)
         {
             _enemyAI = enemyAI;
             _animator = animator;
+            _miniBossFX = miniBossFX;
             _dashDistance = enemyAI.DashDistance;
             _dashDuration = enemyAI.DashDuration;
         }
@@ -27,6 +29,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
         public void Enter()
         {
             Dash();
+            _miniBossFX.EnableDashParticle();
             _animator.Play(_sideToDash == 0 ? _dashLeft : _dashRight);
             
             // Realtime Testing Variables
@@ -42,6 +45,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
 
         public void Exit()
         {
+            _miniBossFX.DisableDashParticle();
         }
         
         private void Dash()
