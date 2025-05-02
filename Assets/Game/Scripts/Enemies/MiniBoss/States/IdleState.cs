@@ -20,7 +20,6 @@ namespace Game.Scripts.Enemies.MiniBoss.States
         
         public void Enter()
         {
-            _miniBoss.ResetPositionToZero();
             _animator.Play(_idleHash);
         }
 

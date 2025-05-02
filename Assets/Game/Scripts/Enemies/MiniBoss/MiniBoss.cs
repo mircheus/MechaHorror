@@ -11,8 +11,7 @@ namespace Game.Scripts.Enemies.MiniBoss
         [Header("References:")]
         [SerializeField] private Animator animator;
         [SerializeField] private MiniBossFX miniBossFX;
-        [SerializeField] private GameObject mechGameObject;
-        
+
         [Header("Weapon Objects:")]
         [SerializeField] private bool isSwordEnabled;
         [SerializeField] private GameObject sword;
@@ -36,12 +35,6 @@ namespace Game.Scripts.Enemies.MiniBoss
                 { typeof(ChaseState), new ChaseState((MiniBossAI)enemyAI, animator) },
                 { typeof(DashState), new DashState(this, (MiniBossAI)enemyAI, animator, miniBossFX) }
             };
-        }
-
-        public void ResetPositionToZero()
-        {
-            Debug.Log("Resetting position to zero for MiniBoss: " + gameObject.name);
-            mechGameObject.transform.localPosition = Vector3.zero;
         }
     }
 }

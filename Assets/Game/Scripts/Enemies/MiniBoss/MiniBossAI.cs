@@ -12,40 +12,44 @@ namespace Game.Scripts.Enemies.MiniBoss
     {
         [Header("MiniBoss settings:")]
         [SerializeField] private bool isRangeAttackDirectionForward = true;
-        
-        [Header("Ranges:")]
-        [SerializeField] private float innerCircle = 10f;
-        [SerializeField] private float outerCircle = 9f;
-        
+
         [Header("Dash:")]
+        [SerializeField] private ProjectileCollider projectileCollider;
         [SerializeField] private float dashDistance = 20f;
         [SerializeField] private float dashDuration = 1f;
         
         public bool IsRangeAttackDirectionForward => isRangeAttackDirectionForward;
         public float DashDistance => dashDistance;
         public float DashDuration => dashDuration;
-        public float InnerCircle => innerCircle;
-        public float OuterCircle => outerCircle;
 
-
+        private void OnEnable()
+        {
+            if (projectileCollider != null)
+            {
+                projectileCollider.ProjectileTriggerEnter += OnProjectileTriggerEnter;
+            }
+        }
+        
+        private void OnDisable()
+        {
+            if (projectileCollider != null)
+            {
+                projectileCollider.ProjectileTriggerEnter -= OnProjectileTriggerEnter;
+            }
+        }
+        
         public override void Init(Dictionary<Type, IState> states)
         {
             base.Init(states);
             StateMachine.Enter<IdleState>();
         }
 
-        private void CheckIsStopped()
+        private void OnProjectileTriggerEnter()
         {
-            
+            Debug.Log("EnterDashState");
+            stateMachine.Enter<DashState>();
         }
 
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.TryGetComponent(out Projectile projectile))
-            {
-                StateMachine.Enter<DashState>();
-            }
-        }
 
         // public void RotateTowardTargetAroundY()
         // {
