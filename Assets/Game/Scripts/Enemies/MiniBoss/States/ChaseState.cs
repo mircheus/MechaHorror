@@ -3,41 +3,44 @@ using UnityEngine;
 
 namespace Game.Scripts.Enemies.MiniBoss.States
 {
-    public class RangeAttackState : IState
+    public class ChaseState : IState
     {
-        private readonly Animator _animator;
         private readonly MiniBossAI _enemyAI;
-
-        private readonly int _rangeAttack = Animator.StringToHash("RangeAttack");
-
-        public RangeAttackState(MiniBossAI enemyAI, Animator animator)
+        private readonly Animator _animator;
+        
+        private readonly int _run = Animator.StringToHash("Run");
+        private readonly int _idle = Animator.StringToHash("Idle");
+        
+        public ChaseState(MiniBossAI enemyAI, Animator animator)
         {
             _enemyAI = enemyAI;
             _animator = animator;
-            // _attackRange = attackRange;
-            // _attackCooldown = attackCooldown;
         }
-
+        
         public void Enter()
         {
-            _animator.Play(_rangeAttack);
+            _animator.Play(_run);
         }
 
         public void Execute()
         {
-            RotateTowardTargetAroundY();
-            
-            // if (IsOutOfRange()) // Не имеет особого смысла тк это RangeAttack, но для теста пусть будет 
-            // {
-            //     _enemyAI.StateMachine.Enter<IdleState>();
-            // }
+            // RotateTowardTargetAroundY();
+            _enemyAI.Agent.SetDestination(_enemyAI.Target.position);
+            _enemyAI.Agent.updateRotation = true;
+
+            if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.Agent.stoppingDistance)
+            {
+                // _animator.Play(_idle);
+                // _enemyAI.Agent.ResetPath();
+                // _enemyAI.StateMachine.Enter<IdleState>();
+                // _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
+            }
         }
 
         public void Exit()
         {
-
         }
-
+        
         private void RotateTowardTargetAroundY()
         {
             Vector3 direction;
@@ -57,7 +60,5 @@ namespace Game.Scripts.Enemies.MiniBoss.States
             _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation,
                 Time.deltaTime * _enemyAI.RotationSpeed);
         }
-
-        // private bool IsOutOfRange() => Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) > _enemyAI.ExitFromRangeAttackRange;
     }
 }

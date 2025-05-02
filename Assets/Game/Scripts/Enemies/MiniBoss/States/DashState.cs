@@ -6,6 +6,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
 {
     public class DashState : IState
     {
+        private readonly MiniBoss _miniBoss;
         private readonly MiniBossAI _enemyAI;
         private readonly Animator _animator;
         private readonly MiniBossFX _miniBossFX;
@@ -17,17 +18,19 @@ namespace Game.Scripts.Enemies.MiniBoss.States
         private float _dashDuration;
         private int _sideToDash;
 
-        public DashState(MiniBossAI enemyAI, Animator animator, MiniBossFX miniBossFX)
+        public DashState(MiniBoss miniBoss, MiniBossAI enemyAI, Animator animator, MiniBossFX miniBossFX)
         {
             _enemyAI = enemyAI;
             _animator = animator;
             _miniBossFX = miniBossFX;
             _dashDistance = enemyAI.DashDistance;
             _dashDuration = enemyAI.DashDuration;
+            _miniBoss = miniBoss;
         }
 
         public void Enter()
         {
+            _miniBoss.ResetPositionToZero();
             Dash();
             _miniBossFX.EnableDashParticle();
             _animator.Play(_sideToDash == 0 ? _dashLeft : _dashRight);
