@@ -10,6 +10,7 @@ namespace Game.Scripts.Enemies._BaseEnemy
     [RequireComponent(typeof(NavMeshAgent))]
     public abstract class EnemyAI : MonoBehaviour
     {
+        [SerializeField] protected NavMeshAgent agent;
         [SerializeField] private Transform target;
         [SerializeField] private float detectionRange = 10f;
         [SerializeField] private float attackRange = 9f;
@@ -19,8 +20,7 @@ namespace Game.Scripts.Enemies._BaseEnemy
         [Header("Gizmos Settings:")] 
         [SerializeField]
         protected bool isGizmosEnabled = true;
-
-        protected NavMeshAgent agent;
+        
         protected StateMachine stateMachine;
         protected BaseEnemyAttack baseEnemyAttack;
 
@@ -32,7 +32,7 @@ namespace Game.Scripts.Enemies._BaseEnemy
         public float AttackRange => attackRange;
         public float RotationSpeed => rotationSpeed;
         public float StrafeCooldownTime => strafeCooldownTime;
-
+        
         public virtual void Init(Dictionary<Type, IState> states)
         {
             agent = GetComponent<NavMeshAgent>();
@@ -52,10 +52,12 @@ namespace Game.Scripts.Enemies._BaseEnemy
             if (isGizmosEnabled)
             {
                 var position = transform.position;
-                Handles.color = new Color(0, 0, 1, .5f);
-                Handles.DrawSolidDisc(position, Vector3.up, detectionRange);
-                Handles.color = new Color(1, 0, 0, .5f);
-                Handles.DrawSolidDisc(position, Vector3.up, attackRange);
+                // Handles.color = new Color(0, 0, 1, .5f);
+                // Handles.DrawSolidDisc(position, Vector3.up, detectionRange);
+                // Handles.color = new Color(1, 0, 0, .5f);
+                // Handles.DrawSolidDisc(position, Vector3.up, attackRange);
+                Handles.color = Color.green;
+                Handles.DrawSolidDisc(position, Vector3.up, agent.stoppingDistance);
             }
         }
     }
