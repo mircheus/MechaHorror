@@ -10,7 +10,7 @@ public class RangeAttackProjectile : MonoBehaviour
     private Transform _target;
     private Vector3 _direction;
 
-    public void Initialize(Transform target)
+    public void ShootTo(Transform target)
     {
         _target = target;
         Transform transform1 = transform;
@@ -18,6 +18,12 @@ public class RangeAttackProjectile : MonoBehaviour
         _direction = (_target.position - transform1.position).normalized;
         _direction = new Vector3(_direction.x, 0, _direction.z);
         Destroy(gameObject, 10f);
+    }
+
+    public void ShootTo(Vector3 direction)
+    {
+        Destroy(gameObject, 10f);
+        _direction = new Vector3(direction.x, 0, direction.z);
     }
 
     private void Update()
@@ -33,7 +39,7 @@ public class RangeAttackProjectile : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
     }
 

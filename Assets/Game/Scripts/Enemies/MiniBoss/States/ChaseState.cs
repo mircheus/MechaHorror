@@ -3,43 +3,43 @@ using UnityEngine;
 
 namespace Game.Scripts.Enemies.MiniBoss.States
 {
-    public class IdleState : IState
+    public class ChaseState : IState
     {
-        private readonly MiniBoss _miniBoss;
         private readonly MiniBossAI _enemyAI;
         private readonly Animator _animator;
         
-        private readonly int _idleHash = Animator.StringToHash("Idle");
-
-        public IdleState(MiniBoss miniBoss, MiniBossAI enemyAI, Animator animator)
+        private readonly int _run = Animator.StringToHash("Run");
+        private readonly int _idle = Animator.StringToHash("Idle");
+        
+        public ChaseState(MiniBossAI enemyAI, Animator animator)
         {
             _enemyAI = enemyAI;
             _animator = animator;
-            _miniBoss = miniBoss;
         }
         
         public void Enter()
         {
-            _animator.Play(_idleHash);
+            _animator.Play(_run);
         }
 
         public void Execute()
         {
-            RotateTowardTargetAroundY();
-            // if ()
-            // {
-            //     _enemyAI.StateMachine.Enter<ChaseState>();
-            // }
+            // RotateTowardTargetAroundY();
+            _enemyAI.Agent.SetDestination(_enemyAI.Target.position);
+            _enemyAI.Agent.updateRotation = true;
+
+            if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.Agent.stoppingDistance)
+            {
+                // _animator.Play(_idle);
+                // _enemyAI.Agent.ResetPath();
+                // _enemyAI.StateMachine.Enter<IdleState>();
+                // _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
+            }
         }
 
         public void Exit()
         {
         }
-
-        // private bool IsInsideIdleCircle()
-        // {
-        //     // var distance Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.OuterCircle &&
-        // }
         
         private void RotateTowardTargetAroundY()
         {
