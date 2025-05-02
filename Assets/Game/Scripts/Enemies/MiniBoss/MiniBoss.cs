@@ -11,6 +11,7 @@ namespace Game.Scripts.Enemies.MiniBoss
         [Header("References:")]
         [SerializeField] private Animator animator;
         [SerializeField] private MiniBossFX miniBossFX;
+        [SerializeField] private Shield shield;
 
         [Header("Weapon Objects:")]
         [SerializeField] private bool isSwordEnabled;
@@ -33,7 +34,8 @@ namespace Game.Scripts.Enemies.MiniBoss
                 { typeof(IdleState), new IdleState(this, (MiniBossAI)enemyAI, animator) },
                 { typeof(RangeAttackState), new RangeAttackState((MiniBossAI)enemyAI, animator) },
                 { typeof(ChaseState), new ChaseState((MiniBossAI)enemyAI, animator) },
-                { typeof(DashState), new DashState(this, (MiniBossAI)enemyAI, animator, miniBossFX) }
+                { typeof(DashState), new DashState(this, (MiniBossAI)enemyAI, animator, miniBossFX) },
+                { typeof(ShieldState), new ShieldState((MiniBossAI)enemyAI, shield) }
             };
         }
     }

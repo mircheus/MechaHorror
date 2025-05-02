@@ -20,7 +20,6 @@ namespace Game.Scripts.Enemies.MiniBoss
         {
             if (other.TryGetComponent(out Projectile projectile))
             {
-                Debug.Log("Projectile hit the collider: " + gameObject.name);
                 ProjectileTriggerEnter?.Invoke();
             }
         }

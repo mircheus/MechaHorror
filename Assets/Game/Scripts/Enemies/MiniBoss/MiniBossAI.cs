@@ -12,7 +12,13 @@ namespace Game.Scripts.Enemies.MiniBoss
     {
         [Header("MiniBoss settings:")]
         [SerializeField] private bool isRangeAttackDirectionForward = true;
-
+        
+        [Header("Shield:")]
+        [SerializeField] private bool isTimeBased = false;
+        [SerializeField] private float shieldDuration = 5f;
+        [SerializeField] private bool isDamageBased = false;
+        [SerializeField] private int damageThreshold = 10;
+        
         [Header("Dash:")]
         [SerializeField] private ProjectileCollider projectileCollider;
         [SerializeField] private float dashDistance = 20f;
@@ -21,6 +27,10 @@ namespace Game.Scripts.Enemies.MiniBoss
         public bool IsRangeAttackDirectionForward => isRangeAttackDirectionForward;
         public float DashDistance => dashDistance;
         public float DashDuration => dashDuration;
+        public bool IsTimeBased => isTimeBased;
+        public float ShieldDuration => shieldDuration;
+        public bool IsDamageBased => isDamageBased;
+        public int DamageThreshold => damageThreshold;
 
         private void OnEnable()
         {
@@ -44,13 +54,18 @@ namespace Game.Scripts.Enemies.MiniBoss
             StateMachine.Enter<IdleState>();
         }
 
-        private void OnProjectileTriggerEnter()
+        protected override void GizmosMethods()
         {
-            Debug.Log("EnterDashState");
-            stateMachine.Enter<DashState>();
+            var position = transform.position;
+            Handles.color = new Color(0, 0, 1, .5f);
+            Handles.DrawSolidDisc(position, Vector3.up, detectionRange);
         }
 
-
+        private void OnProjectileTriggerEnter()
+        {
+            // stateMachine.Enter<DashState>();
+        }
+        
         // public void RotateTowardTargetAroundY()
         // {
         //     Vector3 direction;

@@ -12,10 +12,10 @@ namespace Game.Scripts.Enemies._BaseEnemy
     {
         [SerializeField] protected NavMeshAgent agent;
         [SerializeField] private Transform target;
-        [SerializeField] private float detectionRange = 10f;
-        [SerializeField] private float attackRange = 9f;
-        [SerializeField] private float rotationSpeed;
-        [SerializeField] private float strafeCooldownTime = 2f;
+        [SerializeField] protected float detectionRange = 10f;
+        [SerializeField] protected float attackRange = 9f;
+        [SerializeField] protected float rotationSpeed;
+        [SerializeField] protected float strafeCooldownTime = 2f;
 
         [Header("Gizmos Settings:")] 
         [SerializeField]
@@ -47,17 +47,23 @@ namespace Game.Scripts.Enemies._BaseEnemy
             stateMachine.Update();
         }
 
+        protected virtual void GizmosMethods()
+        {
+            
+        }
+
         public void OnDrawGizmos()
         {
             if (isGizmosEnabled)
             {
-                var position = transform.position;
+                GizmosMethods();
+                // var position = transform.position;
                 // Handles.color = new Color(0, 0, 1, .5f);
                 // Handles.DrawSolidDisc(position, Vector3.up, detectionRange);
                 // Handles.color = new Color(1, 0, 0, .5f);
                 // Handles.DrawSolidDisc(position, Vector3.up, attackRange);
-                Handles.color = Color.green;
-                Handles.DrawSolidDisc(position, Vector3.up, agent.stoppingDistance);
+                // Handles.color = Color.green;
+                // Handles.DrawSolidDisc(position, Vector3.up, agent.stoppingDistance);
             }
         }
     }
