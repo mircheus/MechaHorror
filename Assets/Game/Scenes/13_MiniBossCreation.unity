@@ -35809,6 +35809,10 @@ PrefabInstance:
       value: 28.3
       objectReference: {fileID: 0}
     - target: {fileID: 775654572899175177, guid: 450a2253c50bd9a46863140455937b32, type: 3}
+      propertyPath: isTimeBased
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 775654572899175177, guid: 450a2253c50bd9a46863140455937b32, type: 3}
       propertyPath: outerCircle
       value: 38.7
       objectReference: {fileID: 0}
@@ -35996,6 +36000,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4966657897125014757}
     m_Modifications:
+    - target: {fileID: 1216500248097337212, guid: 86ff5b55057984a418942d4452f0b94d, type: 3}
+      propertyPath: damagedMaterials.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1216500248097337212, guid: 86ff5b55057984a418942d4452f0b94d, type: 3}
+      propertyPath: 'damagedMaterials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ba8410898e0c1946be520a624335906, type: 2}
+    - target: {fileID: 1216500248097337212, guid: 86ff5b55057984a418942d4452f0b94d, type: 3}
+      propertyPath: 'damagedMaterials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 5030890a7c1edac48aa260ca4dedbde7, type: 2}
+    - target: {fileID: 1216500248097337212, guid: 86ff5b55057984a418942d4452f0b94d, type: 3}
+      propertyPath: 'damagedMaterials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a63a277f7e145144b803d0a549d74448, type: 2}
+    - target: {fileID: 1216500248097337212, guid: 86ff5b55057984a418942d4452f0b94d, type: 3}
+      propertyPath: 'damagedMaterials.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a25767fbfdcda24680a413202a98401, type: 2}
     - target: {fileID: 5383542091740414293, guid: 86ff5b55057984a418942d4452f0b94d, type: 3}
       propertyPath: m_Name
       value: Shield

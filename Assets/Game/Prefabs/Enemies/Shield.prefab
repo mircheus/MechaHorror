@@ -153,3 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8798ed47857144e893c09473cb6cf370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damagedMaterials:
+  - {fileID: 2100000, guid: 1ba8410898e0c1946be520a624335906, type: 2}
+  - {fileID: 2100000, guid: 5030890a7c1edac48aa260ca4dedbde7, type: 2}
+  - {fileID: 2100000, guid: a63a277f7e145144b803d0a549d74448, type: 2}
+  - {fileID: 2100000, guid: 8a25767fbfdcda24680a413202a98401, type: 2}
+  meshRenderer: {fileID: 5424833427903129343}
