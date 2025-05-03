@@ -2,6 +2,7 @@
 using System.Collections;
 using Game.Scripts;
 using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Enemies.MiniBoss.States;
 
 namespace RetroArsenal
 {
@@ -113,6 +114,11 @@ namespace RetroArsenal
             RotateTowardsDirection();
         }
 
+        public void HitShield(Shield shield)
+        {
+            HitObject(shield.transform.forward);
+        }
+
         private void DestroyMissile()
         {
             destroyed = true;
@@ -153,6 +159,14 @@ namespace RetroArsenal
         private void HitObject(RaycastHit hit)
         {
             _impactProjectile = Instantiate(impactParticle, myTransform.position, Quaternion.FromToRotation(Vector3.up, hit.normal));
+            Destroy(projectileParticle, 3f);
+            Destroy(_impactProjectile, 5.0f);
+            DestroyMissile();
+        }
+
+        private void HitObject(Vector3 normal)
+        {
+            _impactProjectile = Instantiate(impactParticle, myTransform.position, Quaternion.FromToRotation(Vector3.up, normal));
             Destroy(projectileParticle, 3f);
             Destroy(_impactProjectile, 5.0f);
             DestroyMissile();

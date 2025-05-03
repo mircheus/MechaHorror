@@ -26,20 +26,21 @@ namespace Game.Scripts.Enemies.MiniBoss.States
         public void Execute()
         {
             RotateTowardTargetAroundY();
-            // if ()
-            // {
-            //     _enemyAI.StateMachine.Enter<ChaseState>();
-            // }
+            
+            if(IsInsideCircle(_enemyAI.DetectionRange))
+            {
+                _enemyAI.StateMachine.Enter<ShieldState>();
+            }
         }
 
         public void Exit()
         {
         }
 
-        // private bool IsInsideIdleCircle()
-        // {
-        //     // var distance Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.OuterCircle &&
-        // }
+        private bool IsInsideCircle(float radius)
+        {
+            return Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < radius;
+        }
         
         private void RotateTowardTargetAroundY()
         {
