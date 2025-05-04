@@ -10,6 +10,9 @@ namespace Game.Scripts.Enemies.MiniBoss
 {
     public class MiniBossAI : EnemyAI
     {
+        [Header("References: ")]
+        [SerializeField] private MiniBossAttack miniBossAttack;
+        
         [Header("MiniBoss settings:")]
         [SerializeField] private bool isRangeAttackDirectionForward = true;
         
@@ -24,6 +27,8 @@ namespace Game.Scripts.Enemies.MiniBoss
         [SerializeField] private float dashDistance = 20f;
         [SerializeField] private float dashDuration = 1f;
         
+        private bool _isDashAllowed;
+
         public bool IsRangeAttackDirectionForward => isRangeAttackDirectionForward;
         public float DashDistance => dashDistance;
         public float DashDuration => dashDuration;
@@ -34,20 +39,24 @@ namespace Game.Scripts.Enemies.MiniBoss
 
         private void OnEnable()
         {
+            miniBossAttack.RangeAttackPerformed += OnRangeAttackPerformed;
+            
             if (projectileCollider != null)
             {
                 projectileCollider.ProjectileTriggerEnter += OnProjectileTriggerEnter;
             }
         }
-        
+
         private void OnDisable()
         {
+            miniBossAttack.RangeAttackPerformed -= OnRangeAttackPerformed;
+            
             if (projectileCollider != null)
             {
                 projectileCollider.ProjectileTriggerEnter -= OnProjectileTriggerEnter;
             }
         }
-        
+
         public override void Init(Dictionary<Type, IState> states)
         {
             base.Init(states);
@@ -63,9 +72,18 @@ namespace Game.Scripts.Enemies.MiniBoss
 
         private void OnProjectileTriggerEnter()
         {
-            // stateMachine.Enter<DashState>();
+            if (_isDashAllowed)
+            {
+                stateMachine.Enter<DashState>();
+                _isDashAllowed = false;
+            }
         }
-        
+
+        private void OnRangeAttackPerformed()
+        {
+            _isDashAllowed = true;
+        }
+
         // public void RotateTowardTargetAroundY()
         // {
         //     Vector3 direction;

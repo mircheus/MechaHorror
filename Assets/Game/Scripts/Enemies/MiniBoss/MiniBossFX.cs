@@ -10,7 +10,7 @@ namespace Game.Scripts.Enemies.MiniBoss
         {
             if (dashParticle != null)
             {
-                dashParticle.Play();
+                dashParticle.gameObject.SetActive(true);
             }
         }
         
@@ -18,7 +18,7 @@ namespace Game.Scripts.Enemies.MiniBoss
         {
             if (dashParticle != null)
             {
-                dashParticle.Stop();
+                dashParticle.gameObject.SetActive(false);
             }
         }
     }

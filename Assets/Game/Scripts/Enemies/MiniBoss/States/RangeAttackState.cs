@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Enemies._BaseEnemy;
+﻿using System;
+using Game.Scripts.Enemies._BaseEnemy;
 using UnityEngine;
 
 namespace Game.Scripts.Enemies.MiniBoss.States
@@ -7,7 +8,6 @@ namespace Game.Scripts.Enemies.MiniBoss.States
     {
         private readonly Animator _animator;
         private readonly MiniBossAI _enemyAI;
-
         private readonly int _rangeAttack = Animator.StringToHash("RangeAttack");
 
         public RangeAttackState(MiniBossAI enemyAI, Animator animator)
@@ -21,6 +21,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
         public void Enter()
         {
             _animator.Play(_rangeAttack);
+            _animator.applyRootMotion = true;
         }
 
         public void Execute()
@@ -35,7 +36,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
 
         public void Exit()
         {
-
+            _animator.applyRootMotion = false;
         }
 
         private void RotateTowardTargetAroundY()

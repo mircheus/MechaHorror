@@ -3,11 +3,16 @@ using UnityEngine;
 
 public class AnimationEventInvoker : MonoBehaviour
 {
-    public event Action OnRangeAttack;
+    public event Action<AttackType> OnRangeAttack;
     
-    public void InvokeAttack()
+    public void InvokeAttack(AttackType attackType)
     {
-        OnRangeAttack?.Invoke();
-        Debug.Log("Attack invoked!");
+        OnRangeAttack?.Invoke(attackType);
     }
+}
+
+public enum AttackType
+{
+    RangeAttack, 
+    ShootAttack
 }

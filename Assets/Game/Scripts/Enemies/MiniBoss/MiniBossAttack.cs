@@ -8,14 +8,19 @@ namespace Game.Scripts.Enemies.MiniBoss
     {
         [SerializeField] private MiniBossAI enemyAI;
         [SerializeField] private RangeAttackProjectile rangeAttackPrefab;
+        [SerializeField] private RangeAttackProjectile shootAttackPrefab;
+        [SerializeField] private ParticleSystem shootAttackFX;
         [SerializeField] private Transform rangeAttackSpawnPoint;
+        [SerializeField] private Transform shootAttackSpawnPoint;
         [SerializeField] private AnimationEventInvoker animationEventInvoker;
 
+        public event Action RangeAttackPerformed;
+        
         private void OnEnable()
         {
             if (animationEventInvoker != null)
             {
-                animationEventInvoker.OnRangeAttack += HandleRangeAttack;
+                animationEventInvoker.OnRangeAttack += HandleAnimationEvent;
             }
         }
 
@@ -23,7 +28,7 @@ namespace Game.Scripts.Enemies.MiniBoss
         {
             if (animationEventInvoker != null)
             {
-                animationEventInvoker.OnRangeAttack -= HandleRangeAttack;
+                animationEventInvoker.OnRangeAttack -= HandleAnimationEvent;
             }
         }
 
@@ -39,24 +44,45 @@ namespace Game.Scripts.Enemies.MiniBoss
             if (rangeAttackPrefab != null)
             {
                 RangeAttackProjectile projectile = Instantiate(rangeAttackPrefab, rangeAttackSpawnPoint.position, Quaternion.identity);
-                // projectile.ShootTo(target);
-                projectile.ShootTo(transform.forward);
+                projectile.ShootTo(target);
+                RangeAttackPerformed?.Invoke();
+                
+                // projectile.ShootTo(transform.forward);
             }
             else
             {
                 Debug.LogWarning("Range attack prefab is not assigned.");
             }
         }
-
-        private void HandleRangeAttack()
+        
+        public void ShootAttack(Transform target)
         {
-            if (enemyAI.Target != null)
+            if (shootAttackPrefab != null)
             {
-                RangeAttack(enemyAI.Target);
+                shootAttackFX.Play();
+                RangeAttackProjectile projectile = Instantiate(shootAttackPrefab, shootAttackSpawnPoint.position, Quaternion.identity);
+                projectile.ShootTo(target);
+                // projectile.ShootTo(transform.forward);
             }
             else
             {
-                Debug.LogWarning("Target is not assigned.");
+                Debug.LogWarning("Shoot attack prefab is not assigned.");
+            }
+        }
+
+        private void HandleAnimationEvent(AttackType attackType)
+        {
+            switch (attackType)
+            {
+                case AttackType.RangeAttack:
+                    RangeAttack(enemyAI.Target);
+                    break;
+                case AttackType.ShootAttack:
+                    ShootAttack(enemyAI.Target);
+                    break;
+                default:
+                    Debug.LogWarning("Unknown attack type.");
+                    break;
             }
         }
     }

@@ -49,7 +49,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
             _sideToDash = Random.Range(0, 2);
             // int doubledash = Random.Range(0, 2);
             Vector3 dashDirection = _sideToDash == 0 ? _enemyAI.transform.right : -_enemyAI.transform.right;
-            Debug.Log("SideToDash: " + (_sideToDash == 0 ? "right" : "left"));
+            // Debug.Log("SideToDash: " + (_sideToDash == 0 ? "right" : "left"));
             Vector3 endPosition = _enemyAI.transform.position + dashDirection * _dashDistance;
             
             _enemyAI.transform.DOMove(endPosition, _dashDuration).SetEase(Ease.OutQuad).OnComplete(() =>
@@ -68,7 +68,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
                 //     _enemyAI.StateMachine.Enter<IdleState>();
                 // }
                 
-                _enemyAI.StateMachine.Enter<IdleState>();
+                _enemyAI.StateMachine.Enter<RangeAttackState>();
             });
         }
     }

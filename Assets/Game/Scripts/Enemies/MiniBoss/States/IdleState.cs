@@ -29,7 +29,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
             
             if(IsInsideCircle(_enemyAI.DetectionRange))
             {
-                _enemyAI.StateMachine.Enter<ShieldState>();
+                _enemyAI.StateMachine.Enter<RangeAttackState>();
             }
         }
 
