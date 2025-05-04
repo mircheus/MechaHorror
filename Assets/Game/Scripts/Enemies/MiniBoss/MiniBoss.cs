@@ -15,16 +15,14 @@ namespace Game.Scripts.Enemies.MiniBoss
 
         [Header("Weapon Objects:")]
         [SerializeField] private bool isSwordEnabled;
+        [SerializeField] private bool isPistolEnabled;
         [SerializeField] private GameObject sword;
+        [SerializeField] private GameObject pistol;
         
         private new void Start()
         {
             base.Start();
-            
-            if (isSwordEnabled)
-            {
-                sword.SetActive(true);
-            }
+            EnableWeapons();
         }
 
         protected override Dictionary<Type, IState> GetStates()
@@ -48,6 +46,12 @@ namespace Game.Scripts.Enemies.MiniBoss
             lookRotation.z = 0; // Keep the z rotation at 0
             enemyAI.transform.rotation = Quaternion.Slerp(enemyAI.transform.rotation, lookRotation,
                 Time.deltaTime * enemyAI.RotationSpeed);
+        }
+        
+        private void EnableWeapons()
+        {
+            sword.SetActive(isSwordEnabled);
+            pistol.SetActive(isPistolEnabled);
         }
     }
 }

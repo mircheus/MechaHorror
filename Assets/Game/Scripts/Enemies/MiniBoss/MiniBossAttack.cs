@@ -14,6 +14,8 @@ namespace Game.Scripts.Enemies.MiniBoss
         [SerializeField] private Transform shootAttackSpawnPoint;
         [SerializeField] private AnimationEventInvoker animationEventInvoker;
 
+        public event Action RangeAttackPerformed;
+        
         private void OnEnable()
         {
             if (animationEventInvoker != null)
@@ -42,8 +44,10 @@ namespace Game.Scripts.Enemies.MiniBoss
             if (rangeAttackPrefab != null)
             {
                 RangeAttackProjectile projectile = Instantiate(rangeAttackPrefab, rangeAttackSpawnPoint.position, Quaternion.identity);
-                // projectile.ShootTo(target);
-                projectile.ShootTo(transform.forward);
+                projectile.ShootTo(target);
+                RangeAttackPerformed?.Invoke();
+                
+                // projectile.ShootTo(transform.forward);
             }
             else
             {

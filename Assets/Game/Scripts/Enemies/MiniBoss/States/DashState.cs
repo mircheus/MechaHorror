@@ -68,7 +68,7 @@ namespace Game.Scripts.Enemies.MiniBoss.States
                 //     _enemyAI.StateMachine.Enter<IdleState>();
                 // }
                 
-                _enemyAI.StateMachine.Enter<IdleState>();
+                _enemyAI.StateMachine.Enter<RangeAttackState>();
             });
         }
     }
