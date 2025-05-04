@@ -13,10 +13,12 @@ public class RangeAttackProjectile : MonoBehaviour
     public void ShootTo(Transform target)
     {
         _target = target;
+        var position = _target.position;
+        Vector3 targetPosition = new Vector3(position.x, position.y + yOffset, position.z);
         Transform transform1 = transform;
         transform1.LookAt(target);
-        _direction = (_target.position - transform1.position).normalized;
-        _direction = new Vector3(_direction.x, 0, _direction.z);
+        _direction = (targetPosition - transform1.position).normalized;
+        // _direction = new Vector3(_direction.x, 0, _direction.z);
         Destroy(gameObject, 10f);
     }
 
