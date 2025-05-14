@@ -17,9 +17,9 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.6431373, g: 0.7819998, b: 0.9843137, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.0034
-  m_LinearFogStart: 8
-  m_LinearFogEnd: 298.71
+  m_FogDensity: 0.006
+  m_LinearFogStart: 100
+  m_LinearFogEnd: 152.01
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -1920,6 +1920,10 @@ PrefabInstance:
       value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3713043715044771681, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: m_Dithering
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3713043715044771681, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
@@ -2139,6 +2143,22 @@ PrefabInstance:
       propertyPath: 'sounds.walkFootsteps.audioClips.Array.data[8]'
       value: 
       objectReference: {fileID: 8300000, guid: 6d1e0335f0ff90b4092c1df59d2ff2e2, type: 3}
+    - target: {fileID: 7478722414272562803, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478722414272562803, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.9843138
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478722414272562803, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.7803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478722414272562803, guid: 583facd4f50baf741859c05f18efb818, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.6431373
+      objectReference: {fileID: 0}
     - target: {fileID: 7572406740104312434, guid: 583facd4f50baf741859c05f18efb818, type: 3}
       propertyPath: m_Height
       value: 16
@@ -3408,7 +3428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1988952584202575808, guid: 420fd7265cd45a0448d9737d8c60cb01, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4595286303275934372, guid: 420fd7265cd45a0448d9737d8c60cb01, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4291,7 +4311,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &1561278345
 Light:
   m_ObjectHideFlags: 0
