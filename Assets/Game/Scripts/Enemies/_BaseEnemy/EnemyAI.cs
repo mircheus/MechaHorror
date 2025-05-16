@@ -42,14 +42,20 @@ namespace Game.Scripts.Enemies._BaseEnemy
             // stateMachine.Enter<IdleState>();
         }
         
-        private void Update()
+        protected virtual void Update()
         {
             stateMachine.Update();
         }
 
         protected virtual void GizmosMethods()
         {
-            
+            var position = transform.position;
+            Handles.color = new Color(0, 0, 1, .5f);
+            Handles.DrawSolidDisc(position, Vector3.up, detectionRange);
+            Handles.color = new Color(1, 0, 0, .5f);
+            Handles.DrawSolidDisc(position, Vector3.up, attackRange);
+            Handles.color = Color.green;
+            Handles.DrawSolidDisc(position, Vector3.up, agent.stoppingDistance);
         }
 
         public void OnDrawGizmos()
@@ -57,13 +63,6 @@ namespace Game.Scripts.Enemies._BaseEnemy
             if (isGizmosEnabled)
             {
                 GizmosMethods();
-                // var position = transform.position;
-                // Handles.color = new Color(0, 0, 1, .5f);
-                // Handles.DrawSolidDisc(position, Vector3.up, detectionRange);
-                // Handles.color = new Color(1, 0, 0, .5f);
-                // Handles.DrawSolidDisc(position, Vector3.up, attackRange);
-                // Handles.color = Color.green;
-                // Handles.DrawSolidDisc(position, Vector3.up, agent.stoppingDistance);
             }
         }
     }
