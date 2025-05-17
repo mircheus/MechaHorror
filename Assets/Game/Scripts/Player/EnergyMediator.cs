@@ -1,36 +1,56 @@
-﻿using Hertzole.GoldPlayer;
+﻿using System;
+using Hertzole.GoldPlayer;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts.Player
 {
     public class EnergyMediator : MonoBehaviour
     {
-        [SerializeField] private PlayerInputHandler playerInputHandler;
+        [Header("References: ")]
+        [SerializeField] private EnergyModeSwitcher energyModeSwitcher;
         [SerializeField] private GoldPlayerController playerController;
+        [Header("Movement Mode: ")]
         [SerializeField] private MovementSpeeds movementSpeeds;
+        [SerializeField] private MovementSpeeds radarMovementSpeeds;
         [SerializeField] private MovementSpeeds nonMovementSpeeds;
+
+        public event UnityAction OnRadarModeEvent;
+        public event UnityAction OnMovementModeEvent;
+        public event UnityAction OnShooterModeEvent;
 
         private void OnEnable()
         {
-            playerInputHandler.OnRadarModeEvent += OnRadarMode;
-            playerInputHandler.OnMovementModeEvent += OnMovementMode;
-            playerInputHandler.OnShooterModeEvent += OnShooterMode;
+            energyModeSwitcher.OnRadarModeEvent += OnRadarMode;
+            energyModeSwitcher.OnMovementModeEvent += OnMovementMode;
+            energyModeSwitcher.OnShooterModeEvent += OnShooterMode;
+        }
+
+        private void OnDisable()
+        {
+            energyModeSwitcher.OnRadarModeEvent -= OnRadarMode;
+            energyModeSwitcher.OnMovementModeEvent -= OnMovementMode;
+            energyModeSwitcher.OnShooterModeEvent -= OnShooterMode;
         }
 
         private void OnRadarMode()
         {
             SwitchModes();
+            playerController.Movement.WalkingSpeeds = radarMovementSpeeds;
+            OnRadarModeEvent?.Invoke();
         }
 
         private void OnMovementMode()
         {
             SwitchModes();
+            OnMovementModeEvent?.Invoke();
             playerController.Movement.WalkingSpeeds = movementSpeeds;
         }
 
         private void OnShooterMode()
         {
             SwitchModes();
+            OnShooterModeEvent?.Invoke();
         }
 
         private void SwitchModes()

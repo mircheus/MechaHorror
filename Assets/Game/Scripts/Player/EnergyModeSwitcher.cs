@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 namespace Game.Scripts.Player
 {
-    public class PlayerInputHandler : MonoBehaviour
+    public class EnergyModeSwitcher : MonoBehaviour
     {
         [SerializeField] private InputActionReference radarModeAction;
         [SerializeField] private InputActionReference movementModeAction;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 174095453999381034}
   - component: {fileID: 174095453999381028}
   - component: {fileID: 174095453999381029}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4902,7 +4902,7 @@ GameObject:
   - component: {fileID: 797035013079178883}
   - component: {fileID: 797035013079178885}
   - component: {fileID: 797035013079178882}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9793,7 +9793,7 @@ GameObject:
   - component: {fileID: 6890425677533345435}
   - component: {fileID: 6890425677533345433}
   - component: {fileID: 6890425677533345434}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14704,7 +14704,7 @@ GameObject:
   - component: {fileID: 6890425677728525918}
   - component: {fileID: -4899313208681403213}
   - component: {fileID: 6922528725843772767}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletExplosionGreen_dev
   m_TagString: Untagged
   m_Icon: {fileID: 0}
