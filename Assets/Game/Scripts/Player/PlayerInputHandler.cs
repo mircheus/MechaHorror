@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Game.Scripts.Player
@@ -9,6 +10,10 @@ namespace Game.Scripts.Player
         [SerializeField] private InputActionReference movementModeAction;
         [SerializeField] private InputActionReference shooterModeAction;
 
+        public event UnityAction OnRadarModeEvent;
+        public event UnityAction OnMovementModeEvent;
+        public event UnityAction OnShooterModeEvent;
+        
         private void OnEnable()
         {
             radarModeAction.action.Enable();
@@ -29,16 +34,19 @@ namespace Game.Scripts.Player
 
         private void OnRadarMode(InputAction.CallbackContext context)
         {
+            OnRadarModeEvent?.Invoke();
             Debug.Log("Radar mode activated");
         }
 
         private void OnMovementMode(InputAction.CallbackContext obj)
         {
+            OnMovementModeEvent?.Invoke();
             Debug.Log("Movement mode activated");
         }
 
         private void OnShooterMode(InputAction.CallbackContext obj)
         {
+            OnShooterModeEvent?.Invoke();
             Debug.Log("Shooter mode activated");
         }
     }
