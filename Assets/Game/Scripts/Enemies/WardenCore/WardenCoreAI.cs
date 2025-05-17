@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Enemies.WardenCore.States;
 using UnityEngine;
 
 namespace Game.Scripts.Enemies.WardenCore
@@ -10,7 +11,7 @@ namespace Game.Scripts.Enemies.WardenCore
         public override void Init(Dictionary<Type, IState> states)
         {
             base.Init(states);
-            StateMachine.Enter<ChaseState>();
+            StateMachine.Enter<PatrolState>();
         }
 
         protected override void GizmosMethods()

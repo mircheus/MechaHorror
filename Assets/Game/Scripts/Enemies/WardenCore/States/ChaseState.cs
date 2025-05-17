@@ -2,7 +2,7 @@
 using Game.Scripts.Enemies.FourLegEnemy.States;
 using UnityEngine;
 
-namespace Game.Scripts.Enemies.WardenCore
+namespace Game.Scripts.Enemies.WardenCore.States
 {
     public class ChaseState : IState
     {
