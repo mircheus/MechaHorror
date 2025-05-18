@@ -54522,6 +54522,99 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5029310567560238959, guid: 0cd66edf18a96da40bc42825892af61c, type: 3}
   m_PrefabInstance: {fileID: 1955783450}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1961917196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2082592140379991425, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
+  m_PrefabInstance: {fileID: 4198049203882471109}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1961917202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961917196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: 5006973956954364019, guid: 60b16851a1573a64c9f62b94e50238a3, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 5682739404328927898
+  - rid: 5682739404328927899
+  - rid: 5682739404328927995
+  - rid: 5682739404328928053
+  - rid: 5682739404328928054
+  - rid: 5682739404328928076
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 5682739404328927898
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 1961917196}
+    - rid: 5682739404328927899
+      type: {class: 'BlackboardVariable`1[[System.Collections.Generic.List`1[[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 7301124466490957377
+          m_Value1: 7654186147895810038
+        Name: Waypoints
+        m_Value:
+        - {fileID: 12694776}
+        - {fileID: 1385493513}
+        - {fileID: 797862216}
+        - {fileID: 718428052}
+        - {fileID: 392736254}
+        - {fileID: 903415759}
+        - {fileID: 1464488564}
+        - {fileID: 1560035192}
+        - {fileID: 1445894069}
+        - {fileID: 1887592044}
+        - {fileID: 333650888}
+        - {fileID: 1435232882}
+        - {fileID: 904035604}
+        - {fileID: 317603213}
+        - {fileID: 1669637470}
+    - rid: 5682739404328927995
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 8688614020731676379
+          m_Value1: 8857846630549206824
+        Name: Player
+        m_Value: {fileID: 462738199}
+    - rid: 5682739404328928053
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 14458320824416469547
+          m_Value1: 1227719821458185174
+        Name: Speed
+        m_Value: 70
+    - rid: 5682739404328928054
+      type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 15706461992893722038
+          m_Value1: 4800994254275138743
+        Name: Waypoint Wait Time
+        m_Value: 0.5
+    - rid: 5682739404328928076
+      type: {class: 'BlackboardVariable`1[[System.Int32, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 11984336406127446490
+          m_Value1: 8655096739753747778
+        Name: Number of Closest Player Points
+        m_Value: 4
 --- !u!1 &1963652518
 GameObject:
   m_ObjectHideFlags: 0
@@ -60498,7 +60591,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 234689906504452125, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 234689906504452125, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
       propertyPath: patrolRadius
@@ -60629,6 +60722,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5141564469770448311, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
+      propertyPath: m_AutoBraking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141564469770448311, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
       propertyPath: m_StoppingDistance
       value: 5
       objectReference: {fileID: 0}
@@ -60638,12 +60735,15 @@ PrefabInstance:
       objectReference: {fileID: 119550739}
     - target: {fileID: 7986467267662244754, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2082592140379991425, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1961917202}
   m_SourcePrefab: {fileID: 100100000, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
 --- !u!23 &4376203216824386683
 MeshRenderer:
