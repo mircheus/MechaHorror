@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
@@ -8,17 +9,23 @@ using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "PatrolRandomPoints", story: "[Agent] patrols [Waypoints] in random order", category: "Action/Navigation", id: "ddedc1d40355f98e756613875aaf1a4c")]
-public partial class PatrolRandomPointsAction : Action
+[NodeDescription(name: "PatrolPoints", story: "[Agent] patrols [Waypoints] by [GetterPointType] way", category: "Action", id: "ddedc1d40355f98e756613875aaf1a4c")]
+public partial class PatrolPointsAction : Action
 {
-    [SerializeReference] public BlackboardVariable<GameObject> Agent;
+    [SerializeReference] public BlackboardVariable<GameObject> agent;
     [SerializeReference] public BlackboardVariable<List<GameObject>> Waypoints;
+    [SerializeReference] public BlackboardVariable<GetterPointType> getterPointType;
+    [SerializeReference] public BlackboardVariable<GameObject> Player;
+    [SerializeReference] public BlackboardVariable<int> numberOfClosestPointsToPickFrom = new BlackboardVariable<int>(3);
     [SerializeReference] public BlackboardVariable<float> Speed;
     [SerializeReference] public BlackboardVariable<float> WaypointWaitTime = new BlackboardVariable<float>(1.0f);
     [SerializeReference] public BlackboardVariable<float> DistanceThreshold = new BlackboardVariable<float>(0.2f);
     [SerializeReference] public BlackboardVariable<string> AnimatorSpeedParam = new BlackboardVariable<string>("SpeedMagnitude");
+    [SerializeReference] public BlackboardVariable<int> PointsLeftToVisit = new BlackboardVariable<int>(2);
     [Tooltip("Should patrol restart from the latest point?")]
     [SerializeReference] public BlackboardVariable<bool> PreserveLatestPatrolPoint = new (false);
+    [Tooltip("Should exclude the most nearest point to Player?")]
+    [SerializeReference] public BlackboardVariable<bool> ExcludeMostNearestPoint = new (true);
 
     private NavMeshAgent m_NavMeshAgent;
     // private Animator m_Animator;
@@ -29,14 +36,18 @@ public partial class PatrolRandomPointsAction : Action
     [CreateProperty]
     private int m_CurrentPatrolPoint = 0;
     [CreateProperty]
-    private bool m_Waiting;
+    private bool m_Waiting = false;
     [CreateProperty]
     private float m_WaypointWaitTimer;
     
+    private int m_VisitedPointsCount = 0;
+
     protected override Status OnStart()
     {
-        
-        if (Agent.Value == null)
+
+        Debug.Log("GetterPointType: " + getterPointType.Value);
+        Debug.Log("OnStart");
+        if (agent.Value == null)
         {
             LogFailure("No agent assigned.");
             return Status.Failure;
@@ -47,21 +58,18 @@ public partial class PatrolRandomPointsAction : Action
             LogFailure("No waypoints to patrol assigned.");
             return Status.Failure;
         }
-
-        Debug.Log("1) m_CurrentPatrolPoint: " + m_CurrentPatrolPoint);
-        Initialize();
-        Debug.Log("2) m_CurrentPatrolPoint: " + m_CurrentPatrolPoint);
-
-        m_Waiting = false;
+        
+        m_Waiting = true;
         m_WaypointWaitTimer = 0.0f;
 
-        MoveToNextWaypoint();
+        Initialize();
+        // MoveToNextWaypoint();
         return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
-        if (Agent.Value == null || Waypoints.Value == null)
+        if (agent.Value == null || Waypoints.Value == null)
         {
             return Status.Failure;
         }
@@ -82,42 +90,51 @@ public partial class PatrolRandomPointsAction : Action
         else
         {
             float distance = GetDistanceToWaypoint();
-            Vector3 agentPosition = Agent.Value.transform.position;
+            // Vector3 agentPosition = Agent.Value.transform.position;
                 
             // If we are using navmesh, get the animator speed out of the velocity.
             // if (m_Animator != null && m_NavMeshAgent != null)
             // {
             //     m_Animator.SetFloat(AnimatorSpeedParam, m_NavMeshAgent.velocity.magnitude);
             // }
-
+            
             if (distance <= DistanceThreshold)
             {
                 // if (m_Animator != null)
                 // {
                 //     m_Animator.SetFloat(AnimatorSpeedParam, 0);
                 // }
+                m_VisitedPointsCount++;
+                Debug.Log("Waiting, VisitedPointsCount: " + m_VisitedPointsCount);
+                
+                if(m_VisitedPointsCount >= PointsLeftToVisit.Value)
+                {
+                    m_VisitedPointsCount = 0;
+                    return Status.Success;
+                }
 
                 m_WaypointWaitTimer = WaypointWaitTime.Value;
                 m_Waiting = true;
             }
             else if (m_NavMeshAgent == null)
             {
-                float speed = Mathf.Min(Speed, distance);
-
-                Vector3 toDestination = m_CurrentTarget - agentPosition;
-                toDestination.y = 0.0f;
-                toDestination.Normalize();
-                agentPosition += toDestination * (speed * Time.deltaTime);
-                Agent.Value.transform.position = agentPosition;
-                Agent.Value.transform.forward = toDestination;
+                // float speed = Mathf.Min(Speed, distance);
+                //
+                // Vector3 toDestination = m_CurrentTarget - agentPosition;
+                // toDestination.y = 0.0f;
+                // toDestination.Normalize();
+                // agentPosition += toDestination * (speed * Time.deltaTime);
+                // Agent.Value.transform.position = agentPosition;
+                // Agent.Value.transform.forward = toDestination;
             }
         }
-
+        
         return Status.Running;
     }
 
     protected override void OnEnd()
     {
+        Debug.Log("OnEnd");
         // if (m_Animator != null)
         // {
         //     m_Animator.SetFloat(AnimatorSpeedParam, 0);
@@ -146,20 +163,22 @@ public partial class PatrolRandomPointsAction : Action
         //     m_Animator.SetFloat(AnimatorSpeedParam, 0);
         // }
 
-        m_NavMeshAgent = Agent.Value.GetComponentInChildren<NavMeshAgent>();
+        m_NavMeshAgent = agent.Value.GetComponentInChildren<NavMeshAgent>();
         if (m_NavMeshAgent != null)
         {
             if (m_NavMeshAgent.isOnNavMesh)
             {
                 m_NavMeshAgent.ResetPath();
             }
+
             m_NavMeshAgent.speed = Speed.Value;
             m_PreviousStoppingDistance = m_NavMeshAgent.stoppingDistance;
             m_NavMeshAgent.stoppingDistance = DistanceThreshold;
         }
 
         // m_CurrentPatrolPoint = PreserveLatestPatrolPoint.Value ? m_CurrentPatrolPoint - 1 : -1;
-        m_CurrentPatrolPoint = 1;
+        // m_CurrentPatrolPoint = GetRandomNextPoint();
+        // m_NavMeshAgent.SetDestination(m_CurrentTarget);
     }
 
     private float GetDistanceToWaypoint()
@@ -170,7 +189,7 @@ public partial class PatrolRandomPointsAction : Action
         }
 
         Vector3 targetPosition = m_CurrentTarget;
-        Vector3 agentPosition = Agent.Value.transform.position;
+        Vector3 agentPosition = agent.Value.transform.position;
         agentPosition.y = targetPosition.y; // Ignore y for distance check.
         return Vector3.Distance(
             agentPosition,
@@ -180,7 +199,7 @@ public partial class PatrolRandomPointsAction : Action
 
     private void MoveToNextWaypoint()
     {
-        m_CurrentPatrolPoint = GetRandomNextPoint();
+        m_CurrentPatrolPoint = GetNextPoint(getterPointType);
         // m_CurrentPatrolPoint = (m_CurrentPatrolPoint + 1) % Waypoints.Value.Count;            
 
         m_CurrentTarget = Waypoints.Value[m_CurrentPatrolPoint].transform.position;
@@ -195,9 +214,28 @@ public partial class PatrolRandomPointsAction : Action
         //     m_Animator.SetFloat(AnimatorSpeedParam, Speed.Value);
         // }
     }
+    
+    private int GetNextPoint(GetterPointType getterPointType)
+    {
+        int index = -1;
+        switch (getterPointType)
+        {
+            case GetterPointType.Random:
+                index = GetRandomNextPoint();
+                break;
+            case GetterPointType.ClosestToPlayer:
+                index = GetClosestToPlayerPoint();
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(getterPointType), getterPointType, null);
+        }
+
+        return index;
+    }
 
     private int GetRandomNextPoint()
     {
+        Debug.Log("Random Way");
         int index = -1;
                 
         while (index == -1 || index == m_CurrentPatrolPoint)
@@ -207,5 +245,24 @@ public partial class PatrolRandomPointsAction : Action
                 
         return index;
     }
+    
+    private int GetClosestToPlayerPoint()
+    {
+        Debug.Log("Closest Way");
+        // Sort patrol points by distance to player
+        var playerPosition = Player.Value.transform.position;
+        // Debug.Log("playerPosition: " + playerPosition);
+        GameObject[] sortedPoints = Waypoints.Value.OrderBy(p => Vector3.Distance(p.transform.position, playerPosition)).ToArray();
+        // Debug.Log("Index of nearest point: " + Waypoints.Value.IndexOf(sortedPoints[0]) + " distance: " + Vector3.Distance(sortedPoints[0].transform.position, playerPosition) + " to player." + " - " + sortedPoints[0].transform.position + " - Player: " + Player.Value.transform.position + " - Waypoint: " + sortedPoints[0].transform.position);
+        // DebugStackOf(sortedPoints);
+        // Pick randomly among the N closest
+        // int pickLimit = Mathf.Min(numberOfClosestPointsToPickFrom, sortedPoints.Length);
+        int randomIndex = Random.Range(ExcludeMostNearestPoint ? 1 : 0, numberOfClosestPointsToPickFrom);
+        int pickIndex = Waypoints.Value.IndexOf(sortedPoints[randomIndex]);
+        // Debug.Log("PickIndex: " + pickIndex + " - " + sortedPoints[randomIndex].transform.position + " - Player: " + Player.Value.transform.position + " - Waypoint: " + sortedPoints[randomIndex].transform.position + " - Distance: " + Vector3.Distance(sortedPoints[randomIndex].transform.position, playerPosition) + " to player.");
+        return pickIndex;
+        // m_NavMeshAgent.SetDestination(sortedPoints[randomIndex].transform.position);
+    }
 }
+
 

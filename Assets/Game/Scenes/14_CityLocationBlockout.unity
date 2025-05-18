@@ -5123,6 +5123,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5029310567560238959, guid: 0cd66edf18a96da40bc42825892af61c, type: 3}
   m_PrefabInstance: {fileID: 176563747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &177583653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 177583654}
+  - component: {fileID: 177583655}
+  m_Layer: 0
+  m_Name: TestRandom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &177583654
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177583653}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.59337, y: -381.56226, z: -152.19183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &177583655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177583653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Graph: {fileID: -6144193878364806792, guid: 289af008bd4a7b044b5c870efe6612d3, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 5682739411507478576
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 5682739411507478576
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 177583653}
 --- !u!1 &177693381
 GameObject:
   m_ObjectHideFlags: 0
@@ -54598,7 +54658,7 @@ MonoBehaviour:
           m_Value0: 14458320824416469547
           m_Value1: 1227719821458185174
         Name: Speed
-        m_Value: 70
+        m_Value: 50
     - rid: 5682739404328928054
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -60719,7 +60779,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5141564469770448311, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
       propertyPath: m_Speed
-      value: 30
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5141564469770448311, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
       propertyPath: m_AutoBraking
@@ -61450,3 +61510,4 @@ SceneRoots:
   - {fileID: 898999748}
   - {fileID: 474978515}
   - {fileID: 1492792340}
+  - {fileID: 177583654}
