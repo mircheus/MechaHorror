@@ -21,5 +21,10 @@ namespace Game.Scripts.Enemies.WardenCore
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, value);
         }
+
+        private void HearPlayer()
+        {
+            
+        }
     }
 }

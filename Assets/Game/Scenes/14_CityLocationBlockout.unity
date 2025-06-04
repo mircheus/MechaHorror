@@ -54607,6 +54607,7 @@ MonoBehaviour:
   - rid: 5682739404328928053
   - rid: 5682739404328928054
   - rid: 5682739404328928076
+  - rid: 5682739434975658445
   m_IsInitialised: 0
   m_IsStarted: 0
   references:
@@ -54675,6 +54676,28 @@ MonoBehaviour:
           m_Value1: 8655096739753747778
         Name: Number of Closest Player Points
         m_Value: 4
+    - rid: 5682739434975658445
+      type: {class: 'BlackboardVariable`1[[PlayerDetected, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 17061697552340689074
+          m_Value1: 1907897633594414646
+        Name: PlayerDetected
+        m_Value: {fileID: 11400000, guid: 29810245a9148f14383ca7845e5f477e, type: 2}
+--- !u!114 &1961917203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961917196}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c123d15fa5479bbfefa1f5723ce1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDetected: {fileID: 11400000, guid: 29810245a9148f14383ca7845e5f477e, type: 2}
+  player: {fileID: 462738199}
 --- !u!1 &1963652518
 GameObject:
   m_ObjectHideFlags: 0
@@ -60804,6 +60827,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2082592140379991425, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1961917202}
+    - targetCorrespondingSourceObject: {fileID: 2082592140379991425, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1961917203}
   m_SourcePrefab: {fileID: 100100000, guid: 0731876a84ee8f24e99ebf46d95fd194, type: 3}
 --- !u!23 &4376203216824386683
 MeshRenderer:

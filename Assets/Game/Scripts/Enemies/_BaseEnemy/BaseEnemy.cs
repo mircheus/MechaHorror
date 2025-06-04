@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Game.Scripts.Enemies.FourLegEnemy.States;
 using UnityEngine;
 
 namespace Game.Scripts.Enemies._BaseEnemy
