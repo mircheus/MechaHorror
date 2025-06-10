@@ -116,6 +116,7 @@ namespace Hertzole.GoldPlayer
 		        enabledInputs.Clear();
 	        }
 
+            Debug.Log("Input.Length" + inputs.Length + " inputsDic.Count: " + inputsDic.Count + " enabledInputs.Count: " + enabledInputs.Count);
 	        for (int i = 0; i < inputs.Length; i++)
             {
 	            int hash = GoldPlayerController.InputNameToHash(inputs[i].ButtonName);

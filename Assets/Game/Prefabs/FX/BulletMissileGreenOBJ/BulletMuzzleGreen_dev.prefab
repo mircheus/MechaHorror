@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 13097041212282838}
   - component: {fileID: 13097041212282836}
   - component: {fileID: 13097041212282839}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4920,7 +4920,7 @@ GameObject:
   - component: {fileID: 13097041558687506}
   - component: {fileID: 13097041558687504}
   - component: {fileID: 13097041558687507}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BulletMuzzleGreen_dev
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9813,7 +9813,7 @@ GameObject:
   - component: {fileID: 6106477617327243214}
   - component: {fileID: 6106477617327243208}
   - component: {fileID: 6106477617327243215}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

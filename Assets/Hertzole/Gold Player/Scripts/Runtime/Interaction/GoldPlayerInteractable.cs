@@ -110,6 +110,7 @@ namespace Hertzole.GoldPlayer
         /// <param name="bypassLimit">If true, it will ignore the max limit property.</param>
         public void Interact(bool bypassIsInteractable, bool bypassLimit)
         {
+            Debug.Log("Interact pressed");
             // If we can't interact and we're not bypassing the check, stop here.
             if (!isInteractable && !bypassIsInteractable)
             {
@@ -144,7 +145,7 @@ namespace Hertzole.GoldPlayer
         public void Interact()
         {
             // Don't bypass the checks.
-            Interact(false, false);
+            Interact(true, true);
         }
     }
 }

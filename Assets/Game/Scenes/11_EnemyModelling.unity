@@ -5443,6 +5443,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 495876490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &248676438 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 963984591623177266, guid: 18e017da34840bc41b74118403d43acb, type: 3}
+  m_PrefabInstance: {fileID: 2228087750944139827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &248882778
 GameObject:
   m_ObjectHideFlags: 0
@@ -18243,12 +18248,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3b7416196bdf04f964317d1e8a646b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 661676853261286364}
-  detectionRange: 30
-  attackRange: 30
-  rotationSpeed: 3
-  strafeCooldownTime: 2
-  agent: {fileID: 0}
 --- !u!114 &1048035264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18261,11 +18260,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7578d5bad0426aa868240ae8e6c658, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 1525423772}
-  projectilePrefab: {fileID: 7148810250495089234, guid: 577c6c998fbfca545af618c68e0b1b30, type: 3}
-  damage: 10
-  attackCooldown: 1.5
-  speed: 100
 --- !u!114 &1048035265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18278,9 +18272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a145bc5232270e439cf86ef099aa9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  deathParticle: {fileID: 2125720241}
-  enemyAI: {fileID: 1048035263}
 --- !u!1001 &1064126516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35268,11 +35259,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 495876490}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &2125720241 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7133298800578810401, guid: df2caa4c98445c140ab74c7ee76c4426, type: 3}
-  m_PrefabInstance: {fileID: 1715257681}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2128198114
 GameObject:
   m_ObjectHideFlags: 0
@@ -35748,6 +35734,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: FourLegEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 4434734710153675759, guid: 18e017da34840bc41b74118403d43acb, type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 248676438}
+    - target: {fileID: 4434734710153675759, guid: 18e017da34840bc41b74118403d43acb, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 661676853261286364}
     - target: {fileID: 6689999287157564019, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
