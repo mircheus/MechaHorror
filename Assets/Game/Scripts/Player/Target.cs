@@ -1,45 +1,22 @@
-﻿using System;
+﻿using System.Collections;
+using RetroArsenal;
 using UnityEngine;
-using System.Collections;
-using DG.Tweening;
-using Random = UnityEngine.Random;
 
 public class Target : MonoBehaviour
 {
     public TargetEffects effects;
 
-    [Header("References")]
-    public Renderer targetRenderer;
-    public GameObject burnedTarget;
-    public Ease upEase = Ease.OutCubic;
-    public Ease downEase = Ease.InCubic;
-    public float height = 2f;
-    public float upJumpDuration = 0.5f;
-    public bool isRotateExploding;
-
-    [Header("Shake Rotation settings")] 
-    public float shakeDuration = 1f;
-    public float shakeStrength = 1f;
-    public int shakeVibrato = 5;
-    public float shakeRandomness = 180f;
-    public bool shakeFadeOut = false;
-    public ShakeRandomnessMode shakeRandomnessMode;
-    
-    
     [Header("General Settings")]
     public int hitsToDestroy = 5;
     public float respawnTime = 3.0f;
-    public bool permaDeath = false; // If true, the target will be destroyed instead of respawning
 
     [Header("Squash & Stretch")]
     public bool enableSquashAndStretch = true;
     public float duration = 0.07f; // Duration of both squash and stretch
     public Vector3 squashScale = new Vector3(0.8f, 1.2f, 1f);
     public Vector3 stretchScale = new Vector3(1.2f, 0.8f, 1f);
-    public float rotationStrength = 0.1f;
-    public float positionStrength = 0.1f;
 
-
+    private Renderer targetRenderer;
     private Collider targetCollider;
     private AudioSource audioSource;
     private int currentHits = 0;
@@ -48,16 +25,10 @@ public class Target : MonoBehaviour
 
     void Start()
     {
-        // targetRenderer = GetComponent<Renderer>();
+        targetRenderer = GetComponent<Renderer>();
         targetCollider = GetComponent<Collider>();
         audioSource = GetComponent<AudioSource>();
         originalScale = transform.localScale;
-        burnedTarget.SetActive(false); 
-    }
-
-    private void OnDestroy()
-    {
-        DOTween.Kill(this); // Kills all tweens associated with this target
     }
 
     void SpawnTarget()
@@ -83,8 +54,7 @@ public class Target : MonoBehaviour
     IEnumerator Respawn()
     {
         yield return new WaitForSeconds(respawnTime);
-        burnedTarget.SetActive(false);
-        // SpawnTarget();
+        SpawnTarget();
     }
 
     public void OnHit()
@@ -105,9 +75,7 @@ public class Target : MonoBehaviour
 
             if (enableSquashAndStretch)
             {
-                targetRenderer.transform.DOShakePosition(duration, positionStrength, 10, 90, false, true);
-                targetRenderer.transform.DOShakeRotation(duration, rotationStrength, 10, 90, true, ShakeRandomnessMode.Full);
-                // StartCoroutine(SquashAndStretch());
+                StartCoroutine(SquashAndStretch());
             }
         }
     }
@@ -153,53 +121,30 @@ public class Target : MonoBehaviour
     {
         if (effects.deathParticles.Count > 0)
         {
-            // if (effects.deathParticles.Count == 1)
-            // {
-            //     deathEffect = Instantiate(effects.deathParticles[0], transform.position, transform.rotation) as GameObject; // Spawns the only death particle
-            // }
-            // else
-            // {
-            //     // int randomIndex = Random.Range(0, effects.deathParticles.Count);
-            //     // deathEffect = Instantiate(effects.deathParticles[randomIndex], transform.position, transform.rotation) as GameObject; // Spawns a random death particle
-            // }
-            var deathEffectDirect = Instantiate(effects.deathParticles[0], transform.position, transform.rotation); // Spawns the only death particle
-            int randomIndex = Random.Range(1, effects.deathParticles.Count); 
-            var deathEffect = Instantiate(effects.deathParticles[randomIndex], transform.position, transform.rotation); // Spawns a random death particle
-            // var deathEffect = Instantiate(effects.deathParticles[4], transform.position, transform.rotation); // Spawns a random death particle
-            // }
-            // var deathEffect = Instantiate(effects.deathParticles[0], transform.position, transform.rotation); // Spawns the only death particle
-            //
+            GameObject deathEffect;
+
+            if (effects.deathParticles.Count == 1)
+            {
+                deathEffect = Instantiate(effects.deathParticles[0], transform.position, transform.rotation) as GameObject; // Spawns the only death particle
+            }
+            else
+            {
+                int randomIndex = Random.Range(0, effects.deathParticles.Count);
+                deathEffect = Instantiate(effects.deathParticles[randomIndex], transform.position, transform.rotation) as GameObject; // Spawns a random death particle
+            }
+
             Destroy(deathEffect, 2f); // Removes death particle after 2 seconds
-            Destroy(deathEffectDirect, 2f); // Removes death particle after 2 seconds
         }
 
         targetRenderer.enabled = false; // Hides the target
         targetCollider.enabled = false; // Disables target collider
-        // burnedTarget.SetActive(true); // Activates the burned target
-        //
-        // if (isRotateExploding)
-        // {
-        //     burnedTarget.transform.DOShakeRotation(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, shakeFadeOut, shakeRandomnessMode);
-        // }
-        //
-        // burnedTarget.transform.DOMove(transform.position + Vector3.up * height, upJumpDuration).SetEase(upEase).OnComplete(
-        //     () =>
-        //     {
-        //         burnedTarget.transform.DOMove(transform.position, 0.5f).SetEase(downEase);
-        //     });
-        //
-        // // Play destroy sound if available
-        // if (effects.destroySound && audioSource)
-        // {
-        //     audioSource.PlayOneShot(effects.destroySound);
-        // }
 
-        if(permaDeath)
+        // Play destroy sound if available
+        if (effects.destroySound && audioSource)
         {
-            Destroy(gameObject); // Destroys the target
-            return;
+            audioSource.PlayOneShot(effects.destroySound);
         }
-        
+
         StartCoroutine(Respawn()); // Sets timer for respawning the target
     }
 }
