@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using CameraShake;
+using Game.Scripts.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -80,6 +81,11 @@ namespace Game.Scripts
                 handAnimator.Play(_shoot);
                 CameraShaker.Presets.ShortShake3D(screenShakeStrength, frequency, bouncesCount); // Adjust the shake parameters as needed
             }
+        }
+        
+        public void SetShootingSystemActive(bool isActive, EnergyModeSwitcher energyModeSwitcher)
+        {
+            _isAbleToShoot = isActive;
         }
 
         private IEnumerator IncreaseWeaponHeat()

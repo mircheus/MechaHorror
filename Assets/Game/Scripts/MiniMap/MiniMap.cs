@@ -25,15 +25,9 @@ namespace Game.Scripts.MiniMap
             energyMediator.OnMovementModeEvent -= OnRadarModeDisabled;
             energyMediator.OnShooterModeEvent -= OnRadarModeDisabled;
         }
-        
-        private void Start()
-        {
-            OnRadarModeDisabled(); // TODO: Вынести стартовое состояние режимов в отдельный класс
-        }
 
         private void OnRadarMode()
         {
-            Debug.Log("Minimap: OnRadarMode called. Disabling minimap image and enabling background.");
             minimapImage.gameObject.SetActive(true);
             minimapBackground.gameObject.SetActive(false);
         }

@@ -9,11 +9,6 @@ namespace Game.Scripts.Player
     {
         [Header("References: ")]
         [SerializeField] private EnergyModeSwitcher energyModeSwitcher;
-        [SerializeField] private GoldPlayerController playerController;
-        [Header("Movement Mode: ")]
-        [SerializeField] private MovementSpeeds movementSpeeds;
-        [SerializeField] private MovementSpeeds radarMovementSpeeds;
-        [SerializeField] private MovementSpeeds nonMovementSpeeds;
 
         public event UnityAction OnRadarModeEvent;
         public event UnityAction OnMovementModeEvent;
@@ -35,27 +30,17 @@ namespace Game.Scripts.Player
 
         private void OnRadarMode()
         {
-            SwitchModes();
-            playerController.Movement.WalkingSpeeds = radarMovementSpeeds;
             OnRadarModeEvent?.Invoke();
         }
 
         private void OnMovementMode()
         {
-            SwitchModes();
             OnMovementModeEvent?.Invoke();
-            playerController.Movement.WalkingSpeeds = movementSpeeds;
         }
 
         private void OnShooterMode()
         {
-            SwitchModes();
             OnShooterModeEvent?.Invoke();
-        }
-
-        private void SwitchModes()
-        {
-            playerController.Movement.WalkingSpeeds = nonMovementSpeeds;
         }
     }
 }
