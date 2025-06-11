@@ -25,8 +25,7 @@ namespace Game.Scripts.Player
         private bool _isAbleToDash = true;
         private float _dashTime = 0f;
         private Vector3 _dashDirection;
-
-
+        
         private void OnEnable()
         {
             dashAction.action.Enable();
