@@ -13,6 +13,9 @@ namespace Game.Scripts.Player
         
         [Header("References: ")]
         [SerializeField] private GoldPlayerController playerController;
+        [SerializeField] private ShootingSystem shootingSystem;
+        
+        [Header("Input Actions: ")]
         [SerializeField] private InputActionReference radarModeAction;
         [SerializeField] private InputActionReference movementModeAction;
         [SerializeField] private InputActionReference shooterModeAction;
@@ -55,7 +58,6 @@ namespace Game.Scripts.Player
 
         private void OnRadarMode(InputAction.CallbackContext context)
         {
-            
             SwitchToRadarMode();
         }
 
@@ -66,7 +68,6 @@ namespace Game.Scripts.Player
 
         private void OnShooterMode(InputAction.CallbackContext context)
         {
-            OnShooterModeEvent?.Invoke();
             SwitchToShooterMode();
         }
         
@@ -91,18 +92,21 @@ namespace Game.Scripts.Player
         private void SwitchToRadarMode()
         {
             OnRadarModeEvent?.Invoke();
+            shootingSystem.SetShootingSystemActive(false, this);
             playerController.Movement.WalkingSpeeds = radarMovementSpeeds;
         }
         
         private void SwitchToMovementMode()
         {
             OnMovementModeEvent?.Invoke();
+            shootingSystem.SetShootingSystemActive(false, this);
             playerController.Movement.WalkingSpeeds = movementSpeeds;
         }
         
         private void SwitchToShooterMode()
         {
             OnShooterModeEvent?.Invoke();
+            shootingSystem.SetShootingSystemActive(true, this);
             playerController.Movement.WalkingSpeeds = shooterMovementSpeeds;
         }
     }
