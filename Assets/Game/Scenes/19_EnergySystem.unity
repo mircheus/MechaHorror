@@ -422,22 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6c95400b1347d982fea48a4c4bc8eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMode: 0
   energyModeSwitcher: {fileID: 462738210}
-  energyPanelUI: {fileID: 0}
-  playerController: {fileID: 462738208}
-  movementSpeeds:
-    forwardSpeed: 50
-    sidewaysSpeed: 50
-    backwardsSpeed: 35
-  radarMovementSpeeds:
-    forwardSpeed: 30
-    sidewaysSpeed: 30
-    backwardsSpeed: 23
-  shooterMovementSpeeds:
-    forwardSpeed: 40
-    sidewaysSpeed: 40
-    backwardsSpeed: 40
 --- !u!1 &33879059
 GameObject:
   m_ObjectHideFlags: 0
@@ -6308,9 +6293,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3864703bb6040e9af357cd65bc71661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMode: 1
+  playerController: {fileID: 462738208}
   radarModeAction: {fileID: 8788095635956653360, guid: b8528684c8982294ca471f7afcfc5ecd, type: 3}
   movementModeAction: {fileID: 8081775805814831967, guid: b8528684c8982294ca471f7afcfc5ecd, type: 3}
   shooterModeAction: {fileID: 4577907865138727616, guid: b8528684c8982294ca471f7afcfc5ecd, type: 3}
+  radarMovementSpeeds:
+    forwardSpeed: 30
+    sidewaysSpeed: 30
+    backwardsSpeed: 20
+  movementSpeeds:
+    forwardSpeed: 60
+    sidewaysSpeed: 60
+    backwardsSpeed: 45
+  shooterMovementSpeeds:
+    forwardSpeed: 45
+    sidewaysSpeed: 45
+    backwardsSpeed: 30
 --- !u!1 &468917364
 GameObject:
   m_ObjectHideFlags: 0
