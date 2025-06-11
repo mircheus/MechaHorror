@@ -1,4 +1,5 @@
-﻿using Hertzole.GoldPlayer;
+﻿using CameraShake;
+using Hertzole.GoldPlayer;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,30 +15,41 @@ namespace Game.Scripts.Player
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float dashCooldown = 1f;
         
+        [Header("Screen Shake Settings: ")]
+        [Range(0.1f, 1f)]
+        [SerializeField] private float screenShakeStrength = 1f;
+        [SerializeField] private float frequency = 25f;
+        [SerializeField] private int bouncesCount = 5;
+        
+        
         [Header("Dash Inertia: ")]
         [SerializeField] private AnimationCurve dashSpeedCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
         
         [Header("References: ")]
         [SerializeField] private CharacterController controller;
         [SerializeField] private GoldPlayerController playerController;
+        [SerializeField] private DashCollider dashCollider;
+        [SerializeField] private ParticleSystem dashParticle;
 
         private bool _isDashing = false;
         private bool _isAbleToDash = true;
         private float _dashTime = 0f;
         private Vector3 _dashDirection;
-        
+
         private void OnEnable()
         {
             dashAction.action.Enable();
             dashAction.action.performed += OnDash;
+            dashCollider.DashTriggered += OnDashTriggered;
         }
 
         private void OnDisable()
         {
             dashAction.action.Disable();
             dashAction.action.performed -= OnDash;
+            dashCollider.DashTriggered -= OnDashTriggered;
         }
-        
+
         public void SetDashActive(bool isActive, EnergyModeSwitcher energyModeSwitcher)
         {
             _isAbleToDash = isActive;
@@ -78,6 +90,7 @@ namespace Game.Scripts.Player
         {
             if (_isDashing)
             {
+                dashCollider.gameObject.SetActive(true);
                 float t = 1f - (_dashTime / dashDuration); // 0 → 1 over dash duration
                 float speedMultiplier = dashSpeedCurve.Evaluate(t);
 
@@ -87,6 +100,7 @@ namespace Game.Scripts.Player
                 if (_dashTime <= 0f)
                 {
                     _isDashing = false;
+                    dashCollider.gameObject.SetActive(false);
                     Invoke(nameof(ResetDash), dashCooldown);
                 }
             }
@@ -105,6 +119,12 @@ namespace Game.Scripts.Player
                     Invoke(nameof(ResetDash), dashCooldown);
                 }
             }
+        }
+
+        private void OnDashTriggered()
+        {
+            dashParticle.Play();
+            CameraShaker.Presets.ShortShake3D(screenShakeStrength, frequency, bouncesCount);
         }
     }
 }
