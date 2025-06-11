@@ -65,12 +65,11 @@ namespace Game.Scripts.Player
             {
                 float currentDistance = Vector3.Distance(transform.position, detectedEnemy.transform.position);
                 
-                if (distance < 0 || currentDistance < distance)
+                if(IsEnemyVisible(detectedEnemy.transform))
                 {
-                    distance = currentDistance;
-                    
-                    if(IsEnemyVisible(detectedEnemy.transform))
+                    if (distance < 0 || currentDistance < distance)
                     {
+                        distance = currentDistance;
                         TargetDetected?.Invoke(detectedEnemy.transform);
                     }
                 }
@@ -81,8 +80,11 @@ namespace Game.Scripts.Player
         {
             var transform1 = transform;
             Vector3 directionToEnemy = enemy.position - transform1.position;
-            float dot = Vector3.Dot(transform1.forward, directionToEnemy.normalized);
-            return dot > dotThreshold; // Adjust this threshold as needed
+            // float dot = Vector3.Dot(transform1.forward, directionToEnemy.normalized);
+            // return dot > dotThreshold; // Adjust this threshold as needed
+            
+            float angle = Vector3.Angle(transform1.forward, directionToEnemy);
+            return angle < 60f;
         }
     }
 }
