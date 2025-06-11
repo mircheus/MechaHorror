@@ -1170,7 +1170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dashAction: {fileID: -878885225722899420, guid: b8528684c8982294ca471f7afcfc5ecd, type: 3}
-  dashForce: 40
+  dashForce: 90
   dashDuration: 1.2
   dashCooldown: 1
   dashSpeedCurve:
@@ -1186,8 +1186,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 0.4082429
-      value: 0.72186595
+      time: 0.16073772
+      value: 0.76419765
       inSlope: 1.2192456
       outSlope: 1.2192456
       tangentMode: 0
@@ -1195,8 +1195,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.35784465
     - serializedVersion: 3
-      time: 0.9900055
-      value: 0.2768097
+      time: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1238,6 +1238,7 @@ MonoBehaviour:
   defaultMode: 0
   playerController: {fileID: 7163773543539266409}
   shootingSystem: {fileID: 6093696480667205131}
+  dash: {fileID: 1570134340758750971}
   radarModeAction: {fileID: 8788095635956653360, guid: b8528684c8982294ca471f7afcfc5ecd, type: 3}
   movementModeAction: {fileID: 8081775805814831967, guid: b8528684c8982294ca471f7afcfc5ecd, type: 3}
   shooterModeAction: {fileID: 4577907865138727616, guid: b8528684c8982294ca471f7afcfc5ecd, type: 3}

@@ -85,7 +85,6 @@ namespace Game.Scripts
         public void SetShootingSystemActive(bool isActive, EnergyModeSwitcher energyModeSwitcher)
         {
             _isAbleToShoot = isActive;
-            Debug.Log("_isAbleToShoot: " + _isAbleToShoot);
         }
 
         private IEnumerator IncreaseWeaponHeat()

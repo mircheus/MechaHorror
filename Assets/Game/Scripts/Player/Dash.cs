@@ -6,46 +6,47 @@ namespace Game.Scripts.Player
 {
     public class Dash : MonoBehaviour
     {
-        [Header("Input")]
+        [Header("Input: ")]
         [SerializeField] private InputActionReference dashAction;
 
-        [Header("Dash Settings")]
+        [Header("Dash Settings: ")]
         [SerializeField] private float dashForce = 20f;
         [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float dashCooldown = 1f;
         
-        [Header("Dash Inertia")]
+        [Header("Dash Inertia: ")]
         [SerializeField] private AnimationCurve dashSpeedCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-
-
-        [Header("References")]
+        
+        [Header("References: ")]
         [SerializeField] private CharacterController controller;
-        [SerializeField] private Transform cameraHeadTransform;
         [SerializeField] private GoldPlayerController playerController;
 
-        private bool isDashing = false;
-        private bool canDash = true;
-        private float dashTime = 0f;
-        private MovementSpeeds _originalSpeeds;
+        private bool _isDashing = false;
+        private bool _isAbleToDash = true;
+        private float _dashTime = 0f;
+        private Vector3 _dashDirection;
 
-        private Vector3 dashDirection;
 
         private void OnEnable()
         {
-            _originalSpeeds = playerController.Movement.WalkingSpeeds;
-            dashAction.action.performed += OnDash;
             dashAction.action.Enable();
+            dashAction.action.performed += OnDash;
         }
 
         private void OnDisable()
         {
-            dashAction.action.performed -= OnDash;
             dashAction.action.Disable();
+            dashAction.action.performed -= OnDash;
+        }
+        
+        public void SetDashActive(bool isActive, EnergyModeSwitcher energyModeSwitcher)
+        {
+            _isAbleToDash = isActive;
         }
 
         private void OnDash(InputAction.CallbackContext context)
         {
-            if (canDash && !isDashing)
+            if (_isAbleToDash && !_isDashing)
             {
                 StartDash();
             }
@@ -53,15 +54,15 @@ namespace Game.Scripts.Player
 
         private void StartDash()
         {
-            isDashing = true;
-            canDash = false;
-            dashTime = dashDuration;
+            _isDashing = true;
+            _isAbleToDash = false;
+            _dashTime = dashDuration;
 
             // Choose dash direction (example: current forward)
             // dashDirection = transform.forward;
             var inputVector = playerController.Movement.GetInput(0f);
-            dashDirection = new Vector3(inputVector.x, 0, inputVector.y).normalized;
-            dashDirection = transform.TransformDirection(dashDirection);
+            _dashDirection = new Vector3(inputVector.x, 0, inputVector.y).normalized;
+            _dashDirection = transform.TransformDirection(_dashDirection);
         }
 
         private void Update()
@@ -71,22 +72,22 @@ namespace Game.Scripts.Player
 
         private void ResetDash()
         {
-            canDash = true;
+            _isAbleToDash = true;
         }
 
         private void InertiaDash()
         {
-            if (isDashing)
+            if (_isDashing)
             {
-                float t = 1f - (dashTime / dashDuration); // 0 → 1 over dash duration
+                float t = 1f - (_dashTime / dashDuration); // 0 → 1 over dash duration
                 float speedMultiplier = dashSpeedCurve.Evaluate(t);
 
-                controller.Move(dashDirection * dashForce * speedMultiplier * Time.deltaTime);
+                controller.Move(_dashDirection * dashForce * speedMultiplier * Time.deltaTime);
 
-                dashTime -= Time.deltaTime;
-                if (dashTime <= 0f)
+                _dashTime -= Time.deltaTime;
+                if (_dashTime <= 0f)
                 {
-                    isDashing = false;
+                    _isDashing = false;
                     Invoke(nameof(ResetDash), dashCooldown);
                 }
             }
@@ -94,14 +95,14 @@ namespace Game.Scripts.Player
 
         private void StraightDash()
         {
-            if (isDashing)
+            if (_isDashing)
             {
-                controller.Move(dashDirection * dashForce * Time.deltaTime);
-                dashTime -= Time.deltaTime;
+                controller.Move(_dashDirection * dashForce * Time.deltaTime);
+                _dashTime -= Time.deltaTime;
 
-                if (dashTime <= 0f)
+                if (_dashTime <= 0f)
                 {
-                    isDashing = false;
+                    _isDashing = false;
                     Invoke(nameof(ResetDash), dashCooldown);
                 }
             }
