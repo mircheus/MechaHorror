@@ -20,7 +20,7 @@ namespace Game.Scripts.Player
         [SerializeField] private InputActionReference movementModeAction;
         [SerializeField] private InputActionReference shooterModeAction;
         
-        [Header("Movement Mode: ")]
+        [Header("Movement Speeds: ")]
         [SerializeField] private MovementSpeeds radarMovementSpeeds;
         [SerializeField] private MovementSpeeds movementSpeeds;
         [SerializeField] private MovementSpeeds shooterMovementSpeeds;

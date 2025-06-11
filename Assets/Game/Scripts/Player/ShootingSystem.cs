@@ -55,7 +55,6 @@ namespace Game.Scripts
 
         private void Start()
         {
-            _isAbleToShoot = true;
             _shotCounter = 0;
         }
 
@@ -86,6 +85,7 @@ namespace Game.Scripts
         public void SetShootingSystemActive(bool isActive, EnergyModeSwitcher energyModeSwitcher)
         {
             _isAbleToShoot = isActive;
+            Debug.Log("_isAbleToShoot: " + _isAbleToShoot);
         }
 
         private IEnumerator IncreaseWeaponHeat()
