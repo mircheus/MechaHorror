@@ -38,13 +38,13 @@ namespace Game.Scripts.Player
             Debug.Log("Radar mode activated");
         }
 
-        private void OnMovementMode(InputAction.CallbackContext obj)
+        private void OnMovementMode(InputAction.CallbackContext context)
         {
             OnMovementModeEvent?.Invoke();
             Debug.Log("Movement mode activated");
         }
 
-        private void OnShooterMode(InputAction.CallbackContext obj)
+        private void OnShooterMode(InputAction.CallbackContext context)
         {
             OnShooterModeEvent?.Invoke();
             Debug.Log("Shooter mode activated");

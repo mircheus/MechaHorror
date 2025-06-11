@@ -7,13 +7,16 @@ namespace Game.Scripts.Player
 {
     public class EnergyMediator : MonoBehaviour
     {
+        [Header("Settings:")]
+        [SerializeField] private MechMode defaultMode = MechMode.Radar;
         [Header("References: ")]
         [SerializeField] private EnergyModeSwitcher energyModeSwitcher;
+        [SerializeField] private EnergyPanelUI energyPanelUI;
         [SerializeField] private GoldPlayerController playerController;
         [Header("Movement Mode: ")]
         [SerializeField] private MovementSpeeds movementSpeeds;
         [SerializeField] private MovementSpeeds radarMovementSpeeds;
-        [SerializeField] private MovementSpeeds nonMovementSpeeds;
+        [SerializeField] private MovementSpeeds shooterMovementSpeeds;
 
         public event UnityAction OnRadarModeEvent;
         public event UnityAction OnMovementModeEvent;
@@ -31,6 +34,11 @@ namespace Game.Scripts.Player
             energyModeSwitcher.OnRadarModeEvent -= OnRadarMode;
             energyModeSwitcher.OnMovementModeEvent -= OnMovementMode;
             energyModeSwitcher.OnShooterModeEvent -= OnShooterMode;
+        }
+
+        private void Start()
+        {
+            EnterDefaultMode();
         }
 
         private void OnRadarMode()
@@ -55,7 +63,32 @@ namespace Game.Scripts.Player
 
         private void SwitchModes()
         {
-            playerController.Movement.WalkingSpeeds = nonMovementSpeeds;
+            playerController.Movement.WalkingSpeeds = shooterMovementSpeeds;
         }
+
+        private void EnterDefaultMode()
+        {
+            switch (defaultMode)
+            {
+                case MechMode.Radar:
+                    OnRadarMode();
+                    break;
+                
+                case MechMode.Movement:
+                    OnMovementMode();
+                    break;
+                
+                case MechMode.Shooter:
+                    OnShooterMode();
+                    break;
+            }
+        }
+    }
+
+    internal enum MechMode
+    {
+        Radar, 
+        Movement,
+        Shooter
     }
 }
