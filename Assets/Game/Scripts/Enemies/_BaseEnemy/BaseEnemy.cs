@@ -8,6 +8,7 @@ namespace Game.Scripts.Enemies._BaseEnemy
 {
     public abstract class BaseEnemy : MonoBehaviour
     {
+        [Header("Base References: ")]
         [SerializeField] protected int health = 3;
         [SerializeField] protected EnemyAI enemyAI;
     
