@@ -80,7 +80,7 @@ namespace Game.Scripts.Enemies.Footballer
             }
 
             obj.position = end;
-            obj.GetComponent<BallAutoRotate>().StopRotating();
+            obj.GetComponent<Ball>().StopRotating();
         }
 
     }

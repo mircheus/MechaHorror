@@ -24,12 +24,17 @@ namespace Game.Scripts.Enemies.Footballer.States
 
         public void Execute()
         {
-           
+           LookOnTarget();
         }
 
         public void Exit()
         {
            
+        }
+
+        private void LookOnTarget()
+        {
+            _enemyAI.transform.LookAt(_enemyAI.Target);
         }
     }
 }

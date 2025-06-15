@@ -1,10 +1,11 @@
 ﻿using System;
+using Hertzole.GoldPlayer;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Game.Scripts.Utilities
 {
-    public class BallAutoRotate : MonoBehaviour
+    public class Ball : MonoBehaviour
     {
         [Header("Rotation Settings: ")]
         [SerializeField] private Vector3 minRotationSpeed = new Vector3(180f, 180f, 0f); // Minimum rotation speed in degrees per second
@@ -17,6 +18,15 @@ namespace Game.Scripts.Utilities
         private void OnEnable()
         {
             RandomizeRotationSpeed();
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if(other.TryGetComponent(out CharacterController playerController))
+            {
+                Debug.Log("Reach Player");
+                gameObject.SetActive(false);
+            }
         }
 
         private void Update()

@@ -71,7 +71,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  ballPrefab: {fileID: 5456204374324695480, guid: 2b60b925e3290df4597622ee2a09df28, type: 3}
   animator: {fileID: 2400803279506970817}
   footballerAttack: {fileID: 5137681003712844428}
 --- !u!114 &4876645783139661667
@@ -107,6 +106,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   attackCooldown: 3
+  footballer: {fileID: 4876645783139661667}
+  ballPrefab: {fileID: 5456204374324695480, guid: 2b60b925e3290df4597622ee2a09df28, type: 3}
+  ballSpawnPoint: {fileID: 5061982495774427330}
+  animationEventInvoker: {fileID: 5746150872448139662}
+  duration: 1.5
+  height: 12
 --- !u!1001 &8927648310790011168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -297,6 +302,11 @@ PrefabInstance:
 --- !u!95 &2400803279506970817 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6535916073971753441, guid: 2a1126a7058d10c4882769102adbb94d, type: 3}
+  m_PrefabInstance: {fileID: 8927648310790011168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5061982495774427330 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4457057936419615202, guid: 2a1126a7058d10c4882769102adbb94d, type: 3}
   m_PrefabInstance: {fileID: 8927648310790011168}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8624799042173846203 stripped
