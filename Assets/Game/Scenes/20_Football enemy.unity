@@ -28987,6 +28987,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 414514690}
     - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
+      propertyPath: height
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
+      propertyPath: duration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
       propertyPath: ballPrefab
       value: 
       objectReference: {fileID: 5456204374324695480, guid: 2b60b925e3290df4597622ee2a09df28, type: 3}
