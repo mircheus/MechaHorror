@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Enemies.BaseEnemy;
 using UnityEngine;
 using UnityEngine.Events;
 

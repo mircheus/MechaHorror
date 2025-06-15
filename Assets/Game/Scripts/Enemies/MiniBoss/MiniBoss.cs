@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Enemies.MiniBoss
 {
-    public class MiniBoss : BaseEnemy
+    public class MiniBoss : BaseEnemy.BaseEnemy
     {
         [Header("References:")]
         [SerializeField] private Animator animator;

@@ -2,6 +2,7 @@
 using System.Collections;
 using Game.Scripts;
 using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Enemies.BaseEnemy;
 using Game.Scripts.Enemies.MiniBoss.States;
 
 namespace RetroArsenal

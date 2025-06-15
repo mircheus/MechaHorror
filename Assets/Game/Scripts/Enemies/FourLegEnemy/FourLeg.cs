@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Enemies.FourLegEnemy
 {
-    public class FourLeg : BaseEnemy
+    public class FourLeg : BaseEnemy.BaseEnemy
     {
         [SerializeField] private ParticleSystem deathParticle;
         

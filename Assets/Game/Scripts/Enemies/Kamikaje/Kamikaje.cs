@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Scripts.Enemies.Kamikaje
 {
-    public class Kamikaje : BaseEnemy
+    public class Kamikaje : BaseEnemy.BaseEnemy
     {
         [Header("Kamikaje References: ")] 
         [SerializeField] private GameObject mechGameObject;

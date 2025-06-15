@@ -9,7 +9,7 @@ using ChaseState = Game.Scripts.Enemies.WardenCore.States.ChaseState;
 
 namespace Game.Scripts.Enemies.WardenCore
 {
-    public class WardenCore : BaseEnemy
+    public class WardenCore : BaseEnemy.BaseEnemy
     {
         [Header("Patrol Settings")] 
         [SerializeField] private Transform[] patrolPoints;
