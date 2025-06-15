@@ -54,6 +54,7 @@ namespace Game.Scripts.Player
 
         private void OnEnemyDeath()
         {
+            _detectedEnemies.Clear();
             TargetLost?.Invoke();
         }
 
