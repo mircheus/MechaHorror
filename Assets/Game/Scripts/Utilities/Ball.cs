@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Game.Scripts.Player;
 using Hertzole.GoldPlayer;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -16,8 +17,8 @@ namespace Game.Scripts.Utilities
         [SerializeField] private Vector3 maxRotationSpeed = new Vector3(360f, 360f, 0f); // Maximum rotation speed in degrees per second
 
         [Header("Self Destruct Settings: ")]
-        [SerializeField] private float selfDestructDelay = 10f; // Time before the ball self-destructs
-        
+        [SerializeField] private float selfDestructDelay = 10f; // Time before the ball self-destructs\
+
         private Vector3 _rotationSpeed;
         private Rigidbody _rigidbody;
         private Coroutine _stopRotationCoroutine;
@@ -33,17 +34,19 @@ namespace Game.Scripts.Utilities
 
         private void OnCollisionEnter(Collision collision)
         {
-            if(collision.collider.TryGetComponent(out CharacterController playerController))
-            {
-                gameObject.SetActive(false);
-            }
+            // if(collision.collider.TryGetComponent(out PlayerHealth playerHealth))
+            // {
+            //     playerHealth.TakeDamage(1);
+            //     Instantiate(selfDestructParticle, transform.position, Quaternion.identity);
+            //     gameObject.SetActive(false);
+            // }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if(other.TryGetComponent(out CharacterController playerController))
+            if(other.TryGetComponent(out PlayerHealth playerHealth))
             {
-                Debug.Log("Reach Player");
+                playerHealth.TakeDamage(1);
                 gameObject.SetActive(false);
             }
         }
