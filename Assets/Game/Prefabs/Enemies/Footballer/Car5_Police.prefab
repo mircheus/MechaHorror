@@ -86,6 +86,84 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &3368449924664030752
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4680229938295343874}
+    m_Modifications:
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4011251727955164085, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+      propertyPath: m_Name
+      value: FrostExplosion
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+--- !u!4 &293117723941622231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3075534513164724215, guid: 011166512bd46c64ca8c123c04893048, type: 3}
+  m_PrefabInstance: {fileID: 3368449924664030752}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5150214897417809129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,8 +229,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7924291568559912336, guid: e6f9ba9644c5400469c4e46b1b3cb3be, type: 3}
+      propertyPath: m_Name
+      value: Car5_Police_gameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: -7924291568559912336, guid: e6f9ba9644c5400469c4e46b1b3cb3be, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7924291568559912336, guid: e6f9ba9644c5400469c4e46b1b3cb3be, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e6f9ba9644c5400469c4e46b1b3cb3be, type: 3}
       propertyPath: m_Name
@@ -177,6 +263,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6f9ba9644c5400469c4e46b1b3cb3be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 293117723941622231}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: e6f9ba9644c5400469c4e46b1b3cb3be, type: 3}
       insertIndex: -1
       addedObject: {fileID: 999295203236434084}
@@ -237,7 +326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b34a57e823f5465eb97df7b65610bfd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationStopDelay: 3
+  ballGameObject: {fileID: 6160501957835253401}
+  sphereCollider: {fileID: 3260102899720952158}
+  boxCollider: {fileID: 2728764944791312944}
+  destroyParticlePrefab: {fileID: 4312026359363621820, guid: f9bff30d60859c14889bdd86b4ee7076, type: 3}
+  rotationStopEnableDelay: 1
   minRotationSpeed: {x: 180, y: 180, z: 0}
   maxRotationSpeed: {x: 360, y: 360, z: 0}
   selfDestructDelay: 10
@@ -263,7 +356,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -289,3 +382,8 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 7
   m_Center: {x: 0, y: 1, z: -0.08581543}
+--- !u!1 &6160501957835253401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7924291568559912336, guid: e6f9ba9644c5400469c4e46b1b3cb3be, type: 3}
+  m_PrefabInstance: {fileID: 5150214897417809129}
+  m_PrefabAsset: {fileID: 0}

@@ -4,6 +4,7 @@ using Game.Scripts;
 using Game.Scripts.Enemies._BaseEnemy;
 using Game.Scripts.Enemies.BaseEnemy;
 using Game.Scripts.Enemies.MiniBoss.States;
+using Game.Scripts.Utilities;
 
 namespace RetroArsenal
 {
@@ -66,6 +67,11 @@ namespace RetroArsenal
             if (Physics.SphereCast(myTransform.position, rad, dir, out hit, dist))
             {
                 myTransform.position = hit.point + (hit.normal * collideOffset);
+
+                if (hit.collider.TryGetComponent(out Ball ball))
+                {
+                    
+                }
                 
                 if (hit.transform.tag == "Target") // TODO: Избавить от тэгов
                 {
