@@ -1,23 +1,25 @@
 using System;
 using System.Collections.Generic;
-using Game.Scripts.Enemies.FourLegEnemy.States;
+using Game.Scripts.Enemies._BaseEnemy;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Game.Scripts.Enemies._BaseEnemy
+namespace Game.Scripts.Enemies.BaseEnemy
 {
+    [RequireComponent(typeof(EnemyAI))]
     public abstract class BaseEnemy : MonoBehaviour
     {
         [Header("Base References: ")]
         [SerializeField] protected int health = 3;
-        [SerializeField] protected EnemyAI enemyAI;
-    
+        
+        protected EnemyAI enemyAI;
         protected StateMachine stateMachine;
 
         public event UnityAction Death;
 
         protected void Start()
         {
+            enemyAI = GetComponent<EnemyAI>();
             var states = GetStates();
             enemyAI.Init(states);
             stateMachine = enemyAI.StateMachine;

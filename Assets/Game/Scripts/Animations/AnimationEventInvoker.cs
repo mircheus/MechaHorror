@@ -4,7 +4,7 @@ using UnityEngine;
 public class AnimationEventInvoker : MonoBehaviour
 {
     public event Action<AttackType> OnRangeAttack;
-    
+
     public void InvokeAttack(AttackType attackType)
     {
         OnRangeAttack?.Invoke(attackType);
@@ -14,5 +14,6 @@ public class AnimationEventInvoker : MonoBehaviour
 public enum AttackType
 {
     RangeAttack, 
-    ShootAttack
+    ShootAttack,
+    BallKickAttack
 }
