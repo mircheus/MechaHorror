@@ -9,26 +9,35 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
     public class AttackState : IState
     {
         private readonly EnemyAI _enemyAI;
+        private readonly FourLegAttack _attack;
         private Coroutine _strafeCoroutine;
+        private Coroutine _attackCoroutine;
         private Vector3 _endPosition;
 
-        public AttackState(EnemyAI enemyAI)
+        public AttackState(EnemyAI enemyAI, BaseEnemyAttack fourLegAttack)
         {
             _enemyAI = enemyAI;
+            _attack = (FourLegAttack)fourLegAttack;
         }
 
         public void Enter()
         {
             Debug.Log("Entering Attack State");
             // RotateTowardTarget();
+            Debug.Log("_attack == null: " + (_attack == null));
+            Debug.Log("_attack.attackCooldown: " + (_attack.AttackCooldown));
+            Debug.Log("_enemyAI.Target == null: " + (_enemyAI.Target == null));
+            
             _strafeCoroutine = _enemyAI.StartCoroutine(Cooldown(Strafe, _enemyAI.StrafeCooldownTime));
+            _attackCoroutine = _enemyAI.StartCoroutine(Cooldown(Attack, _attack.AttackCooldown));
         }
 
         public void Execute()
         {
             RotateTowardTargetAroundY();
             // StrafeToRight();
-            _enemyAI.BaseEnemyAttack.Attack(_enemyAI.Target);
+            // _enemyAI.BaseEnemyAttack.Attack(_enemyAI.Target);
+            // _enemyAI.BaseEnemyAttack.Attack(_enemyAI.Target);
 
             if (_enemyAI.Agent.isStopped == false)
             {
@@ -44,14 +53,12 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
         public void Exit()
         {
             _enemyAI.StopCoroutine(_strafeCoroutine);
-            Debug.Log("Exiting Attack State");
+            _enemyAI.StopCoroutine(_attackCoroutine);
         }
-        
-        private void RotateTowardTarget()
+
+        private void Attack()
         {
-            Vector3 direction = (_enemyAI.Target.position - _enemyAI.transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation, Time.deltaTime * _enemyAI.RotationSpeed);
+            _attack.Attack(_enemyAI.Target);
         }
 
         private void Strafe()
@@ -71,13 +78,13 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
                 }
             });
         }
-        
+
         private void MoveToDestination(Vector3 destination)
         {
             _enemyAI.Agent.SetDestination(destination);
             
         }
-        
+
         private void RotateTowardTargetAroundY()
         {
             Vector3 direction = (_enemyAI.Target.position - _enemyAI.transform.position).normalized;
@@ -86,7 +93,14 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
             lookRotation.z = 0; // Keep the z rotation at 0
             _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation, Time.deltaTime * _enemyAI.RotationSpeed);
         }
-        
+
+        private void RotateTowardTarget()
+        {
+            Vector3 direction = (_enemyAI.Target.position - _enemyAI.transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            _enemyAI.transform.rotation = Quaternion.Slerp(_enemyAI.transform.rotation, lookRotation, Time.deltaTime * _enemyAI.RotationSpeed);
+        }
+
         private IEnumerator Cooldown(Action action, float cooldownTime)
         {
             while (true)

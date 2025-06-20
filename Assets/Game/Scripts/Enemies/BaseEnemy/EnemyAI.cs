@@ -10,6 +10,8 @@ namespace Game.Scripts.Enemies._BaseEnemy
     [RequireComponent(typeof(NavMeshAgent))]
     public abstract class EnemyAI : MonoBehaviour
     {
+        [Header("Base References:")]
+        [SerializeField] protected BaseEnemyAttack baseEnemyAttack;
         [SerializeField] protected NavMeshAgent agent;
         [SerializeField] private Transform target;
         [SerializeField] protected float detectionRange = 10f;
@@ -22,7 +24,6 @@ namespace Game.Scripts.Enemies._BaseEnemy
         protected bool isGizmosEnabled = true;
         
         protected StateMachine stateMachine;
-        protected BaseEnemyAttack baseEnemyAttack;
 
         public BaseEnemyAttack BaseEnemyAttack => baseEnemyAttack;
         public StateMachine StateMachine => stateMachine;
@@ -36,7 +37,7 @@ namespace Game.Scripts.Enemies._BaseEnemy
         public virtual void Init(Dictionary<Type, IState> states)
         {
             agent = GetComponent<NavMeshAgent>();
-            baseEnemyAttack = GetComponent<BaseEnemyAttack>();
+            // baseEnemyAttack = GetComponent<BaseEnemyAttack>();
             stateMachine = new StateMachine(this, states);
             // stateMachine.ChangeState(new IdleState(this));
             // stateMachine.Enter<IdleState>();

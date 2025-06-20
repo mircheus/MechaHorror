@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  enemyAI: {fileID: 4434734710153675759}
+  fourLegAttack: {fileID: 0}
   deathParticle: {fileID: 5153020375945682031}
 --- !u!114 &4434734710153675759
 MonoBehaviour:
@@ -535,7 +535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85da1b12f2544c4fb9a54e86153d7b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  baseEnemyAttack: {fileID: 373298607167289028}
+  agent: {fileID: 963984591623177266}
   target: {fileID: 0}
   detectionRange: 30
   attackRange: 9
@@ -555,8 +556,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  attackCooldown: 2
-  shootPoint: {fileID: 7051449419056898381}
+  attackCooldown: 1
+  shootPoint:
+  - {fileID: 7051449419056898381}
+  - {fileID: 4100750386663672806}
   projectilePrefab: {fileID: 7148810250495089234, guid: 577c6c998fbfca545af618c68e0b1b30, type: 3}
   speed: 150
 --- !u!1 &1485110752040443825
