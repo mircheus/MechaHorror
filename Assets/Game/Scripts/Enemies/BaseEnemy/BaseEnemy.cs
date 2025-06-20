@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Interfaces;
+using Game.Scripts.Player;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Game.Scripts.Enemies.BaseEnemy
 {
     [RequireComponent(typeof(EnemyAI))]
-    public abstract class BaseEnemy : MonoBehaviour
+    public abstract class BaseEnemy : MonoBehaviour, IDamageable
     {
         [Header("Base References: ")]
         [SerializeField] protected int health = 3;
@@ -27,7 +29,7 @@ namespace Game.Scripts.Enemies.BaseEnemy
 
         public void TakeDamage(int amount)
         {
-            // DamagePopUpGenerator.current.CreatePopUp(amount.ToString(), true);
+            // DamagePopUpGenerator.current.CreatePopUpTesting(transform.position + new Vector3(0, 2, 0));
             health -= amount;
             CheckDeath();
         }
