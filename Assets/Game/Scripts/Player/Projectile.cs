@@ -1,4 +1,6 @@
 ﻿using Game.Scripts.Enemies.MiniBoss.States;
+using Game.Scripts.Interfaces;
+using Game.Scripts.Utilities;
 using UnityEngine;
 
 namespace Game.Scripts.Player
@@ -31,6 +33,13 @@ namespace Game.Scripts.Player
             {
                 return;
             }
+            
+            if(collision.collider.TryGetComponent(out IDamageable damageable))
+            {
+                damageable.TakeDamage(1);
+                HitObject(collision.GetContact(0).normal);
+                return;
+            }
 
             HitObject(collision.GetContact(0).normal);
         }
@@ -48,6 +57,11 @@ namespace Game.Scripts.Player
         public void HitShield(Shield shield)
         {
             HitObject(shield.transform.forward);
+        }
+        
+        public void HitBall(Ball ball)
+        {
+            HitObject(Vector3.up);
         }
 
         private void DestroyMissile()

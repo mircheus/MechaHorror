@@ -1,5 +1,6 @@
 using System;
 using CameraShake;
+using Game.Scripts.Interfaces;
 using UnityEngine;
 
 namespace Game.Scripts.Player
@@ -41,10 +42,5 @@ namespace Game.Scripts.Player
         {
             TakeDamage(1);
         }
-    }
-
-    public interface IDamageable
-    {
-        void TakeDamage(int damage);
     }
 }

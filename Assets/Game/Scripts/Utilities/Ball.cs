@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Game.Scripts.Interfaces;
 using Game.Scripts.Player;
 using Hertzole.GoldPlayer;
 using RetroArsenal;
@@ -52,6 +53,7 @@ namespace Game.Scripts.Utilities
         {
             if (other.TryGetComponent(out Projectile projectile))
             {
+                projectile.HitBall(this);
                 Instantiate(destroyParticlePrefab, transform.position, Quaternion.identity); // TODO: избавиться от Instantiate
                 ballGameObject.SetActive(false);
                 DisableColliders();
@@ -116,5 +118,12 @@ namespace Game.Scripts.Utilities
             boxCollider.enabled = false;
             sphereCollider.enabled = false;
         }
+
+        // public void TakeDamage(int damage)
+        // {
+        //     Instantiate(destroyParticlePrefab, transform.position, Quaternion.identity); // TODO: избавиться от Instantiate
+        //     ballGameObject.SetActive(false);
+        //     DisableColliders();
+        // }
     }
 }
