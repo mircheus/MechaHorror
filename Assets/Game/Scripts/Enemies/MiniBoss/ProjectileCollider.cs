@@ -1,5 +1,6 @@
 using System;
 using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Player;
 using RetroArsenal;
 using UnityEngine;
 

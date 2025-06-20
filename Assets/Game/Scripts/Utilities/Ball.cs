@@ -52,7 +52,6 @@ namespace Game.Scripts.Utilities
         {
             if (other.TryGetComponent(out Projectile projectile))
             {
-                Debug.Log("Projectile hit the ball. Self-destructing...");
                 Instantiate(destroyParticlePrefab, transform.position, Quaternion.identity); // TODO: избавиться от Instantiate
                 ballGameObject.SetActive(false);
                 DisableColliders();
