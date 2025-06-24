@@ -13,13 +13,15 @@ namespace Game.Scripts.Enemies.Kamikaje
         [SerializeField] private Animator animator;
         [SerializeField] private ParticleSystem deathParticle;
         [SerializeField] private SphereCollider explosionCollider;
+        [SerializeField] private BoxCollider mainCollider;
+        [SerializeField] private KamikajeTrigger kamikajeTrigger;
         
         protected override Dictionary<Type, IState> GetStates()
         {
             return new Dictionary<Type, IState>
             {
-                { typeof(ChasingState), new ChasingState(enemyAI, animator) },
-                { typeof(AttackState), new AttackState(enemyAI, deathParticle, explosionCollider) },
+                { typeof(ChasingState), new ChasingState(enemyAI, animator, kamikajeTrigger) },
+                { typeof(AttackState), new AttackState(enemyAI, deathParticle, explosionCollider, mainCollider) },
                 { typeof(DeadState), new DeadState(enemyAI, deathParticle, mechGameObject) }
             };
         }

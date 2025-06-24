@@ -37,6 +37,7 @@ Transform:
   - {fileID: 4356820577462590879}
   - {fileID: 8881530610377885072}
   - {fileID: 4308681806372038381}
+  - {fileID: 4429952116802200166}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &7178135845886474286
@@ -95,11 +96,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  enemyAI: {fileID: 5013111212228678481}
   mechGameObject: {fileID: 6967704939909238528}
   animator: {fileID: 4402759850842116032}
   deathParticle: {fileID: 2357938774078696494}
   explosionCollider: {fileID: 8108364785568136657}
+  mainCollider: {fileID: 7178135845886474286}
+  kamikajeTrigger: {fileID: 1863643779842904171}
 --- !u!114 &5013111212228678481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3ee55188a442829e6d08a3b3d4acbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseEnemyAttack: {fileID: 1531221194876203689}
   agent: {fileID: 8012540462720616672}
   target: {fileID: 0}
   detectionRange: 10
@@ -119,6 +122,7 @@ MonoBehaviour:
   rotationSpeed: 0
   strafeCooldownTime: 2
   isGizmosEnabled: 0
+  destroyDelay: 5
 --- !u!114 &1531221194876203689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +190,72 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &5722636101503838094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4429952116802200166}
+  - component: {fileID: 3285117255004118167}
+  - component: {fileID: 1863643779842904171}
+  m_Layer: 0
+  m_Name: KamikajeTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4429952116802200166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5722636101503838094}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1151210691413492211}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3285117255004118167
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5722636101503838094}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 16
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1863643779842904171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5722636101503838094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9eddd9420991460caedb402d50367f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6546247577500636020
 GameObject:
   m_ObjectHideFlags: 0
