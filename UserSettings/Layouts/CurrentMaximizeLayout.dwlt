@@ -23,7 +23,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 1
-  controlID: 42277
+  controlID: 50231
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -94,7 +94,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 42278
+  controlID: 50232
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 42279
+  controlID: 50233
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -203,7 +203,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 42280
+  controlID: 50234
   draggingID: 0
 --- !u!114 &6
 MonoBehaviour:
@@ -825,9 +825,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 14.612257, y: 6.941726, z: 6.085099}
+    m_Target: {x: -40.566166, y: 161.93512, z: -130.38777}
     speed: 2
-    m_Value: {x: 14.612257, y: 6.941726, z: 6.085099}
+    m_Value: {x: -40.566166, y: 161.93512, z: -130.38777}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -873,13 +873,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.033656765, y: -0.7698316, z: 0.04065522, w: 0.63614047}
+    m_Target: {x: 0.3518795, y: -0.044347085, z: 0.016691571, w: 0.9348481}
     speed: 2
-    m_Value: {x: 0.033655066, y: -0.7697928, z: 0.040653173, w: 0.6361084}
+    m_Value: {x: 0.35187855, y: -0.044346962, z: 0.016691525, w: 0.93484557}
   m_Size:
-    m_Target: 3.8876848
+    m_Target: 17.363808
     speed: 2
-    m_Value: 3.8876848
+    m_Value: 17.363808
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1488,7 +1488,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 0a51fdff
       m_LastClickedID: -175862
-      m_ExpandedIDs: 404cfdff924cfdffe44cfdffee4cfdfff84cfdff3e4dfdff904dfdffe24dfdffec4dfdff204efdff444efdff6e4efdffa44efdffce4efdff144ffdff184ffdff404ffdff984ffdffba4ffdffd64ffdfffe4ffdff5650fdff7850fdff9450fdffe650fdffea50fdffee50fdff0a51fdff9662fdffa262fdff2875fdff984affff9a63ffff2abfffff3edcffff10fbffff0ab70400
+      m_ExpandedIDs: 404cfdff924cfdffe44cfdffee4cfdfff84cfdff3e4dfdff904dfdffe24dfdffec4dfdff204efdff444efdff6e4efdffa44efdffce4efdff144ffdff184ffdff404ffdff984ffdffba4ffdffd64ffdfffe4ffdff5650fdff7850fdff9450fdffe650fdffea50fdffee50fdff9662fdffa262fdff2875fdff984affff9a63ffff2abfffff3edcffff10fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1633,7 +1633,7 @@ MonoBehaviour:
     m_ControlHash: 1412526313
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 594
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
