@@ -21,8 +21,8 @@ namespace Game.Scripts.Enemies.Kamikaje
             return new Dictionary<Type, IState>
             {
                 { typeof(ChasingState), new ChasingState(enemyAI, animator, kamikajeTrigger) },
-                { typeof(AttackState), new AttackState(enemyAI, deathParticle, explosionCollider, mainCollider) },
-                { typeof(DeadState), new DeadState(enemyAI, deathParticle, mechGameObject) }
+                { typeof(AttackState), new AttackState(enemyAI, deathParticle, explosionCollider) },
+                { typeof(DeadState), new DeadState(enemyAI, deathParticle, mechGameObject, mainCollider) }
             };
         }
 
