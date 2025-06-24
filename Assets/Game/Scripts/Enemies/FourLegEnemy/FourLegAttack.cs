@@ -14,18 +14,12 @@ namespace Game.Scripts.Enemies.FourLegEnemy
 
         public override void Attack(Transform target)
         {
-            
-            // if (Time.time >= _lastAttackTime + attackCooldown)
-            // {
-                Vector3 spawnPositionWithOffset = shootPoint[0].transform.position;
-                var direction = target.position - spawnPositionWithOffset;
-                GameObject projectile = Instantiate(projectilePrefab, spawnPositionWithOffset, Quaternion.identity);
-                projectile.transform.LookAt(spawnPositionWithOffset + direction * 10f);
-                projectile.GetComponent<Rigidbody>().AddForce(direction * speed);
-                
+            Vector3 spawnPositionWithOffset = shootPoint[_currentShootPointIndex].transform.position;
+            var direction = target.position - spawnPositionWithOffset;
+            GameObject projectile = Instantiate(projectilePrefab, spawnPositionWithOffset, Quaternion.identity);
+            projectile.transform.LookAt(spawnPositionWithOffset + direction * 10f);
+            projectile.GetComponent<Rigidbody>().AddForce(direction.normalized * speed);
             ChangeShootPoint();
-                // _lastAttackTime = Time.time;
-            // }
         }
 
         private void ChangeShootPoint()
