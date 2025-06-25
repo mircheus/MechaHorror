@@ -11,8 +11,6 @@ namespace Game.Scripts.Enemies.Footballer
         {
             base.Init(states);
             stateMachine.Enter<AttackState>();
-            stateMachine.Enter<AttackState>();
-            stateMachine.Enter<AttackState>();
         }
     }
 }
