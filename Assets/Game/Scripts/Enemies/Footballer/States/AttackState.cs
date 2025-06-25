@@ -1,4 +1,5 @@
 ﻿using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Enemies.BaseEnemy;
 using UnityEngine;
 
 namespace Game.Scripts.Enemies.Footballer.States
@@ -9,7 +10,7 @@ namespace Game.Scripts.Enemies.Footballer.States
 
         private EnemyAI _enemyAI;
         private GameObject _ballPrefab;
-        private int _attack = Animator.StringToHash("Attack");
+        private int _attackTrigger = Animator.StringToHash("Attack");
 
         public AttackState(EnemyAI enemyAI, Animator animator)
         {
@@ -19,7 +20,7 @@ namespace Game.Scripts.Enemies.Footballer.States
 
         public void Enter()
         {
-            _animator.SetTrigger(_attack);
+            _animator.SetTrigger(_attackTrigger);
         }
 
         public void Execute()

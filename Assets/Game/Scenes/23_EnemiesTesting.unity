@@ -6690,32 +6690,6 @@ Transform:
   - {fileID: 1675568125}
   m_Father: {fileID: 1380129161}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &428888344 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3187145126216378085, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-  m_PrefabInstance: {fileID: 784736133452047661}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &428888350
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 428888344}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 8.174557, y: 17.629171, z: 5.8337097}
-  m_Center: {x: -0.03040123, y: 8.648992, z: 0.04559326}
 --- !u!1 &436585782
 GameObject:
   m_ObjectHideFlags: 0
@@ -26875,6 +26849,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kamikaje
       objectReference: {fileID: 0}
+    - target: {fileID: 3330099979419168827, guid: aa93f06543e73ae4db75c948d6644e87, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3961178141435474348, guid: aa93f06543e73ae4db75c948d6644e87, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -29441,17 +29419,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2908222886370555023, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3187145126216378085, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
       propertyPath: m_Name
       value: FootballerMech
-      objectReference: {fileID: 0}
-    - target: {fileID: 3187145126216378085, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3657734752202445528, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29493,53 +29463,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4438143745030619921, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4876645783139661667, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 234082852}
-    - target: {fileID: 4876645783139661667, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: height
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: duration
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: offset.y
-      value: -14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: offset.z
-      value: 19
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: arcHeight
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5137681003712844428, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6913935737971287929, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3187145126216378085, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 428888350}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e30e770eac832a749bb7d1fd7615145c, type: 3}
 --- !u!1 &929439787541834045
 GameObject:
