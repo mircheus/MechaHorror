@@ -8,7 +8,7 @@ namespace Game.Scripts.Enemies.Kamikaje.States
         private EnemyAI _enemyAI;
         private ParticleSystem _explosionParticle;
         private SphereCollider _explosionCollider;
-        
+
         public AttackState(EnemyAI enemyAI, ParticleSystem explosionParticle, SphereCollider explosionCollider)
         {
             _enemyAI = enemyAI;

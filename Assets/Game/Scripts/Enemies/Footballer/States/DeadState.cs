@@ -1,25 +1,25 @@
 ﻿using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Enemies.BaseEnemy;
 using UnityEngine;
-using UnityEngine.Events;
-using VFavorites.Libs;
 
-namespace Game.Scripts.Enemies.Kamikaje.States
+namespace Game.Scripts.Enemies.Footballer.States
 {
     public class DeadState : IState
     {
         private ParticleSystem _deathParticle;
         private GameObject _mechGameObject;
-        private KamikajeAI _enemyAI;
+        private FootballerAI _enemyAI;
         private BoxCollider _mainCollider;
-
+        // private float _destroyDelay = 2f; 
+        
         public DeadState(EnemyAI enemyAI, ParticleSystem deathParticle, GameObject mechGameObject, BoxCollider mainCollider)
         {
-            _enemyAI = (KamikajeAI)enemyAI;
+            _enemyAI = (FootballerAI)enemyAI;
             _deathParticle = deathParticle;
             _mechGameObject = mechGameObject;
             _mainCollider = mainCollider;
         }
-
+        
         public void Enter()
         {
             _mechGameObject.SetActive(false);
@@ -33,18 +33,14 @@ namespace Game.Scripts.Enemies.Kamikaje.States
             {
                 Debug.LogWarning("Death particle system is not assigned.");
             }
-            
-            _enemyAI.SelfDestroy(this);
         }
 
         public void Execute()
         {
-
         }
 
         public void Exit()
         {
-
         }
     }
 }

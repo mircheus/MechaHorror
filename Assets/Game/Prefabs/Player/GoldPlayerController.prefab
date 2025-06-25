@@ -535,6 +535,72 @@ Transform:
   - {fileID: 5256602317386190836}
   m_Father: {fileID: 3336125493532837918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4363439385123610385
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1769387890753049377}
+  - component: {fileID: 3935151472859341823}
+  - component: {fileID: 2612663766539774952}
+  m_Layer: 0
+  m_Name: BallCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1769387890753049377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363439385123610385}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 15.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 631812844750481103}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3935151472859341823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363439385123610385}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 4.90786, y: 16.291468, z: 3.9879627}
+  m_Center: {x: 0, y: -6.539426, z: -0.013221741}
+--- !u!114 &2612663766539774952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363439385123610385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0802bb6c20fa8d34dbe414ed10550a30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4540965835427308134
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +860,7 @@ GameObject:
   - component: {fileID: 7163773543539266409}
   - component: {fileID: 8974144044863122163}
   - component: {fileID: 6093696480667205131}
+  - component: {fileID: 4334207821199172131}
   - component: {fileID: 1570134340758750971}
   - component: {fileID: 6379742349652455006}
   - component: {fileID: 2716800551102112087}
@@ -822,6 +889,7 @@ Transform:
   - {fileID: 3336125493532837918}
   - {fileID: 8977477269419884159}
   - {fileID: 8654545635371465146}
+  - {fileID: 1769387890753049377}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &7572406740104312434
@@ -1283,6 +1351,24 @@ MonoBehaviour:
   timeToCoolDown: 5
   timeToReset: 2
   screenShakeStrength: 1
+  frequency: 25
+  bouncesCount: 5
+--- !u!114 &4334207821199172131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7843371786445684082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c69ff08eca8b746ad81248b4fa9460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballCollider: {fileID: 0}
+  maxHealth: 100
+  damageParticle: {fileID: 0}
+  screenShakeStrength: 0.81
   frequency: 25
   bouncesCount: 5
 --- !u!114 &1570134340758750971

@@ -34,7 +34,7 @@ namespace Game.Scripts.Player
 
         public void TakeDamage(int damage)
         {
-            Debug.Log("Damage");
+            maxHealth -= damage;
             CameraShaker.Presets.ShortShake3D(screenShakeStrength, frequency, bouncesCount);
             damageParticle.Play();
         }

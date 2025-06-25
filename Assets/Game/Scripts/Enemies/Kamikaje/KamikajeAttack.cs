@@ -1,4 +1,5 @@
 ﻿using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Interfaces;
 using Hertzole.GoldPlayer;
 using UnityEngine;
 
@@ -6,14 +7,17 @@ namespace Game.Scripts.Enemies.Kamikaje
 {
     public class KamikajeAttack : BaseEnemyAttack
     {
-        [Header("References: ")]
-        [SerializeField] private SphereCollider explosionCollider;
-
+        private bool _isAlreadyDamaged = false;
+        
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out GoldPlayerController playerController))
+            if (other.TryGetComponent(out IDamageable damageable))
             {
-                Debug.Log("Damage Player");
+                if (_isAlreadyDamaged == false)
+                {
+                    _isAlreadyDamaged = true;
+                    damageable.TakeDamage(1);
+                }
             }
         }
     }
