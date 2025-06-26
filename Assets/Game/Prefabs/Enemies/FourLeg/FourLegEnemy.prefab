@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 2916927804504794180}
   - component: {fileID: 4434734710153675759}
   - component: {fileID: 373298607167289028}
+  - component: {fileID: 6374942394625637455}
   m_Layer: 0
   m_Name: FourLegEnemy
   m_TagString: Untagged
@@ -496,7 +497,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: -1372625422
   m_Radius: 0.5
-  m_Speed: 12
+  m_Speed: 40
   m_Acceleration: 11
   avoidancePriority: 50
   m_AngularSpeed: 160
@@ -520,8 +521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c8b2c6ecef46338d9d8a03079c50dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 6
   deathParticle: {fileID: 5153020375945682031}
+  strafeDistanceMin: 15
+  strafeDistanceMax: 35
+  enemySight: {fileID: 0}
 --- !u!114 &4434734710153675759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -537,11 +541,14 @@ MonoBehaviour:
   baseEnemyAttack: {fileID: 373298607167289028}
   agent: {fileID: 963984591623177266}
   target: {fileID: 0}
-  detectionRange: 30
-  attackRange: 9
+  detectionRange: 50
+  attackRange: 50
   rotationSpeed: 10
   strafeCooldownTime: 2
   isGizmosEnabled: 1
+  showDetectionRange: 1
+  showAttackRange: 0
+  showStoppingDistance: 0
 --- !u!114 &373298607167289028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,6 +568,26 @@ MonoBehaviour:
   - {fileID: 4100750386663672806}
   projectilePrefab: {fileID: 7148810250495089234, guid: 577c6c998fbfca545af618c68e0b1b30, type: 3}
   speed: 9000
+--- !u!114 &6374942394625637455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1470712255643161774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d640796ad7e4716b463ee7debac6d4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  sightRange: 50
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 1
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &1485110752040443825
 GameObject:
   m_ObjectHideFlags: 0

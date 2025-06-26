@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Scripts.Enemies.FourLegEnemy.States
+namespace Game.Scripts.Enemies.FourLeg.States
 {
     public class DeadState : IState
     {

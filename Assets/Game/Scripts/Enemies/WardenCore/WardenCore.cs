@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Scripts.Enemies._BaseEnemy;
-using Game.Scripts.Enemies.FourLegEnemy.States;
 using Game.Scripts.Enemies.WardenCore.States;
 using Game.Scripts.Enemies.WardenCore.States.StateData;
 using UnityEngine;

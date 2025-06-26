@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Scripts.Enemies._BaseEnemy;
-using Game.Scripts.Enemies.FourLegEnemy.States;
+using Game.Scripts.Enemies.FourLeg.States;
 using UnityEngine;
 
 namespace Game.Scripts.Enemies.FourLegEnemy
@@ -10,14 +10,17 @@ namespace Game.Scripts.Enemies.FourLegEnemy
     {
         [Header("FourLeg References: ")]
         [SerializeField] private ParticleSystem deathParticle;
+        [SerializeField] private float strafeDistanceMin;
+        [SerializeField] private float strafeDistanceMax;
+        [SerializeField] private EnemySight enemySight;
         
         protected override Dictionary<Type, IState> GetStates()
         {
             return new Dictionary<Type, IState>
             {
                 { typeof(IdleState), new IdleState(enemyAI) },
-                { typeof(AttackState), new AttackState(enemyAI, enemyAI.BaseEnemyAttack) },
-                // { typeof(AttackState), new AttackState(enemyAI, fourLegAttack) },
+                { typeof(AttackState), new AttackState(enemyAI, enemyAI.BaseEnemyAttack, strafeDistanceMin, strafeDistanceMax) },
+                {typeof(ChaseState), new ChaseState(enemyAI, enemySight)},
                 { typeof(DeadState), new DeadState(this, deathParticle) }
             };
         }

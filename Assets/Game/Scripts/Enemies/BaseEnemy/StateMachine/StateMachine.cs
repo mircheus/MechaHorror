@@ -10,6 +10,8 @@ namespace Game.Scripts
         private readonly EnemyAI _enemyAI;
         
         private IState _currentState;
+
+        public IState CurrentState => _currentState;
         
         public StateMachine(EnemyAI enemyAI,  Dictionary<Type, IState> states)
         {

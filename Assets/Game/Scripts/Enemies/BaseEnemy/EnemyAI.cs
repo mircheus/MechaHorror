@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Game.Scripts.Enemies.FourLegEnemy.States;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 namespace Game.Scripts.Enemies._BaseEnemy
 {
@@ -33,6 +33,8 @@ namespace Game.Scripts.Enemies._BaseEnemy
         public float AttackRange => attackRange;
         public float RotationSpeed => rotationSpeed;
         public float StrafeCooldownTime => strafeCooldownTime;
+        
+        public event UnityAction PlayerDetected;
         
         public virtual void Init(Dictionary<Type, IState> states)
         {
@@ -65,6 +67,17 @@ namespace Game.Scripts.Enemies._BaseEnemy
             {
                 GizmosMethods();
             }
+        }
+        
+        public void InvokePlayerDetected()
+        {
+            PlayerDetected?.Invoke();
+        }
+
+        public virtual void GetTriggeredByAlarm(AlarmTrigger alarmTrigger)
+        {
+            // This method can be overridden by derived classes to handle alarm triggers
+            Debug.Log($"EnemyAI triggered by alarm: {alarmTrigger.name}");
         }
     }
 }

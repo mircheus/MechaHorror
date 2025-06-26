@@ -2,32 +2,31 @@
 using System.Collections;
 using DG.Tweening;
 using Game.Scripts.Enemies._BaseEnemy;
+using Game.Scripts.Enemies.FourLegEnemy;
 using UnityEngine;
 
-namespace Game.Scripts.Enemies.FourLegEnemy.States
+namespace Game.Scripts.Enemies.FourLeg.States
 {
     public class AttackState : IState
     {
         private readonly EnemyAI _enemyAI;
         private readonly FourLegAttack _attack;
+        private readonly int _strafeDistanceMin;
+        private readonly int _strafeDistanceMax;
         private Coroutine _strafeCoroutine;
         private Coroutine _attackCoroutine;
         private Vector3 _endPosition;
 
-        public AttackState(EnemyAI enemyAI, BaseEnemyAttack fourLegAttack)
+        public AttackState(EnemyAI enemyAI, BaseEnemyAttack fourLegAttack, float strafeDistanceMin = 10f, float strafeDistanceMax = 20f)
         {
             _enemyAI = enemyAI;
             _attack = (FourLegAttack)fourLegAttack;
+            _strafeDistanceMin = (int)strafeDistanceMin;
+            _strafeDistanceMax = (int)strafeDistanceMax;
         }
 
         public void Enter()
         {
-            Debug.Log("Entering Attack State");
-            // RotateTowardTarget();
-            Debug.Log("_attack == null: " + (_attack == null));
-            Debug.Log("_attack.attackCooldown: " + (_attack.AttackCooldown));
-            Debug.Log("_enemyAI.Target == null: " + (_enemyAI.Target == null));
-            
             _strafeCoroutine = _enemyAI.StartCoroutine(Cooldown(Strafe, _enemyAI.StrafeCooldownTime));
             _attackCoroutine = _enemyAI.StartCoroutine(Cooldown(Attack, _attack.AttackCooldown));
         }
@@ -35,19 +34,11 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
         public void Execute()
         {
             RotateTowardTargetAroundY();
-            // StrafeToRight();
-            // _enemyAI.BaseEnemyAttack.Attack(_enemyAI.Target);
-            // _enemyAI.BaseEnemyAttack.Attack(_enemyAI.Target);
 
             if (_enemyAI.Agent.isStopped == false)
             {
                 _enemyAI.Agent.SetDestination(_enemyAI.Target.transform.position);
             }
-            
-            // if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.target.position) > _enemyAI.attackRange)
-            // {
-            //     _enemyAI.StateMachine.ChangeState(new IdleState(_enemyAI));
-            // }
         }
 
         public void Exit()
@@ -66,14 +57,14 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
             int sideToStrafe = UnityEngine.Random.Range(0, 2);
             int doubleStrafe = UnityEngine.Random.Range(0, 2);
             Vector3 strafeDirection = sideToStrafe == 0 ? _enemyAI.transform.right : -_enemyAI.transform.right;
-            Vector3 endPosition = _enemyAI.transform.position + strafeDirection * 20f;
+            Vector3 endPosition = _enemyAI.transform.position + strafeDirection * UnityEngine.Random.Range(_strafeDistanceMin, _strafeDistanceMax);
             
             _enemyAI.transform.DOMove(endPosition, 0.5f).SetEase(Ease.OutQuad).OnComplete(() =>
             {
                 if (doubleStrafe == 1)
                 {
                     Vector3 strafeDirection = sideToStrafe == 0 ? _enemyAI.transform.right : -_enemyAI.transform.right;
-                    Vector3 endPosition = _enemyAI.transform.position + strafeDirection * 10f;
+                    Vector3 endPosition = _enemyAI.transform.position + strafeDirection * UnityEngine.Random.Range(_strafeDistanceMin, _strafeDistanceMax);
                     _enemyAI.transform.DOMove(endPosition, 0.5f).SetEase(Ease.OutQuad);
                 }
             });
