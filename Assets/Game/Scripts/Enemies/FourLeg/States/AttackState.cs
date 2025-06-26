@@ -16,18 +16,24 @@ namespace Game.Scripts.Enemies.FourLeg.States
         private Coroutine _strafeCoroutine;
         private Coroutine _attackCoroutine;
         private Vector3 _endPosition;
+        private readonly bool _isStrafeEnabled;
 
-        public AttackState(EnemyAI enemyAI, BaseEnemyAttack fourLegAttack, float strafeDistanceMin = 10f, float strafeDistanceMax = 20f)
+        public AttackState(EnemyAI enemyAI, BaseEnemyAttack fourLegAttack, bool isStrafeEnabled, float strafeDistanceMin = 10f, float strafeDistanceMax = 20f)
         {
             _enemyAI = enemyAI;
             _attack = (FourLegAttack)fourLegAttack;
             _strafeDistanceMin = (int)strafeDistanceMin;
             _strafeDistanceMax = (int)strafeDistanceMax;
+            _isStrafeEnabled = isStrafeEnabled;
         }
 
         public void Enter()
         {
-            _strafeCoroutine = _enemyAI.StartCoroutine(Cooldown(Strafe, _enemyAI.StrafeCooldownTime));
+            // Debug.Log("Entering Attack State");
+            if (_isStrafeEnabled)
+            {
+                _strafeCoroutine = _enemyAI.StartCoroutine(Cooldown(Strafe, _enemyAI.StrafeCooldownTime));
+            }
             _attackCoroutine = _enemyAI.StartCoroutine(Cooldown(Attack, _attack.AttackCooldown));
         }
 
@@ -43,7 +49,12 @@ namespace Game.Scripts.Enemies.FourLeg.States
 
         public void Exit()
         {
-            _enemyAI.StopCoroutine(_strafeCoroutine);
+            // Debug.Log("Exiting Attack State");
+            if (_isStrafeEnabled)
+            {
+                _enemyAI.StopCoroutine(_strafeCoroutine);
+            }
+            
             _enemyAI.StopCoroutine(_attackCoroutine);
         }
 

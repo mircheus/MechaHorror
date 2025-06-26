@@ -44,7 +44,7 @@ namespace Game.Scripts.Enemies
 
         private void OnDrawGizmos()
         {
-            CheckLineOfSight();
+            // CheckLineOfSight();
             
             if (player != null)
             {

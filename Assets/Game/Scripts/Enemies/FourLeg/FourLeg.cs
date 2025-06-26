@@ -13,13 +13,16 @@ namespace Game.Scripts.Enemies.FourLegEnemy
         [SerializeField] private float strafeDistanceMin;
         [SerializeField] private float strafeDistanceMax;
         [SerializeField] private EnemySight enemySight;
+
+        [Header("Attack State settings: ")] 
+        [SerializeField] private bool isStrafeEnabled;
         
         protected override Dictionary<Type, IState> GetStates()
         {
             return new Dictionary<Type, IState>
             {
                 { typeof(IdleState), new IdleState(enemyAI) },
-                { typeof(AttackState), new AttackState(enemyAI, enemyAI.BaseEnemyAttack, strafeDistanceMin, strafeDistanceMax) },
+                { typeof(AttackState), new AttackState(enemyAI, enemyAI.BaseEnemyAttack, isStrafeEnabled, strafeDistanceMin, strafeDistanceMax) },
                 {typeof(ChaseState), new ChaseState(enemyAI, enemySight)},
                 { typeof(DeadState), new DeadState(this, deathParticle) }
             };

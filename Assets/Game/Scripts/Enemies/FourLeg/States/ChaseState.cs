@@ -1,4 +1,5 @@
-﻿using Game.Scripts.Enemies._BaseEnemy;
+﻿using System.Collections;
+using Game.Scripts.Enemies._BaseEnemy;
 using UnityEngine;
 
 namespace Game.Scripts.Enemies.FourLeg.States
@@ -7,6 +8,7 @@ namespace Game.Scripts.Enemies.FourLeg.States
     {
         private readonly EnemyAI _enemyAI;
         private readonly EnemySight _enemySight;
+        private bool _isCooldown = true;
 
         public ChaseState(EnemyAI enemyAI, EnemySight enemySight)
         {
@@ -16,6 +18,8 @@ namespace Game.Scripts.Enemies.FourLeg.States
 
         public void Enter()
         {
+            // Debug.Log("Entering Chase State");
+            _enemyAI.StartCoroutine(EnterStateCooldown());
         }
 
         public void Execute()
@@ -28,7 +32,7 @@ namespace Game.Scripts.Enemies.FourLeg.States
                 _enemyAI.StateMachine.Enter<AttackState>();
             }
 
-            if (_enemySight.HasLineOfSight)
+            if (_enemySight.HasLineOfSight && _isCooldown == false)
             {
                 _enemyAI.StateMachine.Enter<AttackState>();
             }
@@ -36,6 +40,13 @@ namespace Game.Scripts.Enemies.FourLeg.States
 
         public void Exit()
         {
+            // Debug.Log("Exiting Chase State");
+        }
+
+        private IEnumerator EnterStateCooldown()
+        {
+            yield return new WaitForSeconds(2f);
+            _isCooldown = false;
         }
     }
 }
