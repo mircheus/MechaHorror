@@ -8,6 +8,8 @@ namespace Game.Scripts.Enemies
     public class AlarmTrigger : MonoBehaviour
     {
         [SerializeField] private EnemyAI[] enemies;
+        
+        private bool _isAlarmTriggered;
 
         private void OnEnable()
         {
@@ -27,6 +29,9 @@ namespace Game.Scripts.Enemies
 
         private void OnPlayerDetected()
         {
+            if(_isAlarmTriggered)
+                return;
+            
             foreach (var enemy in enemies)
             {
                 if (enemy.StateMachine.CurrentState is not ChaseState) // TODO: узкое место тк ChaseState взят только из FourLeg 
@@ -34,6 +39,8 @@ namespace Game.Scripts.Enemies
                     enemy.StateMachine.Enter<ChaseState>();
                 }
             }
+            
+            _isAlarmTriggered = true;
         }
     }
 }

@@ -6,14 +6,14 @@ namespace Game.Scripts.Enemies.FourLeg.States
 {
     public class ChaseState : IState
     {
-        private readonly EnemyAI _enemyAI;
+        private readonly FourLegAI _enemyAI;
         private readonly EnemySight _enemySight;
         private bool _isCooldown = true;
 
-        public ChaseState(EnemyAI enemyAI, EnemySight enemySight)
+        public ChaseState(EnemyAI enemyAI)
         {
-            _enemyAI = enemyAI;
-            _enemySight = enemySight;
+            _enemyAI = (FourLegAI)enemyAI;
+            _enemySight = _enemyAI.EnemySight;
         }
 
         public void Enter()

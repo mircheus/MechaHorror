@@ -3055,7 +3055,6 @@ MonoBehaviour:
   enemies:
   - {fileID: 789045741}
   - {fileID: 1641798642}
-  - {fileID: 442115251}
 --- !u!1001 &240329970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7170,17 +7169,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b23d9d0bcd6a4b5cbadd291b247e0b84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &442115251 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4434734710153675759, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-  m_PrefabInstance: {fileID: 1106331402}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85da1b12f2544c4fb9a54e86153d7b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &444544062
@@ -11487,17 +11475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23d9d0bcd6a4b5cbadd291b247e0b84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &789045740 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 373298607167289028, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-  m_PrefabInstance: {fileID: 1122062692}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b23d9d0bcd6a4b5cbadd291b247e0b84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &789045741 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4434734710153675759, guid: 18e017da34840bc41b74118403d43acb, type: 3}
@@ -15233,7 +15210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470712255643161774, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: m_Name
-      value: FourLegEnemy (1)
+      value: FourLeg (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1470712255643161774, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: m_IsActive
@@ -15498,106 +15475,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 963984591623177266, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164485727591637448, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_Size.x
-      value: 6.306165
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164485727591637448, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_Size.z
-      value: 4.122918
-      objectReference: {fileID: 0}
-    - target: {fileID: 1164485727591637448, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_Center.z
-      value: -0.9917784
-      objectReference: {fileID: 0}
-    - target: {fileID: 1342806952627294852, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1470712255643161774, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: m_Name
-      value: FourLegEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470712255643161774, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1906715872568674326, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2916927804504794180, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: fourLegAttack
-      value: 
-      objectReference: {fileID: 789045740}
-    - target: {fileID: 2916927804504794180, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: isStrafeEnabled
-      value: 0
+      value: FourLeg
       objectReference: {fileID: 0}
     - target: {fileID: 4434734710153675759, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 23662157}
-    - target: {fileID: 4434734710153675759, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: isGizmosEnabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434734710153675759, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: showAttackRange
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542700660602448111, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4595786547634566153, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5153020375945682031, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5153020376140235947, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5311945564417899035, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.5680008
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934846753180477820, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.568
-      objectReference: {fileID: 0}
     - target: {fileID: 6374942394625637455, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 119550739}
-    - target: {fileID: 6374942394625637455, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playerMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6597693310708044224, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6689999287157564019, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6689999287157564019, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6689999287157564019, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6689999287157564019, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -51.399998
@@ -15638,33 +15527,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6689999287157564019, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7753787421805560051, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8409584582566472933, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 5771054900584240473, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 5023594609504549528, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 1780751035234285141, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 3727890291809614826, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 2325715832488878412, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 2291217910409176407, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 1812798771165105129, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 5644050265672699885, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 4503087903925960280, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 1521869938147467592, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 819721619533121638, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 3712076076925651032, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 644953961858545299, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 7313055295102286059, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 8257166831199901209, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 2570685982256359534, guid: 18e017da34840bc41b74118403d43acb, type: 3}
-    - {fileID: 687532152517118929, guid: 18e017da34840bc41b74118403d43acb, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -17710,6 +17573,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 963984591623177266, guid: 18e017da34840bc41b74118403d43acb, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1164485727591637448, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: m_Size.x
       value: 6.306165
@@ -17728,7 +17595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1470712255643161774, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: m_Name
-      value: FourLegEnemy (2)
+      value: FourLeg (2)
       objectReference: {fileID: 0}
     - target: {fileID: 1470712255643161774, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: m_IsActive
@@ -17797,6 +17664,10 @@ PrefabInstance:
     - target: {fileID: 6374942394625637455, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: playerMask.m_Bits
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374942394625637455, guid: 18e017da34840bc41b74118403d43acb, type: 3}
+      propertyPath: isSightRangeEnabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6597693310708044224, guid: 18e017da34840bc41b74118403d43acb, type: 3}
       propertyPath: playOnAwake

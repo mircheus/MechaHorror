@@ -2,14 +2,13 @@
 using System.Collections;
 using DG.Tweening;
 using Game.Scripts.Enemies._BaseEnemy;
-using Game.Scripts.Enemies.FourLegEnemy;
 using UnityEngine;
 
 namespace Game.Scripts.Enemies.FourLeg.States
 {
     public class AttackState : IState
     {
-        private readonly EnemyAI _enemyAI;
+        private readonly FourLegAI _enemyAI;
         private readonly FourLegAttack _attack;
         private readonly int _strafeDistanceMin;
         private readonly int _strafeDistanceMax;
@@ -18,13 +17,13 @@ namespace Game.Scripts.Enemies.FourLeg.States
         private Vector3 _endPosition;
         private readonly bool _isStrafeEnabled;
 
-        public AttackState(EnemyAI enemyAI, BaseEnemyAttack fourLegAttack, bool isStrafeEnabled, float strafeDistanceMin = 10f, float strafeDistanceMax = 20f)
+        public AttackState(EnemyAI enemyAI)
         {
-            _enemyAI = enemyAI;
-            _attack = (FourLegAttack)fourLegAttack;
-            _strafeDistanceMin = (int)strafeDistanceMin;
-            _strafeDistanceMax = (int)strafeDistanceMax;
-            _isStrafeEnabled = isStrafeEnabled;
+            _enemyAI = (FourLegAI)enemyAI;
+            _attack = (FourLegAttack)_enemyAI.BaseEnemyAttack;
+            _isStrafeEnabled = _enemyAI.IsStrafeEnabled;
+            _strafeDistanceMin = (int)_enemyAI.StrafeDistanceMin;
+            _strafeDistanceMax = (int)_enemyAI.StrafeDistanceMax;
         }
 
         public void Enter()

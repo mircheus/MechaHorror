@@ -9,10 +9,23 @@ namespace Game.Scripts.Enemies.FourLeg
 {
     public class FourLegAI : EnemyAI
     {
+        [Header("FourLegAI References: ")]
+        [SerializeField] private EnemySight enemySight;
+        
+        [Header("Attack State Settings: ")]
+        [SerializeField] private bool isStrafeEnabled;
+        [SerializeField] private float strafeDistanceMin;
+        [SerializeField] private float strafeDistanceMax;
+        
         [Header("Gizmos Settings: ")]
         [SerializeField] private bool showDetectionRange = true;
         [SerializeField] private bool showAttackRange = true;
         [SerializeField] private bool showStoppingDistance = true;
+        
+        public bool IsStrafeEnabled => isStrafeEnabled;
+        public float StrafeDistanceMin => strafeDistanceMin;
+        public float StrafeDistanceMax => strafeDistanceMax;
+        public EnemySight EnemySight => enemySight;
         
         public override void Init(Dictionary<Type, IState> states)
         {
