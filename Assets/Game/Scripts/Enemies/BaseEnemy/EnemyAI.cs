@@ -19,9 +19,8 @@ namespace Game.Scripts.Enemies._BaseEnemy
         [SerializeField] protected float rotationSpeed;
         [SerializeField] protected float strafeCooldownTime = 2f;
 
-        [Header("Gizmos Settings:")] 
-        [SerializeField]
-        protected bool isGizmosEnabled = true;
+        [Header("Gizmos:")] 
+        [SerializeField] protected bool isGizmosEnabled = true;
         
         protected StateMachine stateMachine;
 

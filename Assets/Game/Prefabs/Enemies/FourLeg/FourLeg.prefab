@@ -453,10 +453,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 6
   deathParticle: {fileID: 5153020375945682031}
-  strafeDistanceMin: 15
-  strafeDistanceMax: 35
-  enemySight: {fileID: 6374942394625637455}
-  isStrafeEnabled: 0
 --- !u!114 &4434734710153675759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,6 +473,10 @@ MonoBehaviour:
   rotationSpeed: 10
   strafeCooldownTime: 2
   isGizmosEnabled: 0
+  enemySight: {fileID: 6374942394625637455}
+  isStrafeEnabled: 0
+  strafeDistanceMin: 0
+  strafeDistanceMax: 0
   showDetectionRange: 1
   showAttackRange: 0
   showStoppingDistance: 0
@@ -520,6 +520,7 @@ MonoBehaviour:
     m_Bits: 8
   isSightRangeEnabled: 0
   sightRange: 50
+  isGizmosEnabled: 0
 --- !u!1 &1485110752040443825
 GameObject:
   m_ObjectHideFlags: 0
