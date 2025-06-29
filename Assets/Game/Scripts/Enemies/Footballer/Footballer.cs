@@ -29,7 +29,6 @@ namespace Game.Scripts.Enemies.Footballer
         protected override void Die()
         {
             stateMachine.Enter<DeadState>();
-            base.Die();
         }
     }
 }

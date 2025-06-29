@@ -23,7 +23,7 @@ namespace Game.Scripts.Enemies.FourLeg
 
         protected override void Die()
         {
-            base.Die();
+            // base.Die();
             stateMachine.Enter<DeadState>();
         }
     }

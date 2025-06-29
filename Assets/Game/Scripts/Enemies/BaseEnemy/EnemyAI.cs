@@ -13,7 +13,7 @@ namespace Game.Scripts.Enemies._BaseEnemy
         [Header("Base References:")]
         [SerializeField] protected BaseEnemyAttack baseEnemyAttack;
         [SerializeField] protected NavMeshAgent agent;
-        [SerializeField] private Transform target;
+        [SerializeField] protected Transform target;
         [SerializeField] protected float detectionRange = 10f;
         [SerializeField] protected float attackRange = 9f;
         [SerializeField] protected float rotationSpeed;
@@ -77,6 +77,17 @@ namespace Game.Scripts.Enemies._BaseEnemy
         {
             // This method can be overridden by derived classes to handle alarm triggers
             Debug.Log($"EnemyAI triggered by alarm: {alarmTrigger.name}");
+        }
+        
+        public void SetTarget(Transform targetTransform)
+        {
+            if (targetTransform == null)
+            {
+                Debug.LogWarning($"Target is null. Cannot set target for EnemyAI of {gameObject.name}.");
+                return;
+            }
+            
+            target = targetTransform;
         }
     }
 }

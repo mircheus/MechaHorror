@@ -136,7 +136,7 @@ namespace Game.Scripts.Enemies.Footballer
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(footballer.Target.position + (transform.forward * 14) + (transform.up * -14), 1f);
+            Gizmos.DrawSphere(footballer.Target.position + (transform.forward * offset.z) + (transform.up * offset.y), 1f);
         }
     }
 }
