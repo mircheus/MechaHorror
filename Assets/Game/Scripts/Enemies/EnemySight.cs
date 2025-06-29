@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.Scripts.Enemies
 {
@@ -14,6 +15,8 @@ namespace Game.Scripts.Enemies
         [SerializeField] private bool isGizmosEnabled;
 
         public bool HasLineOfSight { get; private set; }
+        
+        public event UnityAction<bool> LineOfSightChanged;
 
         private void Update()
         {
@@ -32,15 +35,18 @@ namespace Game.Scripts.Enemies
                 if (((1 << hit.collider.gameObject.layer) & playerMask) != 0)
                 {
                     HasLineOfSight = true;
+                    LineOfSightChanged?.Invoke(HasLineOfSight);
                 }
                 else
                 {
                     HasLineOfSight = false;
+                    LineOfSightChanged?.Invoke(HasLineOfSight);
                 }
             }
             else
             {
                 HasLineOfSight = false;
+                LineOfSightChanged?.Invoke(HasLineOfSight);
             }
         }
 
