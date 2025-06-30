@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.Scripts.Enemies._BaseEnemy;
-using Game.Scripts.Enemies.FourLegEnemy.States;
 using Game.Scripts.Enemies.WardenCore.States;
 using Game.Scripts.Enemies.WardenCore.States.StateData;
 using UnityEngine;
@@ -16,7 +15,12 @@ namespace Game.Scripts.Enemies.WardenCore
         [SerializeField] private float patrolRadius = 10f;
         [SerializeField] private float waitTimeAtPoint = 2f;
         [SerializeField] private float pointReachThreshold = 0.5f;
-        
+
+        protected override void Die()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override Dictionary<Type, IState> GetStates()
         {
             return new Dictionary<Type, IState>

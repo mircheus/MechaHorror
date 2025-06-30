@@ -47,6 +47,8 @@ namespace Game.Scripts.Utilities
             //     Instantiate(selfDestructParticle, transform.position, Quaternion.identity);
             //     gameObject.SetActive(false);
             // }
+            Explode();
+            Debug.Log("collided with: " + collision.gameObject.name);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -54,9 +56,7 @@ namespace Game.Scripts.Utilities
             if (other.TryGetComponent(out Projectile projectile))
             {
                 projectile.HitBall(this);
-                Instantiate(destroyParticlePrefab, transform.position, Quaternion.identity); // TODO: избавиться от Instantiate
-                ballGameObject.SetActive(false);
-                DisableColliders();
+                Explode();
                 // StartCoroutine(SelfDestructWithDelay(selfDestructDelay));
             }
             
@@ -91,7 +91,7 @@ namespace Game.Scripts.Utilities
         {
             _rigidbody.useGravity = true;
         }
-        
+
         private void RandomizeRotationSpeed()
         {
             _rotationSpeed = new Vector3(
@@ -106,7 +106,7 @@ namespace Game.Scripts.Utilities
             yield return new WaitForSeconds(delay);
             _isAbleToStopRotating = false;
         }
-        
+
         private IEnumerator SelfDestructWithDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -117,6 +117,13 @@ namespace Game.Scripts.Utilities
         {
             boxCollider.enabled = false;
             sphereCollider.enabled = false;
+        }
+
+        private void Explode()
+        {
+            Instantiate(destroyParticlePrefab, transform.position, Quaternion.identity); // TODO: избавиться от Instantiate
+            ballGameObject.SetActive(false);
+            DisableColliders();
         }
 
         // public void TakeDamage(int damage)

@@ -1,5 +1,5 @@
 ﻿using Game.Scripts.Enemies._BaseEnemy;
-using Game.Scripts.Enemies.FourLegEnemy.States;
+using Game.Scripts.Enemies.FourLeg.States;
 using UnityEngine;
 
 namespace Game.Scripts.Enemies.WardenCore.States

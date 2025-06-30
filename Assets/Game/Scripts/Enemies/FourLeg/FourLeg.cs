@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.Scripts.Enemies._BaseEnemy;
-using Game.Scripts.Enemies.FourLegEnemy.States;
+using Game.Scripts.Enemies.FourLeg.States;
 using UnityEngine;
 
-namespace Game.Scripts.Enemies.FourLegEnemy
+namespace Game.Scripts.Enemies.FourLeg
 {
     public class FourLeg : BaseEnemy.BaseEnemy
     {
@@ -16,15 +15,15 @@ namespace Game.Scripts.Enemies.FourLegEnemy
             return new Dictionary<Type, IState>
             {
                 { typeof(IdleState), new IdleState(enemyAI) },
-                { typeof(AttackState), new AttackState(enemyAI, enemyAI.BaseEnemyAttack) },
-                // { typeof(AttackState), new AttackState(enemyAI, fourLegAttack) },
+                { typeof(AttackState), new AttackState(enemyAI) },
+                {typeof(ChaseState), new ChaseState(enemyAI)},
                 { typeof(DeadState), new DeadState(this, deathParticle) }
             };
         }
 
         protected override void Die()
         {
-            base.Die();
+            // base.Die();
             stateMachine.Enter<DeadState>();
         }
     }

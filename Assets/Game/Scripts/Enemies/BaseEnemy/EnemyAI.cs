@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Game.Scripts.Enemies.FourLegEnemy.States;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 namespace Game.Scripts.Enemies._BaseEnemy
 {
@@ -13,15 +13,14 @@ namespace Game.Scripts.Enemies._BaseEnemy
         [Header("Base References:")]
         [SerializeField] protected BaseEnemyAttack baseEnemyAttack;
         [SerializeField] protected NavMeshAgent agent;
-        [SerializeField] private Transform target;
+        [SerializeField] protected Transform target;
         [SerializeField] protected float detectionRange = 10f;
         [SerializeField] protected float attackRange = 9f;
         [SerializeField] protected float rotationSpeed;
         [SerializeField] protected float strafeCooldownTime = 2f;
 
-        [Header("Gizmos Settings:")] 
-        [SerializeField]
-        protected bool isGizmosEnabled = true;
+        [Header("Gizmos:")] 
+        [SerializeField] protected bool isGizmosEnabled = true;
         
         protected StateMachine stateMachine;
 
@@ -33,6 +32,8 @@ namespace Game.Scripts.Enemies._BaseEnemy
         public float AttackRange => attackRange;
         public float RotationSpeed => rotationSpeed;
         public float StrafeCooldownTime => strafeCooldownTime;
+        
+        public event UnityAction PlayerDetected;
         
         public virtual void Init(Dictionary<Type, IState> states)
         {
@@ -65,6 +66,28 @@ namespace Game.Scripts.Enemies._BaseEnemy
             {
                 GizmosMethods();
             }
+        }
+        
+        public void InvokePlayerDetected()
+        {
+            PlayerDetected?.Invoke();
+        }
+
+        public virtual void GetTriggeredByAlarm(AlarmTrigger alarmTrigger)
+        {
+            // This method can be overridden by derived classes to handle alarm triggers
+            Debug.Log($"EnemyAI triggered by alarm: {alarmTrigger.name}");
+        }
+        
+        public void SetTarget(Transform targetTransform)
+        {
+            if (targetTransform == null)
+            {
+                Debug.LogWarning($"Target is null. Cannot set target for EnemyAI of {gameObject.name}.");
+                return;
+            }
+            
+            target = targetTransform;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Game.Scripts.Enemies._BaseEnemy;
 using UnityEngine;
 
-namespace Game.Scripts.Enemies.FourLegEnemy.States
+namespace Game.Scripts.Enemies.FourLeg.States
 {
     public class IdleState : IState
     {
@@ -14,19 +14,17 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
 
         public void Enter()
         {
-            Debug.Log("Entering Idle State");
         }
 
         public void Exit()
         {
-            Debug.Log("Exiting Idle State");
         }
 
         public void Execute()
         {
             if (Vector3.Distance(_enemyAI.transform.position, _enemyAI.Target.position) < _enemyAI.DetectionRange)
             {
-                // _enemyAI.StateMachine.ChangeState(new AttackState(_enemyAI));
+                _enemyAI.InvokePlayerDetected();
                 _enemyAI.StateMachine.Enter<AttackState>();
             }
         }

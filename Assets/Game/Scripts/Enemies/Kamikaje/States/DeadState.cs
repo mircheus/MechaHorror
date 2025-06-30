@@ -11,17 +11,20 @@ namespace Game.Scripts.Enemies.Kamikaje.States
         private GameObject _mechGameObject;
         private KamikajeAI _enemyAI;
         private BoxCollider _mainCollider;
+        private Kamikaje _kamikaje;
 
-        public DeadState(EnemyAI enemyAI, ParticleSystem deathParticle, GameObject mechGameObject, BoxCollider mainCollider)
+        public DeadState(EnemyAI enemyAI, ParticleSystem deathParticle, GameObject mechGameObject, BoxCollider mainCollider, BaseEnemy.BaseEnemy baseEnemy)
         {
             _enemyAI = (KamikajeAI)enemyAI;
             _deathParticle = deathParticle;
             _mechGameObject = mechGameObject;
             _mainCollider = mainCollider;
+            _kamikaje = (Kamikaje)baseEnemy;
         }
 
         public void Enter()
         {
+            _kamikaje.InvokeDeathEvent();
             _mechGameObject.SetActive(false);
             _mainCollider.enabled = false;
             

@@ -6,7 +6,7 @@ namespace Game.Scripts.Enemies.Footballer.States
 {
     public class IdleState : IState
     {
-        private readonly EnemyAI _enemyAI;
+        private readonly FootballerAI _enemyAI;
         private readonly Animator _animator;
         private readonly int _idleTrigger = Animator.StringToHash("Idle");
 
@@ -18,7 +18,9 @@ namespace Game.Scripts.Enemies.Footballer.States
 
         public void Enter()
         {
-            _animator.SetTrigger(_idleTrigger);
+            // _animator.SetTrigger(_idleTrigger);
+            _animator.Play(_idleTrigger); // Play the idle animation immediately
+            _enemyAI.EnemySight.LineOfSightChanged += OnLineOfSightChanged;
         }
 
         public void Execute()
@@ -31,6 +33,16 @@ namespace Game.Scripts.Enemies.Footballer.States
 
         public void Exit()
         {
+            _enemyAI.EnemySight.LineOfSightChanged -= OnLineOfSightChanged;
+        }
+
+        private void OnLineOfSightChanged(bool hasLineOfSight)
+        {
+            // Debug.Log("IdleState: OnLineOfSightChanged called. Has line of sight: " + hasLineOfSight);
+            // if (hasLineOfSight)
+            // {
+            //     _enemyAI.StateMachine.Enter<AttackState>();
+            // }
         }
     }
 }

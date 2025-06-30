@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.Scripts.Enemies.FourLegEnemy.States
+namespace Game.Scripts.Enemies.FourLeg.States
 {
     public class DeadState : IState
     {
@@ -15,7 +15,7 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
 
         public void Enter()
         {
-            Debug.Log("Entering Dead State");
+            // Debug.Log("Entering Dead State");
             _deathParticles.Play();
             // _monoBehaviour.gameObject.SetActive(false);
             // Optionally, you can add logic to remove the enemy from the game or trigger any other effects.
@@ -28,7 +28,7 @@ namespace Game.Scripts.Enemies.FourLegEnemy.States
 
         public void Exit()
         {
-           
+            // Debug.Log("Exiting Dead State");
         }
     }
 }

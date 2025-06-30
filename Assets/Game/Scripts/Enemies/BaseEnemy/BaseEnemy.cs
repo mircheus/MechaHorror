@@ -14,14 +14,32 @@ namespace Game.Scripts.Enemies.BaseEnemy
         [Header("Base References: ")]
         [SerializeField] protected int health = 3;
         
+        [Header("Base Settings: ")]
+        [SerializeField] protected bool manualInit = false;
+        
         protected EnemyAI enemyAI;
         protected StateMachine stateMachine;
 
         public event UnityAction Death;
+        public EnemyAI EnemyAI => enemyAI;
+
+        protected abstract void Die();
 
         protected void Start()
         {
+            if (manualInit == false)
+            {
+                enemyAI = GetComponent<EnemyAI>();
+                var states = GetStates();
+                enemyAI.Init(states);
+                stateMachine = enemyAI.StateMachine;
+            }
+        }
+
+        public virtual void Init(Transform target)
+        {
             enemyAI = GetComponent<EnemyAI>();
+            enemyAI.SetTarget(target);
             var states = GetStates();
             enemyAI.Init(states);
             stateMachine = enemyAI.StateMachine;
@@ -30,8 +48,14 @@ namespace Game.Scripts.Enemies.BaseEnemy
         public void TakeDamage(int amount)
         {
             // DamagePopUpGenerator.current.CreatePopUpTesting(transform.position + new Vector3(0, 2, 0));
+            Debug.Log("TakeDamage");
             health -= amount;
             CheckDeath();
+        }
+
+        public void InvokeDeathEvent()
+        {
+            Death?.Invoke();
         }
 
         protected virtual Dictionary<Type, IState> GetStates()
@@ -41,15 +65,6 @@ namespace Game.Scripts.Enemies.BaseEnemy
                 // { typeof(IdleState), new IdleState(enemyAI) },
                 // { typeof(DeadState), new DeadState() }
             };
-        }
-
-        protected virtual void Die()
-        {
-            Death?.Invoke();
-            // stateMachine.ChangeState(new DeadState());
-            // stateMachine.Enter<DeadState>();
-            // _meshRenderer.enabled = false;
-            // deathParticle.SetActive(true);
         }
 
         private void CheckDeath()

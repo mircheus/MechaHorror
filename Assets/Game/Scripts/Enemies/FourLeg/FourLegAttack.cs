@@ -1,7 +1,7 @@
 ﻿using Game.Scripts.Enemies._BaseEnemy;
 using UnityEngine;
 
-namespace Game.Scripts.Enemies.FourLegEnemy
+namespace Game.Scripts.Enemies.FourLeg
 {
     public class FourLegAttack : BaseEnemyAttack
     {

@@ -18,7 +18,12 @@ namespace Game.Scripts.Enemies.MiniBoss
         [SerializeField] private bool isPistolEnabled;
         [SerializeField] private GameObject sword;
         [SerializeField] private GameObject pistol;
-        
+
+        protected override void Die()
+        {
+            
+        }
+
         private new void Start()
         {
             base.Start();

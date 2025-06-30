@@ -8,19 +8,21 @@ namespace Game.Scripts.Enemies.Footballer.States
     {
         private readonly Animator _animator;
 
-        private EnemyAI _enemyAI;
+        private FootballerAI _enemyAI;
         private GameObject _ballPrefab;
         private int _attackTrigger = Animator.StringToHash("Attack");
 
         public AttackState(EnemyAI enemyAI, Animator animator)
         {
-            _enemyAI = enemyAI;
+            _enemyAI = (FootballerAI)enemyAI;
             _animator = animator;
         }
 
         public void Enter()
         {
-            _animator.SetTrigger(_attackTrigger);
+            // _animator.SetTrigger(_attackTrigger);
+            _animator.Play(_attackTrigger);
+            _enemyAI.EnemySight.LineOfSightChanged += OnLineOfSightChanged;
         }
 
         public void Execute()
@@ -30,19 +32,22 @@ namespace Game.Scripts.Enemies.Footballer.States
 
         public void Exit()
         {
+            _enemyAI.EnemySight.LineOfSightChanged -= OnLineOfSightChanged;
+        }
 
+        private void OnLineOfSightChanged(bool hasLineOfSight)
+        {
+            // Debug.Log("AttackState: OnLineOfSightChanged called. Has line of sight: " + hasLineOfSight);
+            //
+            // if (hasLineOfSight == false)
+            // {
+            //     _enemyAI.StateMachine.Enter<IdleState>();
+            // }
         }
 
         private void LookOnTarget()
         {
-            // _enemyAI.transform.LookAt(_enemyAI.Target);
-            // var direction = _enemyAI.Target.position - _enemyAI.transform.position;
-            // var rotation = Quaternion.LookRotation(direction, Vector3.up);
-            // var baseRotation = _enemyAI.transform.rotation;
-            // _enemyAI.transform.rotation = new Quaternion(baseRotation.x, rotation.y, baseRotation.z, baseRotation.w);
             Vector3 direction = _enemyAI.Target.position - _enemyAI.transform.position;
-
-            // Ignore Y difference to keep only horizontal direction
             direction.y = 0;
 
             if (direction != Vector3.zero)
