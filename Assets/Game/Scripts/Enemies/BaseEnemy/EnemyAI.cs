@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using Zenject;
 
 namespace Game.Scripts.Enemies._BaseEnemy
 {
@@ -34,6 +35,12 @@ namespace Game.Scripts.Enemies._BaseEnemy
         public float StrafeCooldownTime => strafeCooldownTime;
         
         public event UnityAction PlayerDetected;
+
+        [Inject]
+        public void Construct(Transform playerTarget)
+        {
+            target = playerTarget;
+        }
         
         public virtual void Init(Dictionary<Type, IState> states)
         {
@@ -89,5 +96,7 @@ namespace Game.Scripts.Enemies._BaseEnemy
             
             target = targetTransform;
         }
+        
+        public class Factory : PlaceholderFactory<EnemyAI> {}
     }
 }
